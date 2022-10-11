@@ -37,5 +37,10 @@ $warning-1: #f2c144;
 
 $linearGradient-1: linear-gradient(90.14deg, #676BDC 0.09%, #7D81E1 99.83%, #7D81E1 99.84%, #7D81E1 99.85%);
 $linearGradient-2: linear-gradient(180.42deg, #676BDC 0.36%, #7D81E1 76.26%, #7D81E1 76.27%, #7D81E1 76.28%);
-//success alert gradient
-$linearGradient-3: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(269.97deg, #282733 16.4%, #49E06A 165.55%);
+$linearGradient-3: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(36, 36, 36, 0) 0.01%, #1D1C25 100%);
+$linearGradient-4: linear-gradient(179.98deg, rgba(29, 28, 37, 0.35) 58.93%, rgba(0, 0, 0, 0.05) 108.79%);
+
+$radialGradient-1: radial-gradient(50% 50% at 50% 50%, rgba(29, 28, 37, 0.1) 0%, rgba(29, 28, 37, 0.4) 100%);
+
+// Success alert gradient
+$linearGradient-5: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(269.97deg, #282733 16.4%, #49E06A 165.55%);
