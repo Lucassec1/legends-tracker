@@ -1,1 +1,14 @@
 <p>button works!</p>
+
+<button
+    [class]="'app-button-' + type + ' app-button-' + size"
+
+>
+    <span>Teste</span>
+    <app-icon
+        *ngIf="iconType && !loading"
+        [type]="iconType"
+        [size]="iconSize"
+        class="icon"
+    ></app-icon>
+</button>

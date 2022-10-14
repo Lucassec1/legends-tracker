@@ -1,0 +1,70 @@
+@import '../../styles/index.scss';
+
+@mixin add-colors($background, $color) {
+    background-color: $background;
+    color: $color;
+}
+
+@mixin button-parameters(
+    $buttonWidth,
+    $buttonHeight,
+    $paddingTopBottom,
+    $paddingLeftRight,
+    $fontSize,
+    $lineHeight
+) {
+    width: $buttonWidth;
+    height: $buttonHeight;
+    padding: $paddingTopBottom $paddingLeftRight;
+
+    span {
+        font-size: $fontSize;
+        line-height: $lineHeight;
+    }
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-weight: 500;
+    border: 0;
+    color: $neutral-7;
+    cursor: pointer;
+
+    app-icon {
+        ::ng-deep svg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $neutral-7;
+        }
+    }
+}
+
+.app-button-small {
+    @include button-parameters(100px, 34px, 9px, 22px, 12px, 15px)
+}
+
+.app-button-medium {
+    @include button-parameters(115, 34px, 9px, 30px, 14px, 17px)
+}
+
+.app-button-large {
+    @include button-parameters(270px, 34px, 9px, 110px, 12px, 15px)
+}
+
+.app-button-primary {
+    background-color: $primary-color;
+    border: 0.5px solid $primary-3;
+
+    &:hover {
+        background-color: $linearGradient-1;
+        border: 0.5px solid $primary-3;
+    }
+    
+    &:active {
+        background-color: darken($primary-color, 10%);
+    }
+}

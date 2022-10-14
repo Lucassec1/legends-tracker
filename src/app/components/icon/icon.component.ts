@@ -17,8 +17,8 @@ export interface IconProps {
   styleUrls: ['./icon.component.scss']
 })
 
-export class IconComponent {
-  @Input() type: IconType;
+export class AppIconComponent {
+  @Input() type!: IconType;
   @Input() size = 24;
   @Input() color = '#fcfaff'
 
