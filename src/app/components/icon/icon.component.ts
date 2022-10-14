@@ -2,7 +2,7 @@ import { Component, Input, ElementRef } from '@angular/core';
 import { iconsPaths } from './svgs/icons';
 import { DomSanitizer } from '@angular/platform-browser';
 
-export type SvgModule = typeof import ('./svgs/icons');
+export type SvgModule = typeof import('./svgs/icons');
 export type IconType = keyof typeof iconsPaths;
 
 export interface IconProps {
@@ -18,7 +18,7 @@ export interface IconProps {
 })
 
 export class IconComponent {
-  @Input() type: IconType;
+  @Input() type!: IconType;
   @Input() size = 24;
   @Input() color = '#fcfaff'
 
