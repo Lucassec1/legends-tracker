@@ -14,6 +14,7 @@ export interface AppButtonProps {
   disabled?: boolean;
   loading?: boolean;
   iconType?: IconType;
+  rightSideIcon?: boolean;
   buttonOnClick?: EventEmitter<SafeAny>;
 }
 @Component({
@@ -28,7 +29,8 @@ export class ButtonComponent implements OnInit {
   @Input() size: Size = 'small';
   @Input() disabled? = false;
   @Input() loading? = false;
-  @Input() iconType:string = '';
+  @Input() iconType?: string = '';
+  @Input() rightSideIcon?: boolean = false;
   @Output() buttonOnClick = new EventEmitter();
   
   public iconSize!: ButtonIconSizeOptions;

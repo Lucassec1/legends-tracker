@@ -1,7 +1,12 @@
 @import '../../styles/index.scss';
 
-@mixin add-colors($background, $color) {
-    background-color: $background;
+@mixin add-colors($backgroundColor, $color) {
+    background-color: $backgroundColor;
+    color: $color;
+}
+
+@mixin add-gradient-colors($background, $color) {
+    background: $background;
     color: $color;
 }
 
@@ -32,6 +37,31 @@ button {
     border: 0;
     color: $neutral-7;
     cursor: pointer;
+    border-radius: 5px;
+
+    &:focus-visible {
+        @include add-colors($neutral-4 !important, $neutral-5 !important);
+        cursor: not-allowed;
+
+        app-icon {
+            ::ng-deep svg {
+              fill: $neutral-5;
+            }
+        }
+    }
+    
+    &:disabled,
+    &:disabled:hover,
+    &[disabled],
+    &[disabled]:hover {
+        cursor: not-allowed;
+    
+        app-icon {
+          ::ng-deep svg {
+            fill: $neutral-6;
+          }
+        }
+    }
 
     app-icon {
         ::ng-deep svg {
@@ -44,27 +74,69 @@ button {
 }
 
 .app-button-small {
-    @include button-parameters(100px, 34px, 9px, 22px, 12px, 15px)
+    @include button-parameters(100px, 34px, 8px, 20px, 14px, 16px);
 }
 
 .app-button-medium {
-    @include button-parameters(115, 34px, 9px, 30px, 14px, 17px)
+    @include button-parameters(115px, 34px, 8px, 30px, 14px, 16px);
 }
 
 .app-button-large {
-    @include button-parameters(270px, 34px, 9px, 110px, 12px, 15px)
+    @include button-parameters(270px, 34px, 8px, 40px, 14px, 16px);
 }
 
 .app-button-primary {
     background-color: $primary-color;
     border: 0.5px solid $primary-3;
-
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    
+    
     &:hover {
         background-color: $linearGradient-1;
         border: 0.5px solid $primary-3;
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
+        
     }
     
     &:active {
-        background-color: darken($primary-color, 10%);
+        background-color: darken($primary-color, 5%);
+        border: 0.5px solid darken($primary-3, 5%);
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
     }
+    
+    &:disabled {
+        color: rgba(252, 250, 255, 0.5) !important;
+        background-color: $neutral-4;
+        border: 0.5px solid $neutral-3;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.app-button-secondary {
+    @include add-colors(transparent, $primary-color);
+    border: 1px solid $primary-color;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
+
+    &:hover {
+        // need to review
+        @include add-gradient-colors($linearGradient-1, $primary-color);
+        // border: 1px solid $primary-color;
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    // &:active {
+
+    // }
+
+    // &:disabled {
+
+    // }
+}
+
+.right-side-icon {
+    flex-direction: row-reverse;
+}
+  
+.app-remove-space {
+    padding: 0 !important;
 }
