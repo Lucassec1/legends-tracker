@@ -5,7 +5,7 @@ import { SafeAny } from '../utils/safe-any';
 import { ButtonIconSizeOptions } from '../types/button'
 
 type Type = 'primary' | 'secondary';
-type Size = 'small' | 'medium' | 'large';
+type Size = 'sm' | 'md' | 'lg';
 
 export interface AppButtonProps {
   label?: string;
@@ -26,7 +26,7 @@ export interface AppButtonProps {
 export class ButtonComponent implements OnInit {
   @Input() label?: string;
   @Input() type: Type = 'primary';
-  @Input() size: Size = 'small';
+  @Input() size: Size = 'sm';
   @Input() disabled? = false;
   @Input() loading? = false;
   @Input() iconType?: string = '';

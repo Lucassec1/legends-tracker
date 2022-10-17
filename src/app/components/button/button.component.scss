@@ -38,6 +38,7 @@ button {
     color: $neutral-7;
     cursor: pointer;
     border-radius: 5px;
+    transition: 300ms;
 
     &:focus-visible {
         @include add-colors($neutral-4 !important, $neutral-5 !important);
@@ -73,16 +74,16 @@ button {
     }
 }
 
-.app-button-small {
+.app-button-sm {
     @include button-parameters(100px, 34px, 8px, 20px, 14px, 16px);
 }
 
-.app-button-medium {
+.app-button-md {
     @include button-parameters(115px, 34px, 8px, 30px, 14px, 16px);
 }
 
-.app-button-large {
-    @include button-parameters(270px, 34px, 8px, 40px, 14px, 16px);
+.app-button-lg {
+    @include button-parameters(100%, 34px, 8px, 40px, 14px, 16px);
 }
 
 .app-button-primary {
@@ -95,7 +96,6 @@ button {
         background-color: $linearGradient-1;
         border: 0.5px solid $primary-3;
         box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
-        
     }
     
     &:active {
@@ -107,7 +107,7 @@ button {
     &:disabled {
         color: rgba(252, 250, 255, 0.5) !important;
         background-color: $neutral-4;
-        border: 0.5px solid $neutral-3;
+        border: none;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     }
 }
@@ -118,9 +118,7 @@ button {
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
 
     &:hover {
-        // need to review
-        @include add-gradient-colors($linearGradient-1, $primary-color);
-        // border: 1px solid $primary-color;
+        @include add-colors(transparentize($primary-color, 0.9), $primary-color);
         box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
     }
 

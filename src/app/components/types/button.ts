@@ -1,5 +1,5 @@
 export enum ButtonIconSizeOptions {
-    small = 16,
-    medium = 20,
-    large = 20,
+    sm = 17,
+    md = 17,
+    lg = 17,
 }

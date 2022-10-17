@@ -19,12 +19,16 @@ export interface IconProps {
 
 export class AppIconComponent {
   @Input() type!: IconType;
-  @Input() size = 24;
+  @Input() size = 20;
   @Input() color = '#fcfaff'
 
   constructor(private sanitizer: DomSanitizer, private el: ElementRef) {}
 
   getPath() {
     return this.sanitizer.bypassSecurityTrustHtml(iconsPaths[this.type]);
+  }
+
+  changeColor() {
+    return this.type === "add" ? this.color : 'transparent'
   }
 }
