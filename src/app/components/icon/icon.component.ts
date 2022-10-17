@@ -19,7 +19,7 @@ export interface IconProps {
 
 export class AppIconComponent {
   @Input() type!: IconType;
-  @Input() size = 20;
+  @Input() size = 17;
   @Input() color = '#fcfaff'
 
   constructor(private sanitizer: DomSanitizer, private el: ElementRef) {}
