@@ -1,1 +1,18 @@
 <p>button works!</p>
+
+<button
+    [class]="'app-button-' + type + ' app-button-' + size"
+    [class.loading]="loading"
+    [class.app-remove-space]="iconType && !!!label"
+    [class.right-side-icon]="rightSideIcon"
+    [disabled]="disabled"
+    (click)="handleClick()"
+>
+    <span>Teste</span>
+    <app-icon
+        *ngIf="iconType && !loading"
+        [type]="iconType"
+        [size]="iconSize"
+        class="icon"
+    ></app-icon>
+</button>

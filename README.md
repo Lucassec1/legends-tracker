@@ -1,27 +1,25 @@
-# LegendsTracker
+# Legends-Tracker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
+This project allows you to search the statistics of a League of Legends player, it also makes it possible to find a duo to play a match.
 
-## Development server
+## Details 
+- Using Angular with SCSS.
+- Using [Riot API](https://developer.riotgames.com/apis).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Team FrontEnd
 
-## Code scaffolding
+- [Dayanne Bugarim](https://github.com/dayannebugarim)
+- [Lucas Emmanuel](https://github.com/Lucassec1)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Team BackEnd
 
-## Build
+- [Lucas Martins](https://github.com/Lucasmartinsn)
+- [Samuel Vitor](https://github.com/TheSamuelVitor)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Functionalities
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Search for a League of Legends player
+- Search for a duo
+- See player statistics like: match history, most played champions, KDA etc.
+- See a duo profile
+- Login and registration for new users
