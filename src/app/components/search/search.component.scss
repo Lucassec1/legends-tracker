@@ -1,0 +1,80 @@
+@import '../../styles/index.scss';
+
+// type = common | filter
+// size = md | lg
+
+// common-search-md
+// common-search-lg
+// filter-search-md
+// filter-search-lg
+
+@mixin search-parameters($paddingLeft, $padding) {
+    padding: $padding;
+    padding-left: $paddingLeft;
+    background-color: $neutral-2;
+    color: $neutral-7;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+
+    &:focus {
+        border: 1px solid $primary-1;
+        @include focus-box-shadow();
+    }
+
+    &::placeholder {
+        color: $neutral-4;
+    }
+}
+
+@mixin border-radius($bordersLeft, $bordersRight: 5px) {
+    border-radius: $bordersLeft;
+    border-top-right-radius: $bordersRight;
+    border-bottom-right-radius: $bordersRight;
+}
+
+@mixin focus-box-shadow() {
+    box-shadow: 0px 0px 8px 1px rgba(103, 107, 220, 0.2);
+}
+
+.search-container {
+    display: flex;
+    width: 100%
+}
+
+.common-search-md {
+    @include search-parameters(30px, 9px);
+    @include border-radius(5px);
+}
+
+.common-search-lg {
+    @include search-parameters(36px, 13px);
+    @include border-radius(5px);
+    width: 100%;  
+}
+
+.filter-search-md {
+    @include search-parameters(30px, 9px);
+    @include border-radius(5px, 0px);
+}
+
+.filter-search-lg {
+    @include search-parameters(36px, 13px);
+    @include border-radius(5px, 0px);
+    width: 100%;  
+}
+
+.filter {
+    border: none;
+    outline: none;
+    @include border-radius(0px, 5px);
+    background-color: $neutral-3;
+    color: $neutral-6;
+    padding: 2px 5px;
+    font-size: 1rem;
+
+    &:focus {
+        border-bottom-right-radius: 0px;
+        border-bottom: 1px solid $neutral-1;
+    }
+}
