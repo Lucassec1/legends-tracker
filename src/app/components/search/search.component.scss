@@ -37,43 +37,8 @@
     background-position: $position center;
 }
 
-
-.search-container {
-    display: flex;
-    width: 100%
-}
-
-.common-search-md {
-    @include search-parameters(30px, 9px);
-    @include border-radius(5px);
-    @include search-icon(0.5rem, 'search');
-
-    &:focus {
-        @include search-icon(0.5rem, 'search-active');
-    }
-}
-
-.common-search-lg {
-    @include search-parameters(36px, 13px);
-    @include border-radius(5px);
-    @include search-icon(0.75rem, 'search');
-    width: 100%;  
-
-    &:focus {
-        @include search-icon(0.75rem, 'search-active');
-    }
-}
-
-.filter-search-md {
-    @include search-parameters(36px, 9px);
-    @include border-radius(5px, 0px);
-    @include search-icon(0.5rem, 'search');
-
-    &:focus {
-        @include search-icon(0.5rem, 'search-active');
-    }
-
-    &::-webkit-search-cancel-button{
+@mixin clear-icon() {
+    &::-webkit-search-cancel-button {
         cursor: pointer;
         -webkit-appearance: none;
         position:relative;
@@ -85,10 +50,50 @@
     }
 }
 
+.search-container {
+    display: flex;
+    width: 100%
+}
+
+.common-search-md {
+    @include search-parameters(36px, 9px);
+    @include border-radius(5px);
+    @include search-icon(0.5rem, 'search');
+    @include clear-icon();
+
+    &:focus {
+        @include search-icon(0.5rem, 'search-active');
+    }
+}
+
+.common-search-lg {
+    @include search-parameters(42px, 13px);
+    @include border-radius(5px);
+    @include search-icon(0.75rem, 'search');
+    @include clear-icon();
+    width: 100%;  
+
+    &:focus {
+        @include search-icon(0.75rem, 'search-active');
+    }
+}
+
+.filter-search-md {
+    @include search-parameters(36px, 9px);
+    @include border-radius(5px, 0px);
+    @include search-icon(0.5rem, 'search');
+    @include clear-icon();
+
+    &:focus {
+        @include search-icon(0.5rem, 'search-active');
+    }
+}
+
 .filter-search-lg {
     @include search-parameters(42px, 13px);
     @include border-radius(5px, 0px);
     @include search-icon(0.75rem, 'search');
+    @include clear-icon();
     width: 100%;  
 
     &:focus {
