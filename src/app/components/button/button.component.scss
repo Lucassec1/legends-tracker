@@ -14,8 +14,8 @@
     .#{$type}-loadingAnimation {
         position: relative;
         left: -1000px;
-        width: 8px;
-        height: 8px;
+        width:6px;
+        height:6px;
         border-radius: 5px;
         background-color: $color;
         color: $color;
@@ -24,8 +24,8 @@
         animation-delay: .1s;
         
         &::before {
-            width: 8px;
-            height: 8px;
+            width:6px;
+            height:6px;
             border-radius: 5px;
             background-color: $color;
             color: $color;
@@ -41,8 +41,8 @@
         }
         
         &::after {
-            width: 8px;
-            height: 8px;
+            width:6px;
+            height:6px;
             border-radius: 5px;
             background-color: $color;
             color: $color;
@@ -67,15 +67,15 @@
         
     @keyframes #{$type}-loadingAnimationBefore {
         0% {
-            box-shadow: 982.3px -15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
         }
         25%,
         50%,
         75% {
-            box-shadow: 982.3px 0 0 0 $color;
+            box-shadow: 984px 0 0 0 $color;
         }
         100% {
-            box-shadow: 982.3px 15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 984px 15px 0 0 rgba(152, 128, 255, 0);
         }
     }
         
