@@ -1,5 +1,3 @@
-<p>button works!</p>
-
 <button
     [class]="'app-button-' + type + ' app-button-' + size"
     [class.loading]="loading"
@@ -8,11 +6,17 @@
     [disabled]="disabled"
     (click)="handleClick()"
 >
-    <span>Teste</span>
+    <span></span>
+    <span *ngIf="loading" [class]="type + '-loadingAnimation'"></span>
     <app-icon
         *ngIf="iconType && !loading"
         [type]="iconType"
         [size]="iconSize"
         class="icon"
     ></app-icon>
+    <span 
+        *ngIf="label || loading">{{
+            loading ? '' : label
+        }}
+    </span>
 </button>

@@ -37,6 +37,7 @@ export class ButtonComponent implements OnInit {
 
   handleClick() {
     if (!this.loading && !this.disabled) {
+      this.loading = !this.loading;
       this.buttonOnClick.emit();
     }
   }
