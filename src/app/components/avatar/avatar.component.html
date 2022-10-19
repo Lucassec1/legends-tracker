@@ -1,0 +1,21 @@
+<p>avatar works!</p>
+
+<div [class]="'border-size-' + size" *ngIf ="border === 'true'">
+    <div [class]="'background-size-' + size">
+        <div
+            [class]="type + '-avatar-size-' + size"
+        >
+            <img [src]="image || defaultImage" />
+        </div>
+    </div>
+</div>
+
+
+<div
+    [class]="type + '-avatar-size-' + size"
+    *ngIf = "border === 'false'"
+>
+    <img [src]="image || defaultImage" />
+</div>
+  
+
