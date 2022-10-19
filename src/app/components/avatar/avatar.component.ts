@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AvatarBorderOptions } from '../core/types/avatar';
 
+import { AvatarBorderOptions } from '../core/types/avatar';
 import { SizeType } from '../core/types/size';
 
 type TypeBorder = "true" | "false";
@@ -23,11 +23,10 @@ export class AvatarComponent implements OnInit {
   @Input() onErrorImage?: string;
   @Input() border: TypeBorder = "true";
 
-  public defaultImage = "https://gw.alipayobjects.com/zos/antfincdn/4zAaozCvUH/unexpand.svg";
+  public defaultImage = "../../assets/user.svg";
   public type!: AvatarBorderOptions;
 
   ngOnInit(): void {
     this.type = AvatarBorderOptions[this.border];
   }
-
 }

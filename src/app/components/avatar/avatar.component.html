@@ -1,5 +1,3 @@
-<p>avatar works!</p>
-
 <div [class]="'border-size-' + size" *ngIf ="border === 'true'">
     <div [class]="'background-size-' + size">
         <div
@@ -10,12 +8,9 @@
     </div>
 </div>
 
-
 <div
     [class]="type + '-avatar-size-' + size"
     *ngIf = "border === 'false'"
 >
     <img [src]="image || defaultImage" />
 </div>
-  
-
