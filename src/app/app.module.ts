@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './components/button/button.component';
 import { AppIconComponent } from './components/icon/icon.component';
 import { SearchComponent } from './components/search/search.component';
+import { TagComponent } from './components/tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { SearchComponent } from './components/search/search.component';
     SearchComponent,
     ButtonComponent,
     AppIconComponent,
+    TagComponent,
   ],
   imports: [
     BrowserModule,
