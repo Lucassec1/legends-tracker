@@ -14,7 +14,7 @@ import { AppIconComponent } from './icon/icon.component';
   ],
   exports: [
     ButtonComponent,
-    AppIconComponent
+    AppIconComponent,
   ],
 })
 
