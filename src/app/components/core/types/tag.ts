@@ -5,3 +5,5 @@ export enum PositionIconOptions {
     suporte = '../../../assets/positions/Position_Diamond-Support.png',
     top = '../../../assets/positions/Position_Diamond-Top.png',
 }
+
+export type Label = 'adc' | 'jungle' | 'mid' | 'suporte' | 'top';

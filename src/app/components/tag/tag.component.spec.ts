@@ -1,23 +1,43 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { render, screen } from '@testing-library/angular';
+import { Label } from '../core/types/tag';
+import { TagComponent, TagProps } from './tag.component';
 
-import { TagComponent } from './tag.component';
+const labelOptions: Array<Label> = [
+  'adc',
+  'jungle',
+  'mid',
+  'suporte',
+  'top',
+]
+
+const defaultValue: TagProps = {
+  label: labelOptions[3],
+}
+
+const IDs = {
+  tag: 'app-tag',
+  icon: 'tag-icon',
+}
+
+const sut = async (customProps: TagProps = defaultValue) => {
+  await render(TagComponent, {
+    componentProperties: customProps,
+    imports: [CommonModule],
+  })
+} 
 
 describe('TagComponent', () => {
-  let component: TagComponent;
-  let fixture: ComponentFixture<TagComponent>;
+  describe('component basics', () => {
+    beforeEach(async () => {
+      await sut();
+    });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ TagComponent ]
-    })
-    .compileComponents();
+    it('should render component', () => {
+      expect(screen.getByTestId(IDs.tag)).toHaveClass('tag-container');
+    });
 
-    fixture = TestBed.createComponent(TagComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    // it('should render default label')
   });
 });

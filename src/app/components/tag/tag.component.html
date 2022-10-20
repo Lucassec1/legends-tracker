@@ -1,7 +1,12 @@
-<div class="tag-container">
+<div 
+    class="tag-container"
+    data-testid="app-tag"
+>
     <img 
-    *ngIf="icon"
-    class="tag-icon"
-    [src]="iconUrl" />
+        *ngIf="icon"
+        class="tag-icon"
+        data-testid="tag-icon"
+        [src]="iconUrl"
+    />
     {{ label }}
 </div>
