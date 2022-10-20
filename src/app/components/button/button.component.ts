@@ -9,7 +9,7 @@ type Size = 'sm' | 'md' | 'lg';
 
 export interface AppButtonProps {
   label?: string;
-  type: Type;
+  type?: Type;
   size?: Size;
   disabled?: boolean;
   loading?: boolean;
