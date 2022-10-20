@@ -5,11 +5,6 @@
     color: $color;
 }
 
-// @mixin add-gradient-colors($background, $color) {
-//     background: $background;
-//     color: $color;
-// }
-
 @mixin add-animation($type, $color) {
     .#{$type}-loadingAnimation {
         position: relative;
@@ -95,20 +90,17 @@
 }
 
 @mixin button-parameters(
-    $buttonWidth,
-    $buttonHeight,
+    $buttonSize,
     $paddingTopBottom,
     $paddingLeftRight,
     $fontSize,
-    $lineHeight
 ) {
-    width: $buttonWidth;
-    height: $buttonHeight;
+    min-width: $buttonSize * 2;
+    height: $buttonSize;
     padding: $paddingTopBottom $paddingLeftRight;
 
     span {
         font-size: $fontSize;
-        line-height: $lineHeight;
     }
 }
 
@@ -159,15 +151,15 @@ button {
 }
 
 .app-button-sm {
-    @include button-parameters(100px, 34px, 8px, 20px, 14px, 16px);
+    @include button-parameters(30px, 12px, 10px, 14px);
 }
 
 .app-button-md {
-    @include button-parameters(115px, 34px, 8px, 30px, 14px, 16px);
+    @include button-parameters(34px, 16px, 14px, 16px);
 }
 
 .app-button-lg {
-    @include button-parameters(100%, 34px, 8px, 40px, 14px, 16px);
+    @include button-parameters(38px, 20px, 18px, 18px);
 }
 
 .app-button-primary {
@@ -217,10 +209,6 @@ button {
         border: 1px solid lighten($primary-color, 2%); 
         box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
     }   
-
-    // &:disabled {
-
-    // }
 
     .app-icon {
         ::ng-deep svg {
