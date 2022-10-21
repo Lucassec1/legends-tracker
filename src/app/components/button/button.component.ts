@@ -15,6 +15,7 @@ export interface AppButtonProps {
   loading?: boolean;
   iconType?: IconType;
   rightSideIcon?: boolean;
+  expand?: boolean;
   buttonOnClick?: EventEmitter<SafeAny>;
 }
 @Component({
@@ -31,6 +32,7 @@ export class ButtonComponent implements OnInit {
   @Input() loading? = false;
   @Input() iconType?: string = '';
   @Input() rightSideIcon?: boolean = false;
+  @Input() expand?: boolean = false;
   @Output() buttonOnClick = new EventEmitter();
   
   public iconSize!: ButtonIconSizeOptions;
@@ -40,6 +42,10 @@ export class ButtonComponent implements OnInit {
       this.loading = !this.loading;
       this.buttonOnClick.emit();
     }
+  }
+
+  expandButton() {
+    return this.expand ? '100%' : '0%';
   }
 
   ngOnInit() {

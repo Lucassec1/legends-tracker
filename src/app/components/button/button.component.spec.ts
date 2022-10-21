@@ -59,19 +59,19 @@ describe('ButtonComponent', () => {
     });
     fireEvent.click(button);
     expect(clickEvent).not.toHaveBeenCalled();
-  })
-})
+  });
+});
 
 const types: Array<AppButtonProps['type']> = [
   'primary',
-  'secondary'
+  'secondary',
 ];
 
 it.each(types)('should render correct types', async (type) => {
-  expect(await sut ({
-    label: defaultLabel,
-    type
-  })).toHaveClass(`app-icon-${type}`);
+  expect(await sut({ 
+    label: defaultLabel, 
+    type 
+  })).toHaveClass(`app-button-${type}`);
 });
 
 const sizes: Array<AppButtonProps['size']> = [
@@ -84,16 +84,53 @@ it.each(sizes)('should render correct size', async (size) => {
   return expect(await sut({
     label: defaultLabel,
     size
-  })).toHaveClass(`app-icon-${size}`);
+  })).toHaveClass(`app-button-${size}`);
 });
 
 describe('Icon on ButtonComponent', () => {
   it('Icon add on button', async () => {
-    const button = await sut({ iconType: 'add' });
+    const button = await sut({ 
+      iconType: 'add' 
+    });
     expect(button.querySelector('app-icon')).toBeTruthy();
     expect(button.querySelector('app-icon')).toHaveAttribute('ng-reflect-type');
-    // expect(
-    //   button.querySelector('app-icon').getAttribute('ng-reflect-type')
-    // ).toContain('pencil');
+    expect(
+      button.querySelector('app-icon')?.getAttribute('ng-reflect-type')
+    ).toContain('add');
   });
-})
+
+  it('right side icon', async () => {
+    const button = await sut({
+      iconType: 'add',
+      rightSideIcon: true,
+    });
+    expect(button.querySelector('app-icon')).toBeTruthy();
+    expect(button).toHaveClass('right-side-icon');
+  });
+});
+
+describe('disabled ButtonComponent', () => {
+  it('should render a disabled button when disabled"true" is passed', async () => {
+    expect(await sut({
+      label: defaultLabel,
+      disabled: true
+    })).toHaveAttribute('disabled');
+  });
+});
+
+describe('loading ButtonComponent', () => {
+  it('should render a loading button when loading="true" is passed', async () => {
+    expect(await sut({
+      loading: true
+    })).toHaveClass('loading');
+  });
+});
+
+describe('expand ButtonComponent', () => {
+  it('should render a expand button when expand="true" is passed', async () => {
+    expect((await sut({
+      label: defaultLabel,
+      expand: true
+    })).style.width).toBe('100%');
+  });
+});

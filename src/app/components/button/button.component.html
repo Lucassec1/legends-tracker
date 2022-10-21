@@ -1,5 +1,6 @@
 <button
     [class]="'app-button-' + type + ' app-button-' + size"
+    [style.width]="expandButton()"
     [class.loading]="loading"
     [class.app-remove-space]="iconType && !!!label"
     [class.right-side-icon]="rightSideIcon"
