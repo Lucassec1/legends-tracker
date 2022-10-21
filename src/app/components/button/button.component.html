@@ -1,5 +1,5 @@
 <button
-    [class]="'app-button-' + type + ' app-button-' + size"
+    [class]="'app-button-' + type + ' app-button-' + size + ghostColor()"
     [style.width]="expandButton()"
     [class.loading]="loading"
     [class.app-remove-space]="iconType && !!!label"

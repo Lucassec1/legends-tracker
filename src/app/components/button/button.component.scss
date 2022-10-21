@@ -195,7 +195,7 @@ button {
     @include add-colors(transparent, $primary-color);
     border: 1px solid $primary-color;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-
+    
     &:hover {
         @include add-colors(transparentize(darken($primary-color, 2%), 0.9), $primary-color);
         border: 1px solid darken($primary-color, 2%);
@@ -203,19 +203,23 @@ button {
         transform: translateY(-2px);
         transition: transform 200ms ease 0s, background-color 200ms ease 0s;
     }
-
+    
     &:active {
         @include add-colors(transparentize($primary-color, 0.85), lighten($primary-color, 2%));
         border: 1px solid lighten($primary-color, 2%); 
         box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
     }   
-
+    
     .app-icon {
         ::ng-deep svg {
             stroke: $primary-color;
             fill: $primary-color;
         }
     }
+}
+
+.app-button-ghost {
+    background-color: $neutral-color;
 }
 
 .loading {
@@ -229,4 +233,13 @@ button {
   
 .app-remove-space {
     padding: 0 !important;
+}
+
+
+.text-primary-color {
+    color: red;
+}
+
+.text-secondary-color {
+    color: green;
 }
