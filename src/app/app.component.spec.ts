@@ -1,8 +1,10 @@
+import { AppIconComponent } from './components/icon/icon.component';
+import { ButtonComponent } from './components/button/button.component';
+import { SearchComponent } from './components/search/search.component';
+import { TagComponent } from './components/tag/tag.component';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from './components/button/button.component';
-import { AppIconComponent } from './components/icon/icon.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -12,8 +14,10 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
+        TagComponent,
+        SearchComponent,
         ButtonComponent,
-        AppIconComponent,
+        AppIconComponent
       ],
     }).compileComponents();
   });

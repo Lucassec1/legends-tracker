@@ -6,7 +6,7 @@ const defaultLabel = 'button';
 
 const sut = async (
   customProps: AppButtonProps = { 
-    label: defaultLabel
+    label: defaultLabel,
   } 
 ): Promise<HTMLElement> => {
   await render(ButtonComponent, {

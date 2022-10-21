@@ -26,7 +26,7 @@ export interface AppButtonProps {
 
 export class ButtonComponent implements OnInit {
   @Input() label?: string;
-  @Input() type: Type = 'primary';
+  @Input() type?: Type = 'primary';
   @Input() size: Size = 'sm';
   @Input() disabled? = false;
   @Input() loading? = false;
