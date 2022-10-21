@@ -16,6 +16,7 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
+    "types": ["jest", "@testing-library/jest-dom", "@types/node"],
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
