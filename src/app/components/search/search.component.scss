@@ -1,12 +1,5 @@
 @import '../../styles/index.scss';
 
-// type = common | filter
-// size = md | lg
-
-// common-search-md
-// common-search-lg
-// filter-search-md
-// filter-search-lg
 
 @mixin search-parameters($paddingLeft, $padding) {
     padding: $padding;
@@ -24,6 +17,7 @@
 
     &::placeholder {
         color: $neutral-4;
+        font-weight: 500;
     }
 }
 
@@ -37,37 +31,80 @@
     box-shadow: 0px 0px 8px 1px rgba(103, 107, 220, 0.2);
 }
 
+@mixin search-icon($position, $iconName) {
+    background-image: url("../icon/svgs/#{$iconName}.svg");
+    background-repeat: no-repeat;
+    background-position: $position center;
+}
+
+@mixin clear-icon() {
+    &::-webkit-search-cancel-button {
+        cursor: pointer;
+        -webkit-appearance: none;
+        position:relative;
+        right: 0px;  
+        height: 8px;
+        width: 8px;
+        background-image: url('../icon/svgs/clear.svg');
+        background-repeat: no-repeat;
+    }
+}
+
 .search-container {
     display: flex;
     width: 100%
 }
 
 .common-search-md {
-    @include search-parameters(30px, 9px);
+    @include search-parameters(36px, 9px);
     @include border-radius(5px);
+    @include search-icon(0.5rem, 'search');
+    @include clear-icon();
+
+    &:focus {
+        @include search-icon(0.5rem, 'search-active');
+    }
 }
 
 .common-search-lg {
-    @include search-parameters(36px, 13px);
+    @include search-parameters(42px, 13px);
     @include border-radius(5px);
+    @include search-icon(0.75rem, 'search');
+    @include clear-icon();
     width: 100%;  
+
+    &:focus {
+        @include search-icon(0.75rem, 'search-active');
+    }
 }
 
 .filter-search-md {
-    @include search-parameters(30px, 9px);
+    @include search-parameters(36px, 9px);
     @include border-radius(5px, 0px);
+    @include search-icon(0.5rem, 'search');
+    @include clear-icon();
+
+    &:focus {
+        @include search-icon(0.5rem, 'search-active');
+    }
 }
 
 .filter-search-lg {
-    @include search-parameters(36px, 13px);
+    @include search-parameters(42px, 13px);
     @include border-radius(5px, 0px);
+    @include search-icon(0.75rem, 'search');
+    @include clear-icon();
     width: 100%;  
+
+    &:focus {
+        @include search-icon(0.75rem, 'search-active');
+    }
 }
 
 .filter {
+    @include border-radius(0px, 5px);
     border: none;
     outline: none;
-    @include border-radius(0px, 5px);
     background-color: $neutral-3;
     color: $neutral-6;
     padding: 2px 5px;
