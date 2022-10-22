@@ -1,0 +1,46 @@
+@import '../../styles/index.scss';
+
+.match-history-card {
+    background-color: $neutral-2;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: $card-shadow;
+    gap: 30px;
+}
+
+.champion-img {
+    border-radius: 50%;
+}
+
+.runes-container, .summoner-spells-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rune-img {
+    height: 3vh;
+}
+
+.rune-img:nth-child(1) {
+    height: 5vh;
+}
+
+.summoner-spells-img {
+    height: 3.5vh;
+    border-radius: 50%;
+}
+
+.match-info-container, .match-scoreboard {
+    display: flex;
+    flex-direction: column;
+}
+
+hr {
+    border: 0;
+    background: inherit;
+    border-left: 1px solid $neutral-3;
+    min-height: 55px;
+    height: 100%;
+}
