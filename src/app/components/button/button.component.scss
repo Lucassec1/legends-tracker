@@ -89,6 +89,90 @@
     }
 }
 
+@mixin add-animation-ghost($colorType, $color) {
+    .#{$colorType}-loadingGhost {
+        position: relative;
+        left: -1000px;
+        width:6px;
+        height:6px;
+        border-radius: 5px;
+        background-color: $color;
+        color: $color;
+        box-shadow: 1000px 0 0 0 $color;
+        animation: #{$colorType}-loadingGhost 1s infinite linear;
+        animation-delay: .1s;
+        
+        &::before {
+            width:6px;
+            height:6px;
+            border-radius: 5px;
+            background-color: $color;
+            color: $color;
+            animation: #{$colorType}-loadingGhostBefore 1s infinite linear;
+            animation-delay: 0s;
+        }
+        
+        &::before, &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        
+        &::after {
+            width:6px;
+            height:6px;
+            border-radius: 5px;
+            background-color: $color;
+            color: $color;
+            animation: #{$colorType}-loadingGhostAfter 1s infinite linear;
+            animation-delay: .2s;
+        }
+    }
+    
+    @keyframes #{$colorType}-loadingGhost {
+        0% {
+            box-shadow: 1000px -15px 0 0 rgba(152, 128, 255, 0);
+        }
+        25%,
+        50%,
+        75% {
+            box-shadow: 1000px 0 0 0 $color;
+        }
+        100% {
+            box-shadow: 1000px 15px 0 0 rgba(152, 128, 255, 0);
+        }
+    }
+        
+    @keyframes #{$colorType}-loadingGhostBefore {
+        0% {
+            box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
+        }
+        25%,
+        50%,
+        75% {
+            box-shadow: 984px 0 0 0 $color;
+        }
+        100% {
+            box-shadow: 984px 15px 0 0 rgba(152, 128, 255, 0);
+        }
+    }
+        
+    @keyframes #{$colorType}-loadingGhostAfter {
+        0% {
+            box-shadow: 1010px -15px 0 0 rgba(152, 128, 255, 0);
+        }
+        25%,
+        50%,
+        75% {
+            box-shadow: 1010px 0 0 0 $color;
+        }
+        100% {
+            box-shadow: 1010px 15px 0 0 rgba(152, 128, 255, 0);
+        }
+    }
+}
+
 @mixin button-parameters(
     $buttonSize,
     $paddingTopBottom,
@@ -134,9 +218,9 @@ button {
         cursor: not-allowed;
     
         app-icon {
-          ::ng-deep svg {
-            fill: $neutral-6;
-          }
+            ::ng-deep svg {
+                fill: $neutral-6;
+            }
         }
     }
 
@@ -145,7 +229,7 @@ button {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: $neutral-7;
+            fill: $neutral-color;
         }
     }
 }
@@ -164,6 +248,7 @@ button {
 
 .app-button-primary {
     @include add-animation('primary', $neutral-color);
+
     background-color: $primary-color;
     border: 1px solid transparentize($primary-3, 0.5);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
@@ -192,7 +277,9 @@ button {
 
 .app-button-secondary {
     @include add-animation('secondary', $primary-color);
+
     @include add-colors(transparent, $primary-color);
+    
     border: 1px solid $primary-color;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
     
@@ -209,17 +296,21 @@ button {
         border: 1px solid lighten($primary-color, 2%); 
         box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
     }   
-    
-    .app-icon {
-        ::ng-deep svg {
-            stroke: $primary-color;
-            fill: $primary-color;
-        }
-    }
 }
 
 .app-button-ghost {
-    background-color: $neutral-color;
+    background-color: $neutral-1;
+    padding: 0;
+
+    &:hover {
+        background-color: transparentize($primary-color, 0.95);
+        transform: translateY(-2px);
+        transition: transform 200ms ease 0s, background-color 200ms ease 0s;
+    }
+    
+    &:active {
+        background-color: transparentize($primary-color, 0.85);
+    }
 }
 
 .loading {
@@ -236,9 +327,20 @@ button {
 }
 
 .text-primary-color {
-    color: red;
+    @include add-animation-ghost('primary-color', $primary-color);
+
+    color: $primary-color;
+
+    app-icon {
+        ::ng-deep svg {
+            stroke: $primary-color !important;
+            fill: $primary-color !important;
+        }
+    }
 }
 
 .text-secondary-color {
-    color: green;
+    @include add-animation-ghost('secondary-color', $neutral-color);
+
+    color: $neutral-color;
 }
