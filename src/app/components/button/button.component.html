@@ -7,7 +7,6 @@
     [disabled]="disabled"
     (click)="handleClick()"
 >
-    <span></span>
     <span *ngIf="loading" [class]="type + '-loadingAnimation'"></span>
     <app-icon
         *ngIf="iconType && !loading"
