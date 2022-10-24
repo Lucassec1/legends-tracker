@@ -5,8 +5,8 @@
     color: $color;
 }
 
-@mixin add-animation($type, $color) {
-    .#{$type}-loadingAnimation {
+@mixin add-animation($type, $loadingType , $color ) {
+    .#{$type}-#{$loadingType} {
         position: relative;
         left: -1000px;
         width:6px;
@@ -15,7 +15,7 @@
         background-color: $color;
         color: $color;
         box-shadow: 1000px 0 0 0 $color;
-        animation: #{$type}-loadingAnimation 1s infinite linear;
+        animation: #{$type}-#{$loadingType} 1s infinite linear;
         animation-delay: .1s;
         
         &::before {
@@ -24,7 +24,7 @@
             border-radius: 5px;
             background-color: $color;
             color: $color;
-            animation: #{$type}-loadingAnimationBefore 1s infinite linear;
+            animation: #{$type}-#{$loadingType}Before 1s infinite linear;
             animation-delay: 0s;
         }
         
@@ -41,12 +41,12 @@
             border-radius: 5px;
             background-color: $color;
             color: $color;
-            animation: #{$type}-loadingAnimationAfter 1s infinite linear;
+            animation: #{$type}-#{$loadingType}After 1s infinite linear;
             animation-delay: .2s;
         }
     }
     
-    @keyframes #{$type}-loadingAnimation {
+    @keyframes #{$type}-#{$loadingType} {
         0% {
             box-shadow: 1000px -15px 0 0 rgba(152, 128, 255, 0);
         }
@@ -60,7 +60,7 @@
         }
     }
         
-    @keyframes #{$type}-loadingAnimationBefore {
+    @keyframes #{$type}-#{$loadingType}Before {
         0% {
             box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
         }
@@ -74,91 +74,7 @@
         }
     }
         
-    @keyframes #{$type}-loadingAnimationAfter {
-        0% {
-            box-shadow: 1010px -15px 0 0 rgba(152, 128, 255, 0);
-        }
-        25%,
-        50%,
-        75% {
-            box-shadow: 1010px 0 0 0 $color;
-        }
-        100% {
-            box-shadow: 1010px 15px 0 0 rgba(152, 128, 255, 0);
-        }
-    }
-}
-
-@mixin add-animation-ghost($colorType, $color) {
-    .#{$colorType}-loadingGhost {
-        position: relative;
-        left: -1000px;
-        width:6px;
-        height:6px;
-        border-radius: 5px;
-        background-color: $color;
-        color: $color;
-        box-shadow: 1000px 0 0 0 $color;
-        animation: #{$colorType}-loadingGhost 1s infinite linear;
-        animation-delay: .1s;
-        
-        &::before {
-            width:6px;
-            height:6px;
-            border-radius: 5px;
-            background-color: $color;
-            color: $color;
-            animation: #{$colorType}-loadingGhostBefore 1s infinite linear;
-            animation-delay: 0s;
-        }
-        
-        &::before, &::after {
-            content: '';
-            display: inline-block;
-            position: absolute;
-            top: 0;
-        }
-        
-        &::after {
-            width:6px;
-            height:6px;
-            border-radius: 5px;
-            background-color: $color;
-            color: $color;
-            animation: #{$colorType}-loadingGhostAfter 1s infinite linear;
-            animation-delay: .2s;
-        }
-    }
-    
-    @keyframes #{$colorType}-loadingGhost {
-        0% {
-            box-shadow: 1000px -15px 0 0 rgba(152, 128, 255, 0);
-        }
-        25%,
-        50%,
-        75% {
-            box-shadow: 1000px 0 0 0 $color;
-        }
-        100% {
-            box-shadow: 1000px 15px 0 0 rgba(152, 128, 255, 0);
-        }
-    }
-        
-    @keyframes #{$colorType}-loadingGhostBefore {
-        0% {
-            box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
-        }
-        25%,
-        50%,
-        75% {
-            box-shadow: 984px 0 0 0 $color;
-        }
-        100% {
-            box-shadow: 984px 15px 0 0 rgba(152, 128, 255, 0);
-        }
-    }
-        
-    @keyframes #{$colorType}-loadingGhostAfter {
+    @keyframes #{$type}-#{$loadingType}After {
         0% {
             box-shadow: 1010px -15px 0 0 rgba(152, 128, 255, 0);
         }
@@ -247,7 +163,7 @@ button {
 }
 
 .app-button-primary {
-    @include add-animation('primary', $neutral-color);
+    @include add-animation('primary', 'loadingAnimation', $neutral-color);
 
     background-color: $primary-color;
     border: 1px solid transparentize($primary-3, 0.5);
@@ -276,7 +192,7 @@ button {
 }
 
 .app-button-secondary {
-    @include add-animation('secondary', $primary-color);
+    @include add-animation('secondary', 'loadingAnimation', $primary-color);
 
     @include add-colors(transparent, $primary-color);
     
@@ -300,7 +216,6 @@ button {
 
 .app-button-ghost {
     background-color: $neutral-1;
-    padding: 0;
 
     &:hover {
         background-color: transparentize($primary-color, 0.95);
@@ -311,6 +226,25 @@ button {
     &:active {
         background-color: transparentize($primary-color, 0.85);
     }
+}
+
+.text-primary-color {
+    @include add-animation('primary-color', 'loadingGhost', $primary-color);
+
+    color: $primary-color;
+
+    app-icon {
+        ::ng-deep svg {
+            stroke: $primary-color !important;
+            fill: $primary-color !important;
+        }
+    }
+}
+
+.text-secondary-color {
+    @include add-animation('secondary-color', 'loadingGhost', $neutral-color);
+
+    color: $neutral-color;
 }
 
 .loading {
@@ -324,23 +258,4 @@ button {
   
 .app-remove-space {
     padding: 0 !important;
-}
-
-.text-primary-color {
-    @include add-animation-ghost('primary-color', $primary-color);
-
-    color: $primary-color;
-
-    app-icon {
-        ::ng-deep svg {
-            stroke: $primary-color !important;
-            fill: $primary-color !important;
-        }
-    }
-}
-
-.text-secondary-color {
-    @include add-animation-ghost('secondary-color', $neutral-color);
-
-    color: $neutral-color;
 }
