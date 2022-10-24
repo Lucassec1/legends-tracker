@@ -19,7 +19,6 @@
 }
 
 input {
-    width: 50%;
     background-color: $neutral-2;
     color: $neutral-color;
     font-weight: 500;
@@ -39,7 +38,7 @@ input {
     }
 }
 
-.app-input-text-sm {
+.app-input-user-sm {
     @include input-parameters(9px, 36px);
     @include iconType(0.55rem, 'user');
 
@@ -48,7 +47,7 @@ input {
     }
 }
 
-.app-input-text-md {
+.app-input-user-md {
     @include input-parameters(11px, 42px);
     @include iconType(0.75rem, 'user');
 
@@ -57,6 +56,13 @@ input {
     }
 }
 
+.app-input-text-sm {
+    @include input-parameters(9px, 13px);
+}
+
+.app-input-text-md {
+    @include input-parameters(11px, 15px);
+}
 
 .app-input-password-sm {
     @include input-parameters(9px, 36px);
@@ -76,4 +82,25 @@ input {
     &:focus {
         @include iconType(0.75rem, 'lock-active');
     }
+}
+
+button {
+    position: relative;
+    right: 28px; 
+    bottom: 5.5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.password-visible {
+    background-image: url('../icon/svgs/eye.svg');
+    width: 20px;
+    height: 20px;
+}
+
+.password-invisible {
+    background-image: url('../icon/svgs/eye-off.svg');
+    width: 20px;
+    height: 20px;
 }

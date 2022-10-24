@@ -1,9 +1,16 @@
 <p>input works!</p>
 
-<input
-    [class]="'app-input-' + type + '-' + size"
-    [style.width]="expandInput()"
-    [placeholder]="placeholder"
->
-
+    <input
+        [class]="'app-input-' + type + '-' + size"
+        [style.width]="expandInput()"
+        [placeholder]="placeholder"
+        [type] = "visible ? 'text' : type"
+    >
+    
+    <button
+        *ngIf="type === 'password'"
+        (click)="passwordInput()"
+        [class]="visible ? 'password-visible' : 'password-invisible'"
+    >
+    </button>
 

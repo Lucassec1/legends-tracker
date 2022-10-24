@@ -1,6 +1,7 @@
+import { style } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 
-type Type = 'text' | 'password';
+type Type = 'user' | 'text' | 'password' ;
 type Size = 'sm' | 'md' ;
 
 export interface AppInputProps {
@@ -8,6 +9,7 @@ export interface AppInputProps {
   type?: Type;
   size?: Size; 
   expand?: boolean;
+  visible?: boolean;
 }
 
 @Component({
@@ -15,14 +17,20 @@ export interface AppInputProps {
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
 })
+
 export class InputComponent implements OnInit {
   @Input() placeholder?: string = '';
   @Input() type?: Type = 'text';
   @Input() size?: Size = 'md';
   @Input() expand? = false;
+  @Input() visible? = false;
 
   expandInput() {
     return this.expand ? '100%' : '';
+  }
+
+  passwordInput() {
+    this.visible = !this.visible;
   }
 
   constructor() { }
