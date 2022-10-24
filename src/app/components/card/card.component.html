@@ -1,42 +1,47 @@
 <div
-    class="match-history-card"
+    *ngIf="type === 'match-history'"
+    [class]="type + '-card ' + matchResult"
 >
-    <img 
-        class="champion-img"
-        src="../../../assets/champions/Lucian.png" 
-    />
-    <div class="runes-container">
-        <img 
-            class="rune-img" 
-            src="../../../assets/runes/PressTheAttack.png"
-        />
-        <img 
-            class="rune-img" 
-            src="../../../assets/runes/7200_Domination.png" 
-        />
-    </div>
-    <div class="summoner-spells-container">
-        <img 
-            class="summoner-spells-img" 
-            src="http://ddragon.leagueoflegends.com/cdn/12.20.1/img/spell/SummonerFlash.png" 
-        />
-        <img 
-            class="summoner-spells-img" 
-            src="http://ddragon.leagueoflegends.com/cdn/12.20.1/img/spell/SummonerHeal.png" 
-        />
-    </div>
-    <div class="match-info-container">
-        <h4 class="match-result">Vitória</h4>
-        <span class="match-type">Normal Game</span>
-        <span class="match-duration-date">28:14 25/09/2022</span>
-    </div>
-    <hr />
-    <div class="match-scoreboard">
-        <span class="match-score">13/5/4</span>
-        <span class="match-kda">
-            <span class="match-highlighted-kda">3.0</span>
-            KDA
-        </span>
+    <div class="main-content-container">
+        <div class="first-content-container">
+            <img
+                class="champion-img"
+                [src]="championSquareImgURL + championName() + '.png'"
+            />
+            <div class="runes-container">
+                <img
+                    class="rune-img"
+                    src="../../../assets/runes/PressTheAttack.png"
+                />
+                <img
+                    class="rune-img"
+                    src="../../../assets/runes/7200_Domination.png"
+                />
+            </div>
+            <div class="summoner-spells-container">
+                <img
+                    class="summoner-spells-img"
+                    [src]="summonerSpellImgURL + firstSummonerSpellName + '.png'"
+                />
+                <img
+                    class="summoner-spells-img"
+                    [src]="summonerSpellImgURL + secondSummonerSpellName + '.png'"
+                />
+            </div>
+            <div class="match-info-container">
+                <h4 class="match-result">{{ victory === 'true' ? 'Vitória' : 'Derrota' }}</h4>
+                <span class="match-type">Normal Game</span>
+                <span class="match-duration-date">28:14 25/09/2022</span>
+            </div>
+        </div>
+        <hr />
+        <div class="match-scoreboard">
+            <span class="match-score"> {{ kill }} / {{ death }} / {{ assistance }}</span>
+            <span class="match-kda">
+                <span class="match-highlighted-kda">{{ kda() }}</span>
+                KDA
+            </span>
+        </div>
     </div>
     <app-button label="Ver Mais" size="md"></app-button>
 </div>
