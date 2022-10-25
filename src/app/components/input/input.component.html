@@ -1,10 +1,11 @@
-<p>input works!</p>
 
+<div>
     <input
         [class]="'app-input-' + type + '-' + size"
         [style.width]="expandInput()"
         [placeholder]="placeholder"
         [type] = "visible ? 'text' : type"
+        data-testid="inputElement"
     >
     
     <button
@@ -13,4 +14,4 @@
         [class]="visible ? 'password-visible' : 'password-invisible'"
     >
     </button>
-
+</div>

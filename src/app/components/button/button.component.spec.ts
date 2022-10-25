@@ -12,7 +12,7 @@ const sut = async (
   await render(ButtonComponent, {
     componentProperties: customProps,
     declarations: [AppIconComponent],
-  });
+  });   
   return screen.findByRole('button');
 };
 

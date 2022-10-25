@@ -57,7 +57,7 @@ input {
 }
 
 .app-input-text-sm {
-    @include input-parameters(9px, 13px);
+    @include input-parameters(9px, 11px);
 }
 
 .app-input-text-md {
@@ -86,8 +86,8 @@ input {
 
 button {
     position: relative;
-    right: 28px; 
-    bottom: 5.5px;
+    top: 5px;
+    right: 29px;
     background-color: transparent;
     border: none;
     cursor: pointer;

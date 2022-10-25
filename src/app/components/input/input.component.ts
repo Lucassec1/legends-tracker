@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 
 type Type = 'user' | 'text' | 'password' ;
