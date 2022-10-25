@@ -1,3 +1,5 @@
+export type Type = 'match-history' | 'simple';
+
 export enum MatchResultOptions {
     true = 'victory-match-card',
     false = 'defeat-match-card',

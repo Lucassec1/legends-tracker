@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { render, screen } from '@testing-library/angular';
 import { Label } from '../core/types/tag';
 import { TagComponent, TagProps } from './tag.component';

@@ -1,11 +1,20 @@
 import { championSquareImgURL, summonerSpellImgURL } from './../../../services/api';
-import { MatchResultOptions, SummonerSpellOptions } from './../core/types/card';
+import { MatchResultOptions, SummonerSpellOptions, Type } from './../core/types/card';
 import { Component, OnInit, Input } from '@angular/core';
 
-type Type = 'match-history';
 type Victory = 'true' | 'false' | 'undefined';
 type SummonerSpell = 'barrier' | 'cleanse' | 'ignite' | 'exhaust' | 'flash' | 'ghost' | 'heal' | 'clarity' | 'smite' | 'teleport';
 
+export interface CardProps {
+  type: Type,
+  victory?: Victory,
+  champion?: String,
+  firstSummonerSpell?: SummonerSpell,
+  secondSummonerSpell?: SummonerSpell,
+  kill?: Number,
+  death?: Number,
+  assistance?: Number,
+}
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -29,8 +38,6 @@ export class CardComponent implements OnInit {
   public summonerSpellImgURL = summonerSpellImgURL;
   public championSquareImgURL = championSquareImgURL;
 
-  constructor() {  }
-
   championName() {
     const championNameArr: string[] = this.champion.split(' ');
     let formatedChampionName: string = '';
@@ -38,7 +45,6 @@ export class CardComponent implements OnInit {
     for (let i = 0; i < championNameArr.length; i++) {
       formatedChampionName = formatedChampionName + (championNameArr[i].charAt(0).toUpperCase() + championNameArr[i].slice(1));
     }
-    console.log(formatedChampionName)
     return formatedChampionName;
   }
 
@@ -47,11 +53,20 @@ export class CardComponent implements OnInit {
     return kda.toFixed(1);
   }
 
+  setMatchResult() {
+    if (this.victory === 'true') {
+      return 'Vitória';
+    } else if (this.victory === 'false') {
+      return 'Derrota';
+    } else {
+      return 'Indefinido';
+    }
+  }
+
   ngOnInit(): void {
     this.kda()
     this.matchResult = MatchResultOptions[this.victory];
     this.firstSummonerSpellName = SummonerSpellOptions[this.firstSummonerSpell];
     this.secondSummonerSpellName = SummonerSpellOptions[this.secondSummonerSpell];
   }
-
 }

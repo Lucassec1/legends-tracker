@@ -1,6 +1,7 @@
 <div
     *ngIf="type === 'match-history'"
     [class]="type + '-card ' + matchResult"
+    data-testid='cardElement'
 >
     <div class="main-content-container">
         <div class="first-content-container">
@@ -29,7 +30,7 @@
                 />
             </div>
             <div class="match-info-container">
-                <h4 class="match-result">{{ victory === 'true' ? 'Vitória' : 'Derrota' }}</h4>
+                <h4 class="match-result">{{ setMatchResult() }}</h4>
                 <span class="match-type">Normal Game</span>
                 <span class="match-duration-date">28:14 25/09/2022</span>
             </div>
@@ -44,4 +45,12 @@
         </div>
     </div>
     <app-button label="Ver Mais" size="md"></app-button>
+</div>
+
+<div
+    *ngIf="type === 'simple'"
+    [class]="type + '-card'"
+    data-testid='cardElement'
+>
+
 </div>

@@ -20,7 +20,7 @@
     height: 120px;
     padding: 1rem;
     border-left: 3px solid $secondary-color;
-    width: 40%;
+    width: 100%;
 }
 
 .victory-match-card {
@@ -81,11 +81,11 @@
 }
 
 .rune-img {
-    height: 28px;
+    height: 26px;
 }
 
 .rune-img:nth-child(1) {
-    height: 42px;
+    height: 40px;
 }
 
 .summoner-spells-img {
