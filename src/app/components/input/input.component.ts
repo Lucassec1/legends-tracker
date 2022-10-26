@@ -7,7 +7,6 @@ export interface AppInputProps {
   placeholder?: string;
   type?: Type;
   size?: Size; 
-  expand?: boolean;
   visible?: boolean;
 }
 
@@ -21,19 +20,15 @@ export class InputComponent implements OnInit {
   @Input() placeholder?: string = '';
   @Input() type?: Type = 'text';
   @Input() size?: Size = 'md';
-  @Input() expand? = false;
   @Input() visible? = false;
-
-  expandInput() {
-    return this.expand ? '100%' : '';
-  }
 
   passwordInput() {
     this.visible = !this.visible;
   }
-
-  constructor() { }
-
+  
+  constructor() {
+  }
+  
   ngOnInit(): void {
   }
 }

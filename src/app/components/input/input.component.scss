@@ -18,23 +18,31 @@
     box-shadow: 0px 0px 8px 1px rgba(103, 107, 220, 0.2);
 }
 
-input {
+div {
+    display: flex;
+    align-items: center;
     background-color: $neutral-2;
-    color: $neutral-color;
-    font-weight: 500;
     border-radius: 5px;
-    border: none;
-    outline: none;
-    font-size: 1rem;
     
-    &:focus {
-        border: 1px solid $primary-color;
-        @include focus-box-shadow;
+    input {
+        background-color: $neutral-2;
+        color: $neutral-color;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: text;
+        
+        &::placeholder {
+            color: $neutral-4;
+            font-weight: 500;
+        }
     }
 
-    &::placeholder {
-        color: $neutral-4;
-        font-weight: 500;
+    &:focus-within {
+        border: 1px solid $primary-color;
+        @include focus-box-shadow;
     }
 }
 
@@ -42,7 +50,7 @@ input {
     @include input-parameters(9px, 36px);
     @include iconType(0.55rem, 'user');
 
-    &:focus {
+    &:focus-within {
         @include iconType(0.55rem, 'user-active');
     }
 }
@@ -51,7 +59,7 @@ input {
     @include input-parameters(11px, 42px);
     @include iconType(0.75rem, 'user');
 
-    &:focus {
+    &:focus-within {
         @include iconType(0.75rem, 'user-active');
     }
 }
@@ -69,25 +77,23 @@ input {
     
     @include iconType(0.55rem, 'lock');
 
-    &:focus {
+    &:focus-within {
         @include iconType(0.55rem, 'lock-active');
     }
 }
 
 .app-input-password-md {
-    @include input-parameters(11px, 42px);
+    @include input-parameters(15px, 42px);
 
     @include iconType(0.75rem, 'lock');
 
-    &:focus {
+    &:focus-within {
         @include iconType(0.75rem, 'lock-active');
     }
 }
 
 button {
     position: relative;
-    top: 5px;
-    right: 29px;
     background-color: transparent;
     border: none;
     cursor: pointer;

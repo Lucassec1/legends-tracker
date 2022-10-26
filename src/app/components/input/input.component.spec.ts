@@ -28,29 +28,33 @@ const inputTypes: Array<AppInputProps['type']> = [
 const inputSizes: Array<AppInputProps['size']> = [
   'sm',
   'md'
-]
+];
 
 it.each([
   {
     inputTypes,
     inputSizes
   }
-])('should render correct type', async ({ size, type }: any) => {
+])('should render correct type and size', async ({ size, type }: any) => {
   await sut({
     type,
     size
   });
-  expect(screen.getByTestId('inputElement')).toHaveClass(`app-input-${type}-${size}`);
+  expect(screen.getByTestId('divElement')).toHaveClass(`app-input-${type}-${size}`);
 });
 
-// describe('Type password on InputComponent', () => {
-//   it('should toggle between visible and not visible password when clicked', async () => {
-//     const clickEvent = jest.fn();
-//     const input = await sut({
-//       type: 'password',
+describe('Type password on InputComponent', () => {
+  it('should start with the password not visible', async () => {
+    await sut({ type: 'password'});
+    const showPassword = screen.getByTestId('buttonElement');
+    expect(showPassword).toHaveClass('password-invisible');
+  });
 
-//     });
-//     fireEvent.click(input);
-//     expect(clickEvent).toHaveBeenCalled();
-//   })
-// })
+  it('should toggle between visible and not visible password when clicked', async () => {
+    await sut({ type: 'password' });
+    const showPassword = screen.getByTestId('buttonElement');
+    expect(showPassword).toHaveClass('password-invisible');
+    fireEvent.click(showPassword);
+    expect(showPassword).toHaveClass('password-visible');
+  });
+});
