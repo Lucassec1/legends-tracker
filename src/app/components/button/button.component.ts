@@ -4,8 +4,9 @@ import { SafeAny } from '../utils/safe-any';
 
 import { ButtonIconSizeOptions } from '../types/button'
 
-type Type = 'primary' | 'secondary';
+type Type = 'primary' | 'secondary' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
+type Color = 'primary-color' | 'secondary-color';
 
 export interface AppButtonProps {
   label?: string;
@@ -16,6 +17,7 @@ export interface AppButtonProps {
   iconType?: IconType;
   rightSideIcon?: boolean;
   expand?: boolean;
+  colorType?: Color;
   buttonOnClick?: EventEmitter<SafeAny>;
 }
 @Component({
@@ -33,6 +35,7 @@ export class ButtonComponent implements OnInit {
   @Input() iconType?: string = '';
   @Input() rightSideIcon?: boolean = false;
   @Input() expand?: boolean = false;
+  @Input() colorType?: Color = 'primary-color';
   @Output() buttonOnClick = new EventEmitter();
   
   public iconSize!: ButtonIconSizeOptions;
@@ -45,8 +48,16 @@ export class ButtonComponent implements OnInit {
   }
 
   expandButton() {
-    return this.expand ? '100%' : '0%';
+    return this.expand ? '100%' : '';
   }
+
+  ghostColor() {
+    return this.type === 'ghost' ? ' text-' + this.colorType : '';
+  }
+
+  // ghostAnimation() {
+  //   return this.type === 'ghost' ? 
+  // }
 
   ngOnInit() {
     this.iconSize = ButtonIconSizeOptions[this.size];

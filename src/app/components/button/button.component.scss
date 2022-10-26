@@ -5,8 +5,8 @@
     color: $color;
 }
 
-@mixin add-animation($type, $color) {
-    .#{$type}-loadingAnimation {
+@mixin add-animation($type, $loadingType , $color ) {
+    .#{$type}-#{$loadingType} {
         position: relative;
         left: -1000px;
         width:6px;
@@ -15,7 +15,7 @@
         background-color: $color;
         color: $color;
         box-shadow: 1000px 0 0 0 $color;
-        animation: #{$type}-loadingAnimation 1s infinite linear;
+        animation: #{$type}-#{$loadingType} 1s infinite linear;
         animation-delay: .1s;
         
         &::before {
@@ -24,7 +24,7 @@
             border-radius: 5px;
             background-color: $color;
             color: $color;
-            animation: #{$type}-loadingAnimationBefore 1s infinite linear;
+            animation: #{$type}-#{$loadingType}Before 1s infinite linear;
             animation-delay: 0s;
         }
         
@@ -41,12 +41,12 @@
             border-radius: 5px;
             background-color: $color;
             color: $color;
-            animation: #{$type}-loadingAnimationAfter 1s infinite linear;
+            animation: #{$type}-#{$loadingType}After 1s infinite linear;
             animation-delay: .2s;
         }
     }
     
-    @keyframes #{$type}-loadingAnimation {
+    @keyframes #{$type}-#{$loadingType} {
         0% {
             box-shadow: 1000px -15px 0 0 rgba(152, 128, 255, 0);
         }
@@ -60,7 +60,7 @@
         }
     }
         
-    @keyframes #{$type}-loadingAnimationBefore {
+    @keyframes #{$type}-#{$loadingType}Before {
         0% {
             box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
         }
@@ -74,7 +74,7 @@
         }
     }
         
-    @keyframes #{$type}-loadingAnimationAfter {
+    @keyframes #{$type}-#{$loadingType}After {
         0% {
             box-shadow: 1010px -15px 0 0 rgba(152, 128, 255, 0);
         }
@@ -134,9 +134,9 @@ button {
         cursor: not-allowed;
     
         app-icon {
-          ::ng-deep svg {
-            fill: $neutral-6;
-          }
+            ::ng-deep svg {
+                fill: $neutral-6;
+            }
         }
     }
 
@@ -145,7 +145,7 @@ button {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: $neutral-7;
+            fill: $neutral-color;
         }
     }
 }
@@ -163,11 +163,12 @@ button {
 }
 
 .app-button-primary {
-    @include add-animation('primary', $neutral-color);
+    @include add-animation('primary', 'loadingAnimation', $neutral-color);
+
     background-color: $primary-color;
     border: 1px solid transparentize($primary-3, 0.5);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-    
+
     &:hover {
         background-color: darken($primary-color, 2%);
         border: 1px solid transparentize(darken($primary-3, 2%), 0.5);
@@ -191,11 +192,13 @@ button {
 }
 
 .app-button-secondary {
-    @include add-animation('secondary', $primary-color);
+    @include add-animation('secondary', 'loadingAnimation', $primary-color);
+
     @include add-colors(transparent, $primary-color);
+    
     border: 1px solid $primary-color;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
-
+    
     &:hover {
         @include add-colors(transparentize(darken($primary-color, 2%), 0.9), $primary-color);
         border: 1px solid darken($primary-color, 2%);
@@ -203,19 +206,45 @@ button {
         transform: translateY(-2px);
         transition: transform 200ms ease 0s, background-color 200ms ease 0s;
     }
-
+    
     &:active {
         @include add-colors(transparentize($primary-color, 0.85), lighten($primary-color, 2%));
         border: 1px solid lighten($primary-color, 2%); 
         box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
     }   
+}
 
-    .app-icon {
+.app-button-ghost {
+    background-color: $neutral-1;
+
+    &:hover {
+        background-color: transparentize($primary-color, 0.95);
+        transform: translateY(-2px);
+        transition: transform 200ms ease 0s, background-color 200ms ease 0s;
+    }
+    
+    &:active {
+        background-color: transparentize($primary-color, 0.85);
+    }
+}
+
+.text-primary-color {
+    @include add-animation('primary-color', 'loadingGhost', $primary-color);
+
+    color: $primary-color;
+
+    app-icon {
         ::ng-deep svg {
-            stroke: $primary-color;
-            fill: $primary-color;
+            stroke: $primary-color !important;
+            fill: $primary-color !important;
         }
     }
+}
+
+.text-secondary-color {
+    @include add-animation('secondary-color', 'loadingGhost', $neutral-color);
+
+    color: $neutral-color;
 }
 
 .loading {
