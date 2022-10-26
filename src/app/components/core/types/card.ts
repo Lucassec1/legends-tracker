@@ -1,5 +1,9 @@
 export type Type = 'match-history' | 'simple';
 
+export type Victory = 'true' | 'false' | 'undefined';
+
+export type SummonerSpell = 'barrier' | 'cleanse' | 'ignite' | 'exhaust' | 'flash' | 'ghost' | 'heal' | 'clarity' | 'smite' | 'teleport';
+
 export enum MatchResultOptions {
     true = 'victory-match-card',
     false = 'defeat-match-card',

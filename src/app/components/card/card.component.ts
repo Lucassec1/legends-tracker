@@ -1,19 +1,18 @@
 import { championSquareImgURL, summonerSpellImgURL } from './../../../services/api';
-import { MatchResultOptions, SummonerSpellOptions, Type } from './../core/types/card';
+import { MatchResultOptions, SummonerSpellOptions, Type, SummonerSpell, Victory } from './../core/types/card';
 import { Component, OnInit, Input } from '@angular/core';
-
-type Victory = 'true' | 'false' | 'undefined';
-type SummonerSpell = 'barrier' | 'cleanse' | 'ignite' | 'exhaust' | 'flash' | 'ghost' | 'heal' | 'clarity' | 'smite' | 'teleport';
 
 export interface CardProps {
   type: Type,
-  victory?: Victory,
+  victory: Victory,
   champion?: String,
   firstSummonerSpell?: SummonerSpell,
   secondSummonerSpell?: SummonerSpell,
   kill?: Number,
   death?: Number,
   assistance?: Number,
+  matchResult?: MatchResultOptions,
+  message?: String
 }
 @Component({
   selector: 'app-card',
