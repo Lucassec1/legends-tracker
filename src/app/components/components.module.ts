@@ -4,11 +4,12 @@ import { SearchComponent } from './search/search.component';
 import { ButtonComponent } from './button/button.component';
 import { AppIconComponent } from './icon/icon.component';
 import { TagComponent } from './tag/tag.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 @NgModule({
   declarations: [
     ButtonComponent,
     SearchComponent,
-    TagComponent,
+    TagComponent,z
   ],
   imports: [
     CommonModule,

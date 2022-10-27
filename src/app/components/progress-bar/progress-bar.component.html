@@ -1,0 +1,20 @@
+<div
+    [class]="'app-' + type"
+>
+    <div 
+        *ngIf="type === 'info-progress-bar'"
+        class="progress-info"
+    >
+        <span class="win-lose">{{ win }}V {{ lose }}D</span>
+        <span class="win-percent">{{ winPercent() }}</span>
+    </div>
+    <div class="progress-bar-container">
+        <div 
+            class="inner-progress-bar"
+            [ngClass]="{
+                'full-width': fullWidth
+            }"
+            [style.width]="winPercent()"
+        ></div>
+    </div>
+</div>
