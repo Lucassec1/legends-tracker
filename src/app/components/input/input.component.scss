@@ -1,0 +1,132 @@
+@import '../../styles/index.scss';
+
+@mixin input-parameters(
+    $padding,
+    $paddingLeft,
+) {
+    padding: $padding;
+    padding-left: $paddingLeft;
+}
+
+@mixin iconType($position, $iconName) {
+    background-image: url("../icon/svgs/#{$iconName}.svg");
+    background-repeat: no-repeat;
+    background-position: $position ;
+}
+
+@mixin focus-box-shadow() {
+    box-shadow: 0px 0px 8px 1px rgba(103, 107, 220, 0.2);
+}
+
+div {
+    display: flex;
+    align-items: center;
+    background-color: $neutral-2;
+    border-radius: 5px;
+    
+    input {
+        background-color: $neutral-2;
+        color: $neutral-color;
+        width: 100%;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: text;
+        
+        &::placeholder {
+            color: $neutral-4;
+            font-weight: 500;
+        }
+    }
+
+    &:focus-within {
+        border: 1px solid $primary-color;
+        @include focus-box-shadow;
+    }
+}
+
+.app-input-user-sm {
+    @include input-parameters(9px, 36px);
+    @include iconType(0.55rem, 'user');
+
+    &:focus-within {
+        @include iconType(0.55rem, 'user-active');
+    }
+}
+
+.app-input-user-md {
+    @include input-parameters(13px, 42px);
+    @include iconType(0.75rem, 'user');
+
+    &:focus-within {
+        @include iconType(0.75rem, 'user-active');
+    }
+}
+
+.app-input-text-sm {
+    @include input-parameters(9px, 11px);
+}
+
+.app-input-text-md {
+    @include input-parameters(13px, 15px);
+}
+
+.app-input-password-sm {
+    @include input-parameters(9px, 36px);
+    
+    @include iconType(0.55rem, 'lock');
+
+    &:focus-within {
+        @include iconType(0.55rem, 'lock-active');
+    }
+}
+
+.app-input-password-md {
+    @include input-parameters(13px, 42px);
+
+    @include iconType(0.75rem, 'lock');
+
+    &:focus-within {
+        @include iconType(0.75rem, 'lock-active');
+    }
+}
+
+.app-input-email-sm {
+    @include input-parameters(9px, 36px);
+    
+    @include iconType(0.55rem, 'mail');
+
+    &:focus-within {
+        @include iconType(0.55rem, 'mail-active');
+    }
+}
+
+.app-input-email-md {
+    @include input-parameters(13px, 42px);
+
+    @include iconType(0.75rem, 'mail');
+
+    &:focus-within {
+        @include iconType(0.75rem, 'mail-active');
+    }
+}
+
+button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.password-visible {
+    background-image: url('../icon/svgs/eye.svg');
+    width: 20px;
+    height: 20px;
+}
+
+.password-invisible {
+    background-image: url('../icon/svgs/eye-off.svg');
+    width: 20px;
+    height: 20px;
+}

@@ -4,17 +4,23 @@ import { SearchComponent } from './search/search.component';
 import { ButtonComponent } from './button/button.component';
 import { AppIconComponent } from './icon/icon.component';
 import { TagComponent } from './tag/tag.component';
+import { InputComponent } from './input/input.component';
+
 @NgModule({
   declarations: [
     ButtonComponent,
     SearchComponent,
     TagComponent,
+    InputComponent,
   ],
   imports: [
     CommonModule,
   ],
   exports: [
     ButtonComponent,
+    AppIconComponent,
+    TagComponent,
+    InputComponent,
   ],
 })
 
