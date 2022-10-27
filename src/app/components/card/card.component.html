@@ -1,0 +1,56 @@
+<div
+    *ngIf="type === 'match-history'"
+    [class]="type + '-card ' + matchResult"
+    data-testid='cardElement'
+>
+    <div class="main-content-container">
+        <div class="first-content-container">
+            <img
+                class="champion-img"
+                [src]="championSquareImgURL + championName() + '.png'"
+            />
+            <div class="runes-container">
+                <img
+                    class="rune-img"
+                    src="../../../assets/runes/PressTheAttack.png"
+                />
+                <img
+                    class="rune-img"
+                    src="../../../assets/runes/7200_Domination.png"
+                />
+            </div>
+            <div class="summoner-spells-container">
+                <img
+                    class="summoner-spells-img"
+                    [src]="summonerSpellImgURL + firstSummonerSpellName + '.png'"
+                />
+                <img
+                    class="summoner-spells-img"
+                    [src]="summonerSpellImgURL + secondSummonerSpellName + '.png'"
+                />
+            </div>
+            <div class="match-info-container">
+                <h4 class="match-result">{{ setMatchResult() }}</h4>
+                <span class="match-type">Normal Game</span>
+                <span class="match-duration-date">28:14 25/09/2022</span>
+            </div>
+        </div>
+        <hr />
+        <div class="match-scoreboard">
+            <span class="match-score"> {{ kill }} / {{ death }} / {{ assistance }}</span>
+            <span class="match-kda">
+                <span class="match-highlighted-kda">{{ kda() }}</span>
+                KDA
+            </span>
+        </div>
+    </div>
+    <app-button label="Ver Mais" size="md"></app-button>
+</div>
+
+<div
+    *ngIf="type === 'simple'"
+    [class]="type + '-card'"
+    data-testid='cardElement'
+>
+
+</div>

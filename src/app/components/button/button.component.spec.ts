@@ -65,6 +65,7 @@ describe('ButtonComponent', () => {
 const types: Array<AppButtonProps['type']> = [
   'primary',
   'secondary',
+  'ghost'
 ];
 
 it.each(types)('should render correct types', async (type) => {

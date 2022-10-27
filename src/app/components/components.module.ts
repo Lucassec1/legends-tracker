@@ -15,7 +15,6 @@ import { InputComponent } from './input/input.component';
   ],
   imports: [
     CommonModule,
-    AppIconComponent
   ],
   exports: [
     ButtonComponent,
