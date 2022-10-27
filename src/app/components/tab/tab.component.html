@@ -1,0 +1,10 @@
+<p>tab works!</p>
+
+<button 
+    [class]="'app-tab-' + tabSize + ' app-tab-border-' + borderDirection"
+    [class.selected]="selected"
+    [disabled]="disabled"
+    (click)="select()"
+>
+    {{ label || 'Adicione uma label' }}
+</button>

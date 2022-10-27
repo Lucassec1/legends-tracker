@@ -1,0 +1,93 @@
+@import '../../styles/index.scss';
+
+@mixin tab-colors($color, $background) {
+    color: $color;
+    background-color: $background;
+}
+
+@mixin tab-focus() {
+    @include tab-colors($primary-color, 'transparent');
+    border-color: $linearGradient-1;
+    outline: 3px solid $primary-2;
+    outline-offset: 3px;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    color: $neutral-4;
+    justify-content: center;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover {
+        @include tab-colors($primary-color, transparentize(darken($primary-color, 2%), 0.9));
+    }
+
+    &:focus-visible {
+        @include tab-focus();
+    }
+
+    &:active {
+        @include tab-colors($primary-color, 'transparent');
+        outline: none;
+    }
+}
+
+.selected {
+    display: flex;
+    align-items: center;
+    color: $primary-color;
+    justify-content: center;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    
+    &:hover {
+        @include tab-colors($primary-color, transparentize(darken($primary-color, 2%), 0.9));
+    }
+
+    &:focus-visible {
+        @include tab-focus();
+    }
+    
+    &:active {
+        @include tab-colors($primary-color, 'transparent');        
+        outline: none;
+    }
+}
+
+.app-tab-sm {
+    padding: 8px 16px;
+    font-size: 12px;
+}
+
+.app-tab-md {
+    padding: 10px 24px;
+    font-size: 14px;
+}
+
+.app-tab-lg {
+    padding: 12px 32px;
+    font-size: 16px;
+}
+
+.app-tab-border-bottom {
+    border-image: $linearGradient-1 1;
+    border-radius: 5px 5px 0px 0px;
+}
+.app-tab-border-top {
+    border-top: 2px solid $neutral-3;
+    border-radius: 0px 0px 5px 5px;
+}
+.app-tab-border-right {
+    border-right: 3px solid $neutral-3;
+}
+.app-tab-border-left {
+    border-left: 3px solid $neutral-3;
+}

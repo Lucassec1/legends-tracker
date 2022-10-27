@@ -4,12 +4,16 @@ import { SearchComponent } from './search/search.component';
 import { ButtonComponent } from './button/button.component';
 import { AppIconComponent } from './icon/icon.component';
 import { TagComponent } from './tag/tag.component';
+import { TabGroupComponent } from './tab-group/tab-group.component';
+import { TabComponent } from './tab/tab.component';
 
 @NgModule({
   declarations: [
     ButtonComponent,
     SearchComponent,
     TagComponent,
+    TabGroupComponent,
+    TabComponent,
   ],
   imports: [
     CommonModule,
