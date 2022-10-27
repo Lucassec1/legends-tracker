@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-type Type = 'user' | 'text' | 'password' ;
+type Type = 'user' | 'text' | 'password' | 'email' ;
 type Size = 'sm' | 'md' ;
 
 export interface AppInputProps {

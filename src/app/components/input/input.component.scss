@@ -56,7 +56,7 @@ div {
 }
 
 .app-input-user-md {
-    @include input-parameters(11px, 42px);
+    @include input-parameters(13px, 42px);
     @include iconType(0.75rem, 'user');
 
     &:focus-within {
@@ -69,7 +69,7 @@ div {
 }
 
 .app-input-text-md {
-    @include input-parameters(11px, 15px);
+    @include input-parameters(13px, 15px);
 }
 
 .app-input-password-sm {
@@ -83,12 +83,32 @@ div {
 }
 
 .app-input-password-md {
-    @include input-parameters(15px, 42px);
+    @include input-parameters(13px, 42px);
 
     @include iconType(0.75rem, 'lock');
 
     &:focus-within {
         @include iconType(0.75rem, 'lock-active');
+    }
+}
+
+.app-input-email-sm {
+    @include input-parameters(9px, 36px);
+    
+    @include iconType(0.55rem, 'mail');
+
+    &:focus-within {
+        @include iconType(0.55rem, 'mail-active');
+    }
+}
+
+.app-input-email-md {
+    @include input-parameters(13px, 42px);
+
+    @include iconType(0.75rem, 'mail');
+
+    &:focus-within {
+        @include iconType(0.75rem, 'mail-active');
     }
 }
 
