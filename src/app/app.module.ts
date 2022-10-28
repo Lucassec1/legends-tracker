@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { ButtonComponent } from './components/button/button.component';
 import { AppIconComponent } from './components/icon/icon.component';
 import { SearchComponent } from './components/search/search.component';
+import { TabGroupComponent } from './components/tab-group/tab-group.component';
+import { TabComponent } from './components/tab/tab.component';
 import { TagComponent } from './components/tag/tag.component';
 
 @NgModule({
@@ -15,6 +17,8 @@ import { TagComponent } from './components/tag/tag.component';
     ButtonComponent,
     AppIconComponent,
     TagComponent,
+    TabComponent,
+    TabGroupComponent
   ],
   imports: [
     BrowserModule,

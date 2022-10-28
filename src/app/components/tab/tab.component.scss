@@ -5,24 +5,26 @@
     background-color: $background;
 }
 
+@mixin border-color($borderDirection) {
+    border-#{$borderDirection}-style: solid;
+}
+
 @mixin tab-focus() {
-    @include tab-colors($primary-color, 'transparent');
+    @include tab-colors($primary-color, transparent);
     border-color: $linearGradient-1;
     outline: 3px solid $primary-2;
     outline-offset: 3px;
 }
 
-button {
+.tab {
     display: flex;
     align-items: center;
-    color: $neutral-4;
     justify-content: center;
     border: none;
-    outline: none;
-    background-color: transparent;
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
+    @include tab-colors($neutral-4, transparent);
 
     &:hover {
         @include tab-colors($primary-color, transparentize(darken($primary-color, 2%), 0.9));
@@ -33,25 +35,28 @@ button {
     }
 
     &:active {
-        @include tab-colors($primary-color, 'transparent');
+        @include tab-colors($primary-color, transparent);
         outline: none;
     }
 }
 
-.selected {
+.tab-selected {
     display: flex;
     align-items: center;
-    color: $primary-color;
     justify-content: center;
-    background-color: transparent;
+    border: none;
     font-weight: 500;
     font-size: 14px;
     cursor: pointer;
+    @include tab-colors($primary-color, transparent); 
+    border-image-slice: 1;
+    border-width: 2px;
+    border-image: $linearGradient-1 1 !important;  
     
     &:hover {
         @include tab-colors($primary-color, transparentize(darken($primary-color, 2%), 0.9));
     }
-
+    
     &:focus-visible {
         @include tab-focus();
     }
@@ -78,16 +83,23 @@ button {
 }
 
 .app-tab-border-bottom {
-    border-image: $linearGradient-1 1;
+    border-bottom: 2px solid transparent;
     border-radius: 5px 5px 0px 0px;
+    @include border-color('bottom');
 }
+
 .app-tab-border-top {
-    border-top: 2px solid $neutral-3;
+    border-top: 2px solid transparent;
     border-radius: 0px 0px 5px 5px;
+    @include border-color('top');
 }
+
 .app-tab-border-right {
-    border-right: 3px solid $neutral-3;
+    border-right: 2px solid transparent;
+    @include border-color('right');
 }
+
 .app-tab-border-left {
-    border-left: 3px solid $neutral-3;
+    border-left: 2px solid transparent;
+    @include border-color('left');
 }

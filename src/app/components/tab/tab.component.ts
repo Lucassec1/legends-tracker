@@ -4,10 +4,10 @@ export type TabSize = 'sm' | 'md' | 'lg';
 type BorderDirection = 'bottom' | 'top' | 'right' | 'left';
 
 export interface AppTabProps {
-  label: string; 
+  label: String; 
   tabSize?: TabSize;
-  selected?: boolean;
-  disabled?: boolean; 
+  selected?: Boolean;
+  disabled?: Boolean; 
   borderDirection?: BorderDirection;
 }
 
@@ -20,7 +20,7 @@ export interface AppTabProps {
 export class TabComponent {
   @Input() label!: '';
   @Input() tabSize?: TabSize = 'md';
-  @Input() selected? = false;
+  @Input() selected?: Boolean;
   @Input() disabled? = false;
   @Input() borderDirection?: BorderDirection = 'bottom';
 
