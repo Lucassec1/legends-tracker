@@ -1,6 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Type } from '../core/types/progress-bar';
 
-type Type = 'progress-bar' | 'info-progress-bar'
+export interface ProgressBarProps {
+  type: Type,
+  win: Number,
+  lose: Number,
+}
 
 @Component({
   selector: 'app-progress-bar',

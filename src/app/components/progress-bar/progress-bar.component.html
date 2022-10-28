@@ -1,5 +1,6 @@
 <div
     [class]="'app-' + type"
+    data-testid="progressBarElement"
 >
     <div 
         *ngIf="type === 'info-progress-bar'"
@@ -11,6 +12,7 @@
     <div class="progress-bar-container">
         <div 
             class="inner-progress-bar"
+            data-testid="barElement"
             [ngClass]="{
                 'full-width': fullWidth
             }"
