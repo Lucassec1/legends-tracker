@@ -11,7 +11,18 @@
     <app-tag label="adc"></app-tag>
 </div>
 
-<div>
-    <app-tab tabSize="md" borderDirection="right"></app-tab>
-    <app-tab-group></app-tab-group>
-</div>
+<app-tab-group size="md" direction="vertical" [tabs]="[{
+    'label': 'Overview',
+    'selected': false
+    },
+    {
+    'label': 'Histórico',
+    'selected': false
+    },
+    {
+    'label': 'Campeões',
+    'selected': false
+    },
+    ]">    
+</app-tab-group>
+
