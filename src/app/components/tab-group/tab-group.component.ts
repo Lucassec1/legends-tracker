@@ -1,12 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { AppTabProps, TabSize } from '../tab/tab.component';
+import { DirectionType, BorderDirectionType } from '../core/types/direction';
 
-type Size = 'sm' | 'md' | 'lg';
-type Border = 'bottom' | 'left' | 'right';
+export interface TabGroup extends AppTabProps {
+  selected: boolean;
+}
 
 export interface AppTabGroupProps {
-  size?: Size;
-  border?: Border;
-  selected?: boolean;
+  tabs: TabGroup[];
+  border?: BorderDirectionType;
+  direction: DirectionType;
+  size?: TabSize;
+  selected: EventEmitter<TabGroup>;
 }
 
 @Component({
@@ -16,13 +21,38 @@ export interface AppTabGroupProps {
 })
 
 export class TabGroupComponent implements OnInit {
-  @Input() size?: Size = 'md';
-  @Input() border?: Border = 'bottom';
-  @Input() selected? = false;
+  @Input() tabs: TabGroup[] = [];
+  @Input() direction: DirectionType = 'horizontal';
+  @Input() border?: BorderDirectionType;
+  @Input() size: TabSize = 'md';
+  @Output() selected = new EventEmitter<TabGroup>();
 
-  constructor() { }
+  private getBorderByDirection(direction: DirectionType): BorderDirectionType {
+    const directions = {
+      horizontal: 'bottom',
+      vertical: 'right',
+    };
 
-  ngOnInit(): void {
+    if (this.border) {
+      return this.border;
+    }
+
+    return directions[direction] as BorderDirectionType;
   }
 
+  private clearTabs() {
+    this.tabs.forEach((tab) => {
+      tab.selected = false;
+    });
+  }
+
+  public selectTab(tabSelected: TabGroup) {
+    this.clearTabs();
+    tabSelected.selected = true;
+    this.selected.emit(tabSelected);
+  }
+
+  ngOnInit(): void {
+    this.border = this.getBorderByDirection(this.direction);
+  }
 }

@@ -1,6 +1,13 @@
-<p>tab-group works!</p>
-
-<div 
-    [class]="'app-tab-group-' + size + 'app-tab-group-' + border"
-    [class.selected]="selected"
-></div>
+<div data-testid="app-tab-group" class="app-tab-group">
+    <div [class.app-tab-group-column]="direction === 'vertical'">
+        <app-tab
+            *ngFor="let tab of tabs"
+            [label]="tab.label"
+            [tabSize]="size"
+            [selected]="tab.selected"
+            [borderDirection]="border"
+            (click)="selectTab(tab)"
+        >
+        </app-tab>
+    </div>
+</div>

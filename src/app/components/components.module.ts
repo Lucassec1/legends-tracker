@@ -12,8 +12,6 @@ import { TabComponent } from './tab/tab.component';
     ButtonComponent,
     SearchComponent,
     TagComponent,
-    TabGroupComponent,
-    TabComponent,
   ],
   imports: [
     CommonModule,
