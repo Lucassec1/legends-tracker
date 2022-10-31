@@ -2,7 +2,7 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { IconType } from '../icon/icon.component';
 import { SafeAny } from '../utils/safe-any';
 
-import { ButtonIconSizeOptions } from '../types/button'
+import { ButtonIconSizeOptions } from '../core/types/button'
 
 type Type = 'primary' | 'secondary' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';

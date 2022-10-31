@@ -12,6 +12,12 @@
 <br />
 
 <div>
+    <app-input size="sm" placeholder="Digite algo aqui"></app-input>
+    <app-input placeholder="Digite algo aqui" type="email"></app-input>
+    <app-input size="md" placeholder="Digite algo aqui" type="password"></app-input>
+</div>
+
+<div>
     <h3>Card Component - Match History Variant</h3>
     <app-card type="match-history" victory="true" champion="yuumi" firstSummonerSpell="heal" secondSummonerSpell="ignite" [kill]="1" [death]="3" [assistance]="28"></app-card>
     <app-card type="match-history" victory="false" champion="irelia" firstSummonerSpell="flash" secondSummonerSpell="ignite" [kill]="1" [death]="36" [assistance]="19"></app-card>
