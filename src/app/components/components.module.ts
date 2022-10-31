@@ -7,6 +7,7 @@ import { AppIconComponent } from './icon/icon.component';
 import { TagComponent } from './tag/tag.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { InputComponent } from './input/input.component';
+import { DividerComponent } from './divider/divider.component';
 
 @NgModule({
   declarations: [
