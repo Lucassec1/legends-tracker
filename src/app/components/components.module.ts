@@ -10,19 +10,11 @@ import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
-    ButtonComponent,
-    SearchComponent,
-    TagComponent,
-    InputComponent,
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    ButtonComponent,
-    AppIconComponent,
-    TagComponent,
-    InputComponent,
   ],
 })
 

@@ -19,14 +19,13 @@ import { TagComponent } from './components/tag/tag.component';
     ButtonComponent,
     AppIconComponent,
     TagComponent,
-    InputComponent
+    InputComponent,
     CardComponent,
     ProgressBarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
