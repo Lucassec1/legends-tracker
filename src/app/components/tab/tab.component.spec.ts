@@ -1,13 +1,13 @@
 import { CommonModule } from "@angular/common";
 import { fireEvent, screen, render } from "@testing-library/angular";
-import { AppTabProps, TabComponent } from './tab.component';
+import { AppTabProps, TabComponent } from "./tab.component";
 
 const defaultLabel = 'tab';
 
 const sut = async (customProps?: AppTabProps) => {
   await render(TabComponent, {
     componentProperties: customProps || {
-      label: defaultLabel,
+    label: defaultLabel,
     },
     imports: [CommonModule],
   });

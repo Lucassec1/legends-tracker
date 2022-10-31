@@ -1,11 +1,6 @@
-<p>tab works!</p>
-
 <button 
     [class]="'app-tab-' + tabSize + ' app-tab-border-' + borderDirection"
-    [ngClass]="{
-        tab: !selected,
-        'tab-selected': selected
-    }"
+    [class.tab-selected]="selected"
     [disabled]="disabled"
     (click)="select()"
 >
