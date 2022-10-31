@@ -1,3 +1,5 @@
+import { ComponentsModule } from './components/components.module';
+import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -19,10 +21,12 @@ import { TagComponent } from './components/tag/tag.component';
     TagComponent,
     InputComponent
     CardComponent,
+    ProgressBarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

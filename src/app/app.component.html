@@ -1,17 +1,15 @@
 <div>
-    <app-button size="sm" label="Ver mais" iconType="interrogation"></app-button>
-    
-    <app-button type='secondary' size="md" label="Secondary" [loading]="true"></app-button>
-
-    <app-button type='ghost' size="sm" label="Ghost" ></app-button>
-   
-    <app-button type='ghost' size="md" label="Ghost" colorType="secondary-color"></app-button>
+    <h3>Progress-Bar Component</h3>
+    <div style="width: 25%;">
+        <h5>Progress-Bar With Details</h5>
+        <app-progress-bar type="info-progress-bar" [win]="7" [lose]="3"></app-progress-bar>
+        <br />
+        <h5>Only Progress-Bar</h5>
+        <app-progress-bar [win]="2" [lose]="8"></app-progress-bar>
+    </div>
 </div>
 
-<div style="display: flex; gap: 10px;">
-    <app-tag label="suporte"></app-tag> 
-    <app-tag label="adc"></app-tag>
-</div>
+<br />
 
 <div>
     <app-input size="sm" placeholder="Digite algo aqui"></app-input>
