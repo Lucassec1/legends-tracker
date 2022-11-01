@@ -1,0 +1,8 @@
+<button 
+    [class]="'app-tab-' + tabSize + ' app-tab-border-' + borderDirection"
+    [class.tab-selected]="selected"
+    [disabled]="disabled"
+    (click)="select()"
+>
+    {{ label || 'Adicione uma label' }}
+</button>
