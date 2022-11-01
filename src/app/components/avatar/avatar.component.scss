@@ -1,0 +1,111 @@
+@import '../../styles/index.scss';
+
+@mixin add-size($size, $border: true) {
+    width: $size + 8px;
+    height: $size + 8px;
+
+    @if ($border) {
+        width: $size;
+        height: $size;
+    }
+}
+
+@mixin avatarAtributes() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: $neutral-2;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@mixin borderAtributes() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    background-image: $linearGradient-5;
+}
+
+@mixin backgroundAtributes() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50%;
+    background: $neutral-1;
+}
+
+@mixin drop-shadow() {
+    box-shadow: 0px 3px 8px rgba(125, 129, 225, 0.3);
+}
+
+.bordered-avatar-size-sm {
+    @include avatarAtributes();
+    @include add-size(67px);
+}
+
+.bordered-avatar-size-md {
+    @include avatarAtributes();
+    @include add-size(92px);
+}
+
+.bordered-avatar-size-lg {
+    @include avatarAtributes();
+    @include add-size(117px);
+}
+
+.common-avatar-size-sm {
+    @include avatarAtributes();
+    @include add-size(67px, false);
+}
+
+.common-avatar-size-md {
+    @include avatarAtributes();
+    @include add-size(92px, false);
+}
+
+.common-avatar-size-lg {
+    @include avatarAtributes();
+    @include add-size(117px, false);
+}
+
+.border-size-sm {
+    @include borderAtributes();
+    @include add-size(75px);  
+    @include drop-shadow();
+}
+
+.border-size-md {
+    @include borderAtributes();
+    @include add-size(100px);  
+    @include drop-shadow();
+}
+
+.border-size-lg {
+    @include borderAtributes();
+    @include add-size(125px);
+    @include drop-shadow();  
+}
+
+.background-size-sm {
+    @include backgroundAtributes();
+    @include add-size(71px);
+}
+
+.background-size-md {
+    @include backgroundAtributes();
+    @include add-size(96px);
+}
+
+.background-size-lg {
+    @include backgroundAtributes();
+    @include add-size(121px);
+}
