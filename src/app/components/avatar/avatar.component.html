@@ -1,4 +1,8 @@
-<div [class]="'border-size-' + size" *ngIf ="border === 'true'">
+<div 
+    [class]="'border-size-' + size" 
+    *ngIf="border === 'true'" 
+    data-testid="app-avatar"
+>
     <div [class]="'background-size-' + size">
         <div
             [class]="type + '-avatar-size-' + size"

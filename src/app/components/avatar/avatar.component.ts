@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 import { AvatarBorderOptions } from '../core/types/avatar';
 import { SizeType } from '../core/types/size';
 
