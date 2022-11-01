@@ -1,0 +1,117 @@
+@import '../../styles/index.scss';
+
+
+@mixin search-parameters($paddingLeft, $padding) {
+    padding: $padding;
+    padding-left: $paddingLeft;
+    background-color: $neutral-2;
+    color: $neutral-7;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+
+    &:focus {
+        border: 1px solid $primary-1;
+        @include focus-box-shadow();
+    }
+
+    &::placeholder {
+        color: $neutral-4;
+        font-weight: 500;
+    }
+}
+
+@mixin border-radius($bordersLeft, $bordersRight: 5px) {
+    border-radius: $bordersLeft;
+    border-top-right-radius: $bordersRight;
+    border-bottom-right-radius: $bordersRight;
+}
+
+@mixin focus-box-shadow() {
+    box-shadow: 0px 0px 8px 1px rgba(103, 107, 220, 0.2);
+}
+
+@mixin search-icon($position, $iconName) {
+    background-image: url("../icon/svgs/#{$iconName}.svg");
+    background-repeat: no-repeat;
+    background-position: $position center;
+}
+
+@mixin clear-icon() {
+    &::-webkit-search-cancel-button {
+        cursor: pointer;
+        -webkit-appearance: none;
+        position:relative;
+        right: 0px;  
+        height: 8px;
+        width: 8px;
+        background-image: url('../icon/svgs/clear.svg');
+        background-repeat: no-repeat;
+    }
+}
+
+.search-container {
+    display: flex;
+    width: 100%
+}
+
+.common-search-md {
+    @include search-parameters(36px, 9px);
+    @include border-radius(5px);
+    @include search-icon(0.5rem, 'search');
+    @include clear-icon();
+
+    &:focus {
+        @include search-icon(0.5rem, 'search-active');
+    }
+}
+
+.common-search-lg {
+    @include search-parameters(42px, 13px);
+    @include border-radius(5px);
+    @include search-icon(0.75rem, 'search');
+    @include clear-icon();
+    width: 100%;  
+
+    &:focus {
+        @include search-icon(0.75rem, 'search-active');
+    }
+}
+
+.filter-search-md {
+    @include search-parameters(36px, 9px);
+    @include border-radius(5px, 0px);
+    @include search-icon(0.5rem, 'search');
+    @include clear-icon();
+
+    &:focus {
+        @include search-icon(0.5rem, 'search-active');
+    }
+}
+
+.filter-search-lg {
+    @include search-parameters(42px, 13px);
+    @include border-radius(5px, 0px);
+    @include search-icon(0.75rem, 'search');
+    @include clear-icon();
+    width: 100%;  
+
+    &:focus {
+        @include search-icon(0.75rem, 'search-active');
+    }
+}
+
+.filter {
+    @include border-radius(0px, 5px);
+    border: none;
+    outline: none;
+    background-color: $neutral-3;
+    color: $neutral-6;
+    padding: 2px 5px;
+    font-size: 1rem;
+
+    &:focus {
+        border-bottom-right-radius: 0px;
+        border-bottom: 1px solid $neutral-1;
+    }
+}

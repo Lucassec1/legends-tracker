@@ -1,17 +1,14 @@
 // Primary colors
-
 $primary-1: #676bdc;
 $primary-2: #7d81e1;
 $primary-3: #b1b3ed;
 
 // Secondary colors
-
 $secondary-1: #3bafca;
 $secondary-2: #82ccdd;
 $secondary-3: #b4e0eb;
 
 // Neutral colors
-
 $neutral-1: #1d1c25;
 $neutral-2: #282733;
 $neutral-3: #393749;
@@ -21,20 +18,20 @@ $neutral-6: #efeef1;
 $neutral-7: #fcfaff;
 
 // Alert colors 
-// Positive
 
+// Positive
 $positive-1: #49e06a;
 
 // Negative
-
 $negative-1: #f2444e;
 
 // Warning
-
 $warning-1: #f2c144;
 
-// Gradients
+// Box-Shadow
+$box-shadow-1: 0px 2px 2px rgba(0, 0, 0, 0.2);
 
+// Gradients
 $linearGradient-1: linear-gradient(90.14deg, #676BDC 0.09%, #7D81E1 99.83%, #7D81E1 99.84%, #7D81E1 99.85%);
 $linearGradient-2: linear-gradient(180.42deg, #676BDC 0.36%, #7D81E1 76.26%, #7D81E1 76.27%, #7D81E1 76.28%);
 $linearGradient-3: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(36, 36, 36, 0) 0.01%, #1D1C25 100%);

@@ -1,0 +1,261 @@
+@import '../../styles/index.scss';
+
+@mixin add-colors($backgroundColor, $color) {
+    background-color: $backgroundColor;
+    color: $color;
+}
+
+@mixin add-animation($type, $loadingType , $color ) {
+    .#{$type}-#{$loadingType} {
+        position: relative;
+        left: -1000px;
+        width:6px;
+        height:6px;
+        border-radius: 5px;
+        background-color: $color;
+        color: $color;
+        box-shadow: 1000px 0 0 0 $color;
+        animation: #{$type}-#{$loadingType} 1s infinite linear;
+        animation-delay: .1s;
+        
+        &::before {
+            width:6px;
+            height:6px;
+            border-radius: 5px;
+            background-color: $color;
+            color: $color;
+            animation: #{$type}-#{$loadingType}Before 1s infinite linear;
+            animation-delay: 0s;
+        }
+        
+        &::before, &::after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        
+        &::after {
+            width:6px;
+            height:6px;
+            border-radius: 5px;
+            background-color: $color;
+            color: $color;
+            animation: #{$type}-#{$loadingType}After 1s infinite linear;
+            animation-delay: .2s;
+        }
+    }
+    
+    @keyframes #{$type}-#{$loadingType} {
+        0% {
+            box-shadow: 1000px -15px 0 0 rgba(152, 128, 255, 0);
+        }
+        25%,
+        50%,
+        75% {
+            box-shadow: 1000px 0 0 0 $color;
+        }
+        100% {
+            box-shadow: 1000px 15px 0 0 rgba(152, 128, 255, 0);
+        }
+    }
+        
+    @keyframes #{$type}-#{$loadingType}Before {
+        0% {
+            box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
+        }
+        25%,
+        50%,
+        75% {
+            box-shadow: 984px 0 0 0 $color;
+        }
+        100% {
+            box-shadow: 984px 15px 0 0 rgba(152, 128, 255, 0);
+        }
+    }
+        
+    @keyframes #{$type}-#{$loadingType}After {
+        0% {
+            box-shadow: 1010px -15px 0 0 rgba(152, 128, 255, 0);
+        }
+        25%,
+        50%,
+        75% {
+            box-shadow: 1010px 0 0 0 $color;
+        }
+        100% {
+            box-shadow: 1010px 15px 0 0 rgba(152, 128, 255, 0);
+        }
+    }
+}
+
+@mixin button-parameters(
+    $buttonSize,
+    $paddingTopBottom,
+    $paddingLeftRight,
+    $fontSize,
+) {
+    min-width: $buttonSize * 2;
+    height: $buttonSize;
+    padding: $paddingTopBottom $paddingLeftRight;
+
+    span {
+        font-size: $fontSize;
+    }
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-weight: 500;
+    border: 0;
+    color: $neutral-7;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 300ms;
+
+    &:focus-visible {
+        @include add-colors($neutral-4 !important, $neutral-5 !important);
+        cursor: not-allowed;
+
+        app-icon {
+            ::ng-deep svg {
+              fill: $neutral-5;
+            }
+        }
+    }
+    
+    &:disabled,
+    &:disabled:hover,
+    &[disabled],
+    &[disabled]:hover {
+        cursor: not-allowed;
+    
+        app-icon {
+            ::ng-deep svg {
+                fill: $neutral-6;
+            }
+        }
+    }
+
+    app-icon {
+        ::ng-deep svg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            fill: $neutral-color;
+        }
+    }
+}
+
+.app-button-sm {
+    @include button-parameters(30px, 12px, 10px, 14px);
+}
+
+.app-button-md {
+    @include button-parameters(34px, 16px, 14px, 16px);
+}
+
+.app-button-lg {
+    @include button-parameters(38px, 20px, 18px, 18px);
+}
+
+.app-button-primary {
+    @include add-animation('primary', 'loadingAnimation', $neutral-color);
+
+    background-color: $primary-color;
+    border: 1px solid transparentize($primary-3, 0.5);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+        background-color: darken($primary-color, 2%);
+        border: 1px solid transparentize(darken($primary-3, 2%), 0.5);
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+        transition: transform 200ms ease 0s, background-color 200ms ease 0s;
+    }
+    
+    &:active {
+        background-color: lighten($primary-color, 2%);
+        border: 1px solid transparentize(lighten($primary-3, 2%), 0.6);
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:disabled {
+        color: rgba(252, 250, 255, 0.5) !important;
+        background-color: $neutral-4;
+        border: none;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    }
+}
+
+.app-button-secondary {
+    @include add-animation('secondary', 'loadingAnimation', $primary-color);
+
+    @include add-colors(transparent, $primary-color);
+    
+    border: 1px solid $primary-color;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+    
+    &:hover {
+        @include add-colors(transparentize(darken($primary-color, 2%), 0.9), $primary-color);
+        border: 1px solid darken($primary-color, 2%);
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+        transition: transform 200ms ease 0s, background-color 200ms ease 0s;
+    }
+    
+    &:active {
+        @include add-colors(transparentize($primary-color, 0.85), lighten($primary-color, 2%));
+        border: 1px solid lighten($primary-color, 2%); 
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.15);
+    }   
+}
+
+.app-button-ghost {
+    background-color: $neutral-1;
+
+    &:hover {
+        background-color: transparentize($primary-color, 0.95);
+        transform: translateY(-2px);
+        transition: transform 200ms ease 0s, background-color 200ms ease 0s;
+    }
+    
+    &:active {
+        background-color: transparentize($primary-color, 0.85);
+    }
+}
+
+.text-primary-color {
+    @include add-animation('primary-color', 'loadingGhost', $primary-color);
+
+    color: $primary-color;
+
+    app-icon {
+        ::ng-deep svg {
+            stroke: $primary-color !important;
+            fill: $primary-color !important;
+        }
+    }
+}
+
+.text-secondary-color {
+    @include add-animation('secondary-color', 'loadingGhost', $neutral-color);
+
+    color: $neutral-color;
+}
+
+.loading {
+    cursor: not-allowed;
+    padding: 0 12px;
+}
+  
+.right-side-icon {
+    flex-direction: row-reverse;
+}
+  
+.app-remove-space {
+    padding: 0 !important;
+}
