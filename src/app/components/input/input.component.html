@@ -1,0 +1,18 @@
+<div 
+    [class]="'app-input-' + type + '-' + size"
+    data-testid="divElement"
+>
+    <input
+        [placeholder]="placeholder"
+        [type] = "visible ? 'text' : type"
+        data-testid="inputElement"
+    >
+        
+    <button
+        *ngIf="type === 'password'"
+        (click)="passwordInput()"
+        [class]="visible ? 'password-visible' : 'password-invisible'"
+        data-testid="buttonElement"
+    >
+    </button>
+</div>

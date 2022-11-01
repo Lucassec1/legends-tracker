@@ -12,7 +12,7 @@ const sut = async (
   await render(ButtonComponent, {
     componentProperties: customProps,
     declarations: [AppIconComponent],
-  });
+  });   
   return screen.findByRole('button');
 };
 
@@ -65,6 +65,7 @@ describe('ButtonComponent', () => {
 const types: Array<AppButtonProps['type']> = [
   'primary',
   'secondary',
+  'ghost'
 ];
 
 it.each(types)('should render correct types', async (type) => {

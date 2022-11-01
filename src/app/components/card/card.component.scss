@@ -1,0 +1,138 @@
+@import '../../styles/index.scss';
+
+@mixin victory-border-color( $victory:boolean ) {
+    @if ($victory) {
+        border-left: 3px solid $secondary-color;
+    } @else {
+        border-left: 3px solid $negative-color;
+    }
+}
+
+.match-history-card {
+    background-color: transparentize($neutral-2, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    box-shadow: $card-shadow;
+    backdrop-filter: blur(4px);
+    width: 100%;
+    height: 120px;
+    padding: 1rem;
+    border-left: 3px solid $secondary-color;
+    width: 100%;
+}
+
+.victory-match-card {
+    @include victory-border-color(true);
+
+    & .match-result {
+        color: $secondary-color;
+    }
+}
+
+.defeat-match-card {
+    @include victory-border-color(false);
+
+    & .match-result {
+        color: $negative-color;
+    }
+}
+
+.undefined-match-card {
+    border-left: 3px solid $neutral-5;
+
+    & .match-result {
+        color: $neutral-5;
+    }
+}
+
+.main-content-container {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    height: 100%;
+    width: 80%;
+}
+
+.first-content-container {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    height: 100%;
+    width: 70%;
+}
+
+.champion-img {
+    border-radius: 50%;
+    height: 100%;
+}
+
+.runes-container, .summoner-spells-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100%;
+}
+
+.rune-img {
+    height: 26px;
+}
+
+.rune-img:nth-child(1) {
+    height: 40px;
+}
+
+.summoner-spells-img {
+    height: 30px;
+    border-radius: 50%;
+}
+
+.match-info-container, .match-scoreboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    height: 100%;   
+}
+
+.match-result {
+    color: $secondary-color;
+    font-weight: 600 !important;
+    @include font-size-xl();
+}
+
+.match-type {
+    @include font-size-md();
+    font-weight: 500 !important;
+}
+
+.match-duration-date {
+    color: $neutral-4;
+    @include font-size-sm();
+}
+
+.match-score {
+    @include font-size-lg();
+    font-weight: 600 !important;
+}
+
+.match-kda {
+    @include font-size-sm();
+    font-weight: 600 !important;
+    color: $neutral-4;
+}
+
+.match-highlighted-kda {
+    color: $primary-color;
+}
+
+hr {
+    border: 0;
+    background: inherit;
+    border-left: 1px solid $neutral-3;
+    min-height: 55px;
+    height: 80%;
+}

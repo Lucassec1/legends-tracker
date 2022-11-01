@@ -1,0 +1,49 @@
+@import '../../styles/index.scss';
+
+@mixin details-parameters($color) {
+    font-weight: 600;
+    color: $color;
+    font-size: 0.9rem;
+}
+
+@mixin border-radius($cent:boolean) {
+    @if ($cent) {
+        border-radius: 50px 50px 50px 50px;
+    } @else {
+        
+    }
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.win-lose {
+    @include details-parameters($neutral-4);
+}
+
+.win-percent {
+    @include details-parameters($secondary-color);
+}
+
+.progress-bar-container {
+    height: 5px;
+    width: 100%;
+    background-color: $negative-color;
+    border-radius: 50px;
+
+    .inner-progress-bar {
+        height: 5px;
+        background-color: $secondary-color;
+        border-right: 2px solid $neutral-1;
+        border-radius: 50px 0px 0px 50px;
+    }
+
+    .full-width {
+        border-radius: 50px !important;
+        border: 0 !important;
+    }
+}
