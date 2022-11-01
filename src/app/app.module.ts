@@ -1,3 +1,4 @@
+import { DividerComponent } from './components/divider/divider.component';
 import { ComponentsModule } from './components/components.module';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { NgModule } from '@angular/core';
@@ -29,6 +30,7 @@ import { TagComponent } from './components/tag/tag.component';
     InputComponent,
     CardComponent,
     ProgressBarComponent,
+    DividerComponent,
   ],
   imports: [
     BrowserModule,
