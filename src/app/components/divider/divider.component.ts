@@ -1,5 +1,5 @@
-import { DirectionType } from './../core/types/direction';
 import { Component, OnInit, Input } from '@angular/core';
+import { DirectionType } from './../core/types/direction';
 
 export interface DividerProps {
   direction?: DirectionType,
@@ -15,5 +15,4 @@ export class DividerComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
