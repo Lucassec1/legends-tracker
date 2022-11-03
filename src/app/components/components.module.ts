@@ -5,6 +5,7 @@ import { ButtonComponent } from './button/button.component';
 import { AppIconComponent } from './icon/icon.component';
 import { TagComponent } from './tag/tag.component';
 import { InputComponent } from './input/input.component';
+import { BadgeComponent } from './badge/badge.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { InputComponent } from './input/input.component';
     SearchComponent,
     TagComponent,
     InputComponent,
+    BadgeComponent,
   ],
   imports: [
     CommonModule,
