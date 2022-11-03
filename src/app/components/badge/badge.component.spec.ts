@@ -1,23 +1,27 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { screen, render } from '@testing-library/angular';
+import { BadgeComponent, AppBadgeProps } from './badge.component';
+import { BadgeDirectionType } from '../core/types/badge';
 
-import { BadgeComponent } from './badge.component';
+const defaultValue = 80;
+const bigValue = 1000;
+
+const sut = async(customProps: AppBadgeProps) => {
+  await render(BadgeComponent, {
+    componentProperties: customProps,
+  });
+};
 
 describe('BadgeComponent', () => {
-  let component: BadgeComponent;
-  let fixture: ComponentFixture<BadgeComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ BadgeComponent ]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(BadgeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+  it('should render badge with value', async () => {
+    await sut({ value: defaultValue });
+    expect(screen.getByText(defaultValue)).toBeInTheDocument();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should render 99+ when the value is more than 99', async () => {
+    await sut({ 
+      value: 1000,
+    });
   });
+  expect(screen.getByText('99+')).toBeInTheDocument();
+  // expect(screen.getByText(bigValue)).toHaveValue('99+');
 });

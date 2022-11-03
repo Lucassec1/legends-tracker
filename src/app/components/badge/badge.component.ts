@@ -3,11 +3,11 @@ import { BadgeDirectionType } from '../core/types/badge';
 
 type Size = 'sm' | 'md';
 type Type = 'notification' | 'level';
-export interface BadgeProps {
+export interface AppBadgeProps {
   value: number;
-  type: Type;
+  type?: Type;
   size?: Size;
-  direction: BadgeDirectionType;
+  direction?: BadgeDirectionType;
 }
 
 @Component({
