@@ -3,3 +3,8 @@ export { default as arrowDown } from './arrow-down';
 export { default as close } from './close';
 export { default as search } from './search';
 export { default as interrogation } from './interrogation';
+export { default as positionBot } from './position-bot';
+export { default as positionJungle } from './position-jungle';
+export { default as positionMid } from './position-mid';
+export { default as positionSupport } from './position-support';
+export { default as positionTop } from './position-top';
