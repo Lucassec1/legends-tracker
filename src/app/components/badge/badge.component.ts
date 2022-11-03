@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
+type Type = 'primary';
 export interface BadgeProps {
   value?: number;
+  type: Type;
 }
 
 @Component({
@@ -12,6 +14,7 @@ export interface BadgeProps {
 
 export class BadgeComponent implements OnChanges, OnInit {
   @Input() value?: number;
+  @Input() type: Type = 'primary';
 
   valueInBadge?: string;
 

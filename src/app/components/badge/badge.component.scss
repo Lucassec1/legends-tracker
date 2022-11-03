@@ -1,0 +1,18 @@
+@import "../../styles/index.scss";
+
+span {
+    font-size: 8px;
+    color: $neutral-color;
+
+    padding: 2px;
+    border-radius: 50%;
+}
+
+@mixin badge-colors($color, $backgroundColor) {
+    color: $color;
+    background-color: $backgroundColor;
+}
+
+.app-badge-primary {
+    @include badge-colors($neutral-color, $primary-color);
+}
