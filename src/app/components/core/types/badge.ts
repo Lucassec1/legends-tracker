@@ -1,0 +1,1 @@
+export type BadgeDirectionType = 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left';

@@ -1,1 +1,5 @@
-<span [class]="'app-badge-' + type">{{ valueInBadge }}</span>
+<span 
+    [class]="type + '-app-badge-' + size + ' app-badge-' + direction"
+>
+    {{ valueInBadge }}
+</span>

@@ -1,11 +1,9 @@
 @import "../../styles/index.scss";
 
-span {
-    font-size: 8px;
-    color: $neutral-color;
-
-    padding: 2px;
-    border-radius: 50%;
+@mixin badge-size($badgeSize, $fontSize) {
+    width: $badgeSize;
+    height: $badgeSize;
+    font-size: $fontSize;
 }
 
 @mixin badge-colors($color, $backgroundColor) {
@@ -13,6 +11,54 @@ span {
     background-color: $backgroundColor;
 }
 
-.app-badge-primary {
+span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    padding: 1px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.notification-app-badge-sm {
+    @include badge-size(18px, 8px);
     @include badge-colors($neutral-color, $primary-color);
+}
+
+.notification-app-badge-md {
+    @include badge-size(24px, 10px);
+    @include badge-colors($neutral-color, $primary-color);
+}
+
+.level-app-badge-sm {
+    @include badge-size(26px, 10px);
+    @include badge-colors($neutral-color, $neutral-3);
+    border: 1px solid $neutral-1;
+}
+
+.level-app-badge-md {
+    @include badge-size(28px, 10px);
+    @include badge-colors($neutral-color, $neutral-3);
+    border: 1px solid $neutral-1;
+}
+
+.app-badge-bottom-right {
+    left: 70%;
+    bottom: 0%;
+}
+
+.app-badge-bottom-left {
+    right: 70%;
+    bottom: 0%;
+}
+
+.app-badge-top-right {
+    left: 70%;
+    top: 0%;
+}
+
+.app-badge-top-left {
+    right: 70%;
+    top: 0%;
 }
