@@ -3,6 +3,7 @@ import { BadgeDirectionType } from '../core/types/badge';
 
 type Size = 'sm' | 'md';
 type Type = 'notification' | 'level';
+
 export interface AppBadgeProps {
   value: number;
   type?: Type;
