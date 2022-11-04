@@ -22,7 +22,7 @@ const directions: Array<BadgeDirectionType> = [
   'top-right'
 ];
 
-const sut = async(customProps: AppBadgeProps) => {
+const sut = async(customProps?: AppBadgeProps) => {
   await render(BadgeComponent, {
     componentProperties: customProps,
   });
@@ -61,9 +61,9 @@ describe('BadgeComponent', () => {
     expect(screen.getByTestId('badgeElement')).toHaveClass(`app-badge-${direction}`);
   });
 
-  // it('shound render a empty badge when do not have value', async () => {
-  //   await sut ({
-      
-  //   })
-  // })
+  it('shound render a empty badge when do not have value', async () => {
+    await sut();
+    const badge = screen.getByTestId('badgeElement');
+    expect(badge?.innerHTML).toBe('');
+  })
 });
