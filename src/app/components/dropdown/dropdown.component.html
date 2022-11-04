@@ -1,0 +1,36 @@
+<div class="dropdown-container">
+    <div 
+        [ngClass]="{
+            'open-select': open
+        }"
+        class="select-container"
+        (click)="setOpen()"
+    >
+        <span>{{ options[0].label }}</span>
+        <app-icon type="arrow-down"></app-icon>
+    </div>
+    
+    <div class="options-container" *ngIf="open">
+        <div
+            [ngClass]="{
+                'dropdown-disabled': option.disabled,
+                'dropdown-disabled-selected': option.disabled && option.selected,
+                'dropdown-item-selected': option.selected && !option.disabled,
+                'dropdown-item': !option.selected && !option.disabled
+            }"
+            *ngFor="let option of options; let index = index"
+            (click)="select(option)"
+            (mouseenter)="mouseEnter(option)"
+            (mouseleave)="mouseLeave(option)"
+            [id]="'option' + index"
+        >
+            <div class="container">
+                <span>{{ option.label }}</span>
+                <app-icon
+                    *ngIf="option.iconType"
+                    [type]="option.iconType"
+                ></app-icon>
+            </div>
+        </div>
+    </div>
+</div>

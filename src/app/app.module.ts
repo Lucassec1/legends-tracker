@@ -1,3 +1,4 @@
+import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { DividerComponent } from './components/divider/divider.component';
 import { ComponentsModule } from './components/components.module';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
@@ -23,6 +24,7 @@ import { TagComponent } from './components/tag/tag.component';
     AvatarComponent,
     SearchComponent,
     ButtonComponent,
+    DropdownComponent,
     AppIconComponent,
     TagComponent,
     TabGroupComponent,

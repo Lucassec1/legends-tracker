@@ -1,0 +1,53 @@
+@import '../../styles/index.scss';
+
+@mixin border-radius($bordersLeft, $bordersRight: 5px) {
+    border-radius: $bordersLeft;
+    border-bottom-left-radius: $bordersRight;
+    border-bottom-right-radius: $bordersRight;
+}
+
+.dropdown-container {
+    width: max-content;
+}
+
+.select-container {
+    display: flex;
+    align-items: center;
+    background-color: $neutral-3;
+    width: fit-content;
+    padding: 8px;
+    @include border-radius(5px);
+    cursor: pointer;
+}
+
+.open-select {
+    @include border-radius(5px, 0px);
+    border-bottom: 1px solid $neutral-1;
+}
+
+.options-container {
+    
+    padding: 2px 4px;
+    background-color: $neutral-3;
+    width: 100%;
+    @include border-radius(0px, 5px);
+}
+
+.container {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 0px;
+    border-bottom: 1px solid transparentize($neutral-4, 0.7);
+
+    &:nth-last-child(0) {
+        border-bottom: 0;
+    }
+
+    &:hover {
+        border-radius: 5px;
+        background-color: darken($neutral-3, 3%);
+    }
+}
+
