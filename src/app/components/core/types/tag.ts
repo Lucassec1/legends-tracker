@@ -1,9 +1,9 @@
 export enum PositionIconOptions {
-    adc = '../../../assets/positions/Position_Diamond-Bot.png',
-    jungle = '../../../assets/positions/Position_Diamond-Jungle.png',
-    mid = '../../../assets/positions/Position_Diamond-Mid.png',
-    suporte = '../../../assets/positions/Position_Diamond-Support.png',
-    top = '../../../assets/positions/Position_Diamond-Top.png',
+    adc = 'position-bot',
+    jungle = 'position-jungle',
+    mid = 'position-mid',
+    suporte = 'position-support',
+    top = 'position-top',
 }
 
 export type Label = 'adc' | 'jungle' | 'mid' | 'suporte' | 'top';

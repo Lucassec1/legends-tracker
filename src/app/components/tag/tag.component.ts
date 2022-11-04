@@ -5,6 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export interface TagProps {
   label: Label;
   icon?: boolean;
+  iconType?: PositionIconOptions;
 }
 
 @Component({
@@ -16,12 +17,12 @@ export class TagComponent implements OnInit {
   @Input() public label!: Label;
   @Input() public icon? = true;
 
-  public iconUrl!: PositionIconOptions;
+  public iconType!: PositionIconOptions;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.iconUrl = PositionIconOptions[this.label];
+    this.iconType = PositionIconOptions[this.label];
   }
 
 }

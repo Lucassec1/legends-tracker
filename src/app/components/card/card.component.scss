@@ -2,9 +2,9 @@
 
 @mixin victory-border-color( $victory:boolean ) {
     @if ($victory) {
-        border-left: 3px solid $positive-color;
-    } @else {
         border-left: 3px solid $secondary-color;
+    } @else {
+        border-left: 3px solid $negative-color;
     }
 }
 
@@ -27,7 +27,7 @@
     @include victory-border-color(true);
 
     & .match-result {
-        color: $positive-color;
+        color: $secondary-color;
     }
 }
 
@@ -35,7 +35,7 @@
     @include victory-border-color(false);
 
     & .match-result {
-        color: $secondary-color;
+        color: $negative-color;
     }
 }
 
@@ -61,13 +61,11 @@
     gap: 3%;
     height: 100%;
     width: 70%;
-    //border: 1px solid red;
 }
 
 .champion-img {
     border-radius: 50%;
     height: 100%;
-    //border: 1px solid red;
 }
 
 .runes-container, .summoner-spells-container {
@@ -76,7 +74,6 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    //border: 1px solid red;
     height: 100%;
 }
 
@@ -98,7 +95,6 @@
     flex-direction: column;
     justify-content: center;
     gap: 5px;
-    //border: 1px solid red;
     height: 100%;   
 }
 
@@ -133,10 +129,6 @@
     color: $primary-color;
 }
 
-hr {
-    border: 0;
-    background: inherit;
-    border-left: 1px solid $neutral-3;
-    min-height: 55px;
+.divider-container {
     height: 80%;
 }
