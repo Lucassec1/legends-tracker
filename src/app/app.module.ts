@@ -1,4 +1,3 @@
-import { ComponentsModule } from './components/components.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -37,7 +36,6 @@ import { TagComponent } from './components/tag/tag.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
