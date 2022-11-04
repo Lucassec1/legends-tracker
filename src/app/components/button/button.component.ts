@@ -37,7 +37,7 @@ export class ButtonComponent implements OnInit {
   @Input() expand?: boolean = false;
   @Input() colorType?: Color = 'primary-color';
   @Output() buttonOnClick = new EventEmitter();
-  
+
   public iconSize!: ButtonIconSizeOptions;
 
   handleClick() {
@@ -56,7 +56,7 @@ export class ButtonComponent implements OnInit {
   }
 
   // ghostAnimation() {
-  //   return this.type === 'ghost' ? 
+  //   return this.type === 'ghost' ?
   // }
 
   ngOnInit() {

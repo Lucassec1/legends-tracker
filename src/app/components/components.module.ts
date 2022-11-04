@@ -1,3 +1,4 @@
+import { CardComponent } from './card/card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search/search.component';
@@ -13,16 +14,21 @@ import { BadgeComponent } from './badge/badge.component';
     SearchComponent,
     TagComponent,
     InputComponent,
+    AppIconComponent,
     BadgeComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
   ],
   exports: [
     ButtonComponent,
-    AppIconComponent,
+    SearchComponent,
     TagComponent,
     InputComponent,
+    AppIconComponent,
+    BadgeComponent,
+    CardComponent
   ],
 })
 
