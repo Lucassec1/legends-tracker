@@ -17,11 +17,11 @@ export interface AppBadgeProps {
 })
 export class BadgeComponent implements OnChanges, OnInit {
   @Input() value!: number;
-  @Input() type: Type = 'notification';
+  @Input() type?: Type = 'notification' ;
   @Input() size?: Size = 'md';
   @Input() direction?: BadgeDirectionType = 'bottom-right';
 
-  valueInBadge!: string;
+  valueInBadge?: string;
 
   ngOnInit(): void {
     this.valueInBadge = this.formatValue();
