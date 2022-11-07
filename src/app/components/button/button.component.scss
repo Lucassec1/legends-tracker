@@ -8,13 +8,13 @@
 @mixin add-animation($type, $loadingType , $color ) {
     .#{$type}-#{$loadingType} {
         position: relative;
-        left: -1000px;
+        left: -9999px;
         width:6px;
         height:6px;
         border-radius: 5px;
         background-color: $color;
         color: $color;
-        box-shadow: 1000px 0 0 0 $color;
+        box-shadow: 10000px 0 0 0 $color;
         animation: #{$type}-#{$loadingType} 1s infinite linear;
         animation-delay: .1s;
         
@@ -48,43 +48,43 @@
     
     @keyframes #{$type}-#{$loadingType} {
         0% {
-            box-shadow: 1000px -15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10000px -15px 0 0 rgba(152, 128, 255, 0);
         }
         25%,
         50%,
         75% {
-            box-shadow: 1000px 0 0 0 $color;
+            box-shadow: 10000px 0 0 0 $color;
         }
         100% {
-            box-shadow: 1000px 15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10000px 15px 0 0 rgba(152, 128, 255, 0);
         }
     }
         
     @keyframes #{$type}-#{$loadingType}Before {
         0% {
-            box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 9984px -15px 0 0 rgba(152, 128, 255, 0);
         }
         25%,
         50%,
         75% {
-            box-shadow: 984px 0 0 0 $color;
+            box-shadow: 9984px 0 0 0 $color;
         }
         100% {
-            box-shadow: 984px 15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 9984px 15px 0 0 rgba(152, 128, 255, 0);
         }
     }
         
     @keyframes #{$type}-#{$loadingType}After {
         0% {
-            box-shadow: 1010px -15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10010px -15px 0 0 rgba(152, 128, 255, 0);
         }
         25%,
         50%,
         75% {
-            box-shadow: 1010px 0 0 0 $color;
+            box-shadow: 10010px 0 0 0 $color;
         }
         100% {
-            box-shadow: 1010px 15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10010px 15px 0 0 rgba(152, 128, 255, 0);
         }
     }
 }
@@ -96,6 +96,21 @@
     $fontSize,
 ) {
     min-width: $buttonSize * 2;
+    height: $buttonSize;
+    padding: $paddingTopBottom $paddingLeftRight;
+
+    span {
+        font-size: $fontSize;
+    }
+}
+
+@mixin teste(
+    $buttonSize,
+    $paddingTopBottom,
+    $paddingLeftRight,
+    $fontSize,
+) {
+    min-width: $buttonSize;
     height: $buttonSize;
     padding: $paddingTopBottom $paddingLeftRight;
 

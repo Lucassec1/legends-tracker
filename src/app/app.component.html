@@ -1,17 +1,17 @@
 <div>
-<app-button size="sm" label="Ver mais"></app-button>
+    <app-button size="lg" iconType="add"></app-button>
     
     <app-button type='secondary' size="md" label="Secondary" [loading]="true"></app-button>
 
     <app-button type='ghost' size="sm" label="Ghost" ></app-button>
    
     <app-button type='ghost' size="md" label="Ghost" colorType="secondary-color"></app-button>
-</div>
 
-<div style="display: flex; gap: 10px;">
-    <app-tag label="suporte"></app-tag> 
-    <app-tag label="adc"></app-tag>
-</div>
+
+    <div style="display: flex; gap: 10px;">
+        <app-tag label="suporte"></app-tag> 
+        <app-tag label="adc"></app-tag>
+    </div>
 
     <h3>Card Component - Match History Variant</h3>
     <app-card type="match-history" victory="true" champion="yuumi" firstSummonerSpell="heal" secondSummonerSpell="ignite" [kill]="1" [death]="3" [assistance]="28"></app-card>
