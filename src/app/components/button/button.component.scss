@@ -94,13 +94,15 @@
     $paddingTopBottom,
     $paddingLeftRight,
     $fontSize,
+    $lineHeight
 ) {
-    min-width: $buttonSize * 2;
+    min-width: $buttonSize;
     height: $buttonSize;
     padding: $paddingTopBottom $paddingLeftRight;
 
     span {
         font-size: $fontSize;
+        line-height: $lineHeight;
     }
 }
 
@@ -166,15 +168,24 @@ button {
 }
 
 .app-button-sm {
-    @include button-parameters(30px, 12px, 10px, 14px);
+    @include button-parameters(30px, 4px, 12px, 16px, 16px);
+    &.loading {
+        padding: 0 24px;
+    }
 }
 
 .app-button-md {
-    @include button-parameters(34px, 16px, 14px, 16px);
+    @include button-parameters(34px, 4px, 14px, 16px, 16px);
+    &.loading {
+        padding: 0 26px;
+    }
 }
 
 .app-button-lg {
-    @include button-parameters(38px, 20px, 18px, 18px);
+    @include button-parameters(38px, 10px, 18px, 18px, 18px);
+    &.loading {
+        padding: 0 28px;
+    }
 }
 
 .app-button-primary {
@@ -264,7 +275,7 @@ button {
 
 .loading {
     cursor: not-allowed;
-    padding: 0 12px;
+    // padding: 0 24px;
 }
   
 .right-side-icon {
