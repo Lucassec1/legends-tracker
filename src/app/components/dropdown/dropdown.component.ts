@@ -1,15 +1,19 @@
+import { Label } from './../core/types/tag';
 import { IconType } from './../icon/icon.component';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 
 export interface DropdownItem {
-  label: String;
-  selected?: Boolean;
+  default: boolean;
+  label: string;
+  selected?: boolean;
   disabled: boolean;
-  hovered?: Boolean;
+  hovered?: boolean;
   iconType?: IconType;
 }
 
 export interface DropdownParams {
+  open: boolean;
+  autoclose: boolean;
   options: DropdownItem[];
   selected: EventEmitter<DropdownItem[]>;
 }
@@ -19,12 +23,11 @@ export interface DropdownParams {
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class DropdownComponent {
-  @Input() icons: Boolean = false;  
+export class DropdownComponent implements OnInit {
+  @Input() open: boolean = false;
+  @Input() autoClose: boolean = true;
   @Input() options: DropdownItem[] = [];
   @Output() selected = new EventEmitter<DropdownItem[]>();
-
-  public open: Boolean = true;
 
   mouseEnter(option: DropdownItem) {
     option.selected && !option.disabled && (option.hovered = true);
@@ -34,6 +37,12 @@ export class DropdownComponent {
     option.selected && !option.disabled && (option.hovered = false);
   }
 
+  clearOptions(): void {
+    this.options.forEach((item: DropdownItem) => {
+      item.selected = false;
+    })
+  }
+
   setOpen():void {
     this.open = !this.open;
   }
@@ -41,14 +50,43 @@ export class DropdownComponent {
   select(option: DropdownItem): void {
     if (this.isDisabled(option)) {
       return;
+    } else {
+      if (this.autoClose) {
+        this.setOpen();
+      }
+      this.clearOptions();
+      option.selected = !option.selected;
+      this.selected.emit(
+        this.options.filter((item: DropdownItem) => item.selected)
+      );
     }
-    option.selected = !option.selected;
-    this.selected.emit(
-      this.options.filter((item: DropdownItem) => item.selected)
-    );
+  }
+
+  selectedLabel() {
+    const selectedOption = this.options.filter((item: DropdownItem) => item.selected);
+    const defaultOption = this.options.filter((item: DropdownItem) => item.default);
+    
+    if (defaultOption.length > 0 && selectedOption.length === 0) {
+      return defaultOption[0].label;
+    } else if (defaultOption.length === 0 && selectedOption.length === 0) {
+      this.options[0].selected = true;
+      this.options[0].default = true;
+      return this.options[0].label;
+    } else {
+      return selectedOption[0].label;
+    }
+    
   }
 
   private isDisabled(option: DropdownItem): boolean {
     return option.disabled;
+  }
+
+  ngOnInit(): void {
+    this.options.forEach((item: DropdownItem) => {
+      if (item.default) {
+        item.selected = true
+      }
+    })
   }
 }

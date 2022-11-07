@@ -12,10 +12,12 @@
 
 .select-container {
     display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
     align-items: center;
     background-color: $neutral-3;
-    width: fit-content;
-    padding: 8px;
+    width: 100%;
+    padding: 8px 10px;
     @include border-radius(5px);
     cursor: pointer;
 }
@@ -26,28 +28,61 @@
 }
 
 .options-container {
-    
-    padding: 2px 4px;
+    padding: 4px 6px;
     background-color: $neutral-3;
     width: 100%;
     @include border-radius(0px, 5px);
 }
 
 .container {
-    cursor: pointer;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 0.5rem;
     align-items: center;
-    padding: 6px 0px;
+    padding: 6px 4px;
     border-bottom: 1px solid transparentize($neutral-4, 0.7);
 
     &:nth-last-child(0) {
-        border-bottom: 0;
+        border-bottom: 0px;
     }
 
     &:hover {
-        border-radius: 5px;
-        background-color: darken($neutral-3, 3%);
+        background-color: darken($neutral-3, 1.5%);
     }
 }
 
+.dropdown-item {
+    & .container {
+        cursor: pointer;
+    }
+}
+
+.dropdown-item-selected {
+    & .container {
+        cursor: pointer;
+        color: $primary-color;
+        background-color: transparentize($primary-color, 0.9);
+        font-size: 600;
+
+        &:hover {
+            background-color: darken($neutral-3, 1.5%);
+        }
+    }
+
+    app-icon {
+        &::ng-deep svg {
+            stroke: $primary-color !important;
+        }
+    }
+}
+
+.dropdown-disabled {
+    cursor: not-allowed;
+    color: $neutral-4;
+
+    app-icon {
+        &::ng-deep svg {
+            stroke: $neutral-4 !important;
+        }
+    }
+}

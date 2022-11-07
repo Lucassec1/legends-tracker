@@ -1,36 +1,95 @@
 <div class="container">
-    <app-tag label="mid"></app-tag>
-
-    <app-dropdown
-        [options]="[
-            {
-                'label': 'Option 1',
-                'selected': false,
-                'disabled': false,
-                'hovered': false,
-                'iconType': 'position-mid'
-            },
-            {
-                'label': 'Option 2',
-                'selected': false,
-                'disabled': false,
-                'hovered': false,
-                'iconType': 'position-bot'
-            },
-            {
-                'label': 'Option 3',
-                'selected': false,
-                'disabled': false,
-                'hovered': false,
-                'iconType': 'position-bot'
-            },
-            {
-                'label': 'Option 4',
-                'selected': false,
-                'disabled': false,
-                'hovered': false,
-                'iconType': 'position-bot'
-            },
-        ]"
-    ></app-dropdown>
+    <h4>Select/Dropdown component &#x1F633;</h4>
+    <div style="display: flex; gap: 1%;">
+        <app-dropdown
+            [autoClose]="false"
+            [open]="true"
+            [options]="[
+                {
+                    'default': false,
+                    'label': 'Option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'search'
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option with icon',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': 'close'
+                },
+                {
+                    'default': true,
+                    'label': 'Default option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'interrogation'
+                },
+                {
+                    'default': false,
+                    'label': 'Common option',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': ''
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': ''
+                },
+            ]"
+        ></app-dropdown>
+        <app-dropdown
+            [options]="[
+                {
+                    'default': false,
+                    'label': 'Option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'search'
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option with icon',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': 'close'
+                },
+                {
+                    'default': true,
+                    'label': 'Default option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'interrogation'
+                },
+                {
+                    'default': false,
+                    'label': 'Common option',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': ''
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': ''
+                },
+            ]"
+        ></app-dropdown>
+    </div>
 </div>
