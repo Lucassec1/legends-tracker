@@ -22,3 +22,8 @@ Secondary.args = {
     type: 'secondary',
 };
 
+export const Ghost = Template.bind({});
+Ghost.args = {
+    label: 'Ghost',
+    type: 'ghost',
+};
