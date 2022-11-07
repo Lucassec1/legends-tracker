@@ -15,3 +15,7 @@ export { default as notificationAll } from './notification-all';
 export { default as notificationNone } from './notification-none';
 export { default as settings } from './settings';
 export { default as star } from './star';
+export { default as calendar } from './calendar';
+export { default as camera } from './camera';
+export { default as filter } from './filter';
+export { default as share } from './share';

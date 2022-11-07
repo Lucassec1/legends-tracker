@@ -15,7 +15,11 @@ import {
     notificationAll,
     notificationNone,
     settings,
-    star
+    star,
+    calendar,
+    camera,
+    filter,
+    share
 } from './iconsText';
 
 export const iconsPaths: Record<string, string> = {
@@ -35,5 +39,9 @@ export const iconsPaths: Record<string, string> = {
     'notification-all': notificationAll,
     'notification-none': notificationNone,
     settings,
-    star
+    star,
+    calendar,
+    camera,
+    filter,
+    share
 }
