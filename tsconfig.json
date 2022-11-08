@@ -15,11 +15,11 @@
     "esModuleInterop": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "module": "esnext",
     "moduleResolution": "node",
     "types": ["jest", "@testing-library/jest-dom", "@types/node"],
     "importHelpers": true,
     "target": "es2020",
-    "module": "es2020",
     "lib": [
       "es2020",
       "dom"

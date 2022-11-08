@@ -1,6 +1,7 @@
 import {
     add,
     arrowDown,
+    arrowLeft,
     close,
     search,
     interrogation,
@@ -9,6 +10,12 @@ import {
     positionMid,
     positionSupport,
     positionTop,
+    bookmark,
+    edit,
+    notificationAll,
+    notificationNone,
+    settings,
+    star
 } from './iconsText';
 
 export const iconsPaths: Record<string, string> = {
@@ -22,4 +29,11 @@ export const iconsPaths: Record<string, string> = {
     'position-mid': positionMid,
     'position-support': positionSupport,
     'position-top': positionTop,
+    'arrow-left': arrowLeft,
+    bookmark,
+    edit,
+    'notification-all': notificationAll,
+    'notification-none': notificationNone,
+    settings,
+    star
 }
