@@ -1,6 +1,6 @@
-import { Label } from './../core/types/tag';
 import { IconType } from './../icon/icon.component';
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Size } from '../core/types/search';
 
 export interface DropdownItem {
   default: boolean;
@@ -12,8 +12,10 @@ export interface DropdownItem {
 }
 
 export interface DropdownParams {
-  open: boolean;
-  autoclose: boolean;
+  open?: boolean;
+  autoclose?: boolean;
+  searchFilter?: boolean;
+  size?: Size;
   options: DropdownItem[];
   selected: EventEmitter<DropdownItem[]>;
 }
@@ -24,8 +26,10 @@ export interface DropdownParams {
   styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent implements OnInit {
-  @Input() open: boolean = false;
-  @Input() autoClose: boolean = true;
+  @Input() open?: boolean = false;
+  @Input() autoClose?: boolean = true;
+  @Input() searchFilter?: boolean = false;
+  @Input() size?: Size = 'md';
   @Input() options: DropdownItem[] = [];
   @Output() selected = new EventEmitter<DropdownItem[]>();
 

@@ -92,4 +92,32 @@
             ]"
         ></app-dropdown>
     </div>
+    <div style="border: 1px solid red; width: 30vw;">
+        <app-search size="lg" filter="true" 
+        [filterOptions]="[
+            {
+                'default': true,
+                'label': 'Geral',
+                'selected': false,
+                'disabled': false,
+                'hovered': false
+            },
+            {
+                'default': false,
+                'label': 'Summoners',
+                'selected': false,
+                'disabled': false,
+                'hovered': false,
+                'iconType': 'close'
+            },
+            {
+                'default': false,
+                'label': 'Usuários',
+                'selected': false,
+                'disabled': false,
+                'hovered': false,
+                'iconType': 'close'
+            },
+        ]"></app-search>
+    </div>
 </div>

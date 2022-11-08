@@ -9,6 +9,7 @@
     border: none;
     outline: none;
     font-size: 1rem;
+    max-height: $paddingLeft;
 
     &:focus {
         border: 1px solid $primary-1;
@@ -52,7 +53,7 @@
 
 .search-container {
     display: flex;
-    width: 100%
+    width: 100%;
 }
 
 .common-search-md {
@@ -67,7 +68,7 @@
 }
 
 .common-search-lg {
-    @include search-parameters(42px, 13px);
+    @include search-parameters(44px, 13px);
     @include border-radius(5px);
     @include search-icon(0.75rem, 'search');
     @include clear-icon();

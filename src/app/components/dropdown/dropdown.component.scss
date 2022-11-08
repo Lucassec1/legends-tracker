@@ -6,8 +6,23 @@
     border-bottom-right-radius: $bordersRight;
 }
 
+@mixin search-filter-border-radius($bordersLeft, $bordersRight: 5px) {
+    border-radius: $bordersLeft;
+    border-top-right-radius: $bordersRight;
+    border-bottom-right-radius: $bordersRight;
+}
+
+@mixin search-filter-params($size) {
+    min-height: $size;
+}
+
 .dropdown-container {
     width: max-content;
+}
+
+.search-filter-dropdown-container {
+    width: max-content;
+    height: 100%;
 }
 
 .select-container {
@@ -15,11 +30,11 @@
     gap: 0.5rem;
     justify-content: space-between;
     align-items: center;
-    background-color: $neutral-3;
+    background-color: $neutral-2;
     width: 100%;
     padding: 8px 10px;
-    @include border-radius(5px);
     cursor: pointer;
+    @include border-radius(5px);
 }
 
 .open-select {
@@ -27,7 +42,42 @@
     border-bottom: 1px solid $neutral-1;
 }
 
+.search-filter-md {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(36px);
+    background-color: $neutral-3;
+}
+
+.search-filter-lg {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(42px);
+    background-color: $neutral-3;
+}
+
+.open-search-filter-md {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(36.75px);
+    border-bottom: 1px solid $neutral-1;
+    border-bottom-right-radius: 0px;
+    background-color: $neutral-3;
+}
+
+.open-search-filter-lg {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(43px);
+    border-bottom: 1px solid $neutral-1;
+    border-bottom-right-radius: 0px;
+    background-color: $neutral-3;
+}
+
 .options-container {
+    padding: 4px 6px;
+    background-color: $neutral-2;
+    width: 100%;
+    @include border-radius(0px, 5px);
+}
+
+.search-filter-options-container {
     padding: 4px 6px;
     background-color: $neutral-3;
     width: 100%;
@@ -40,7 +90,24 @@
     gap: 0.5rem;
     align-items: center;
     padding: 6px 4px;
-    border-bottom: 1px solid transparentize($neutral-4, 0.7);
+    border-bottom: 1px solid transparentize($neutral-4, 0.8);
+
+    &:nth-last-child(0) {
+        border-bottom: 0px;
+    }
+
+    &:hover {
+        background-color: darken($neutral-2, 1.5%);
+    }
+}
+
+.search-filter-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 6px 4px;
+    border-bottom: 1px solid transparentize($neutral-4, 0.8);
 
     &:nth-last-child(0) {
         border-bottom: 0px;
@@ -52,20 +119,20 @@
 }
 
 .dropdown-item {
-    & .container {
+    & .container, & .search-filter-container {
         cursor: pointer;
     }
 }
 
 .dropdown-item-selected {
-    & .container {
+    & .container, & .search-filter-container {
         cursor: pointer;
         color: $primary-color;
         background-color: transparentize($primary-color, 0.9);
         font-size: 600;
 
         &:hover {
-            background-color: darken($neutral-3, 1.5%);
+            background-color: transparentize($primary-color, 0.9);
         }
     }
 

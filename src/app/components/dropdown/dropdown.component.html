@@ -1,7 +1,11 @@
-<div class="dropdown-container">
+<div [class]="searchFilter ? 'search-filter-dropdown-container' : 'dropdown-container'">
     <div 
         [ngClass]="{
-            'open-select': open
+            'open-select': open && !searchFilter,
+            'open-search-filter-md': size === 'md' && open && searchFilter,
+            'open-search-filter-lg': size === 'lg' && open && searchFilter,
+            'search-filter-md': size === 'md' && !open && searchFilter,
+            'search-filter-lg': size === 'lg' && !open && searchFilter
         }"
         class="select-container"
         (click)="setOpen()"
@@ -10,7 +14,10 @@
         <app-icon type="arrow-down"></app-icon>
     </div>
     
-    <div class="options-container" *ngIf="open">
+    <div 
+        [class]="searchFilter ? 'search-filter-options-container' : 'options-container'" 
+        *ngIf="open"
+    >
         <div
             [ngClass]="{
                 'dropdown-disabled': option.disabled,
@@ -24,7 +31,7 @@
             (mouseleave)="mouseLeave(option)"
             [id]="'option' + index"
             >
-            <div class="container">
+            <div [class]="searchFilter ? 'search-filter-container' : 'container'">
                 <span>{{ option.label }}</span>
                 <app-icon
                     *ngIf="option.iconType"
