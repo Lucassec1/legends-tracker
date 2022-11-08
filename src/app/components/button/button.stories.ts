@@ -16,59 +16,59 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
     },
 });
 
-export const primary = Template.bind({});
-primary.args = {
+export const TypePrimary = Template.bind({});
+TypePrimary.args = {
     label:'Primary',
     type: 'primary',
 };
 
-export const secondary = Template.bind({});
-secondary.args = {
+export const TypeSecondary = Template.bind({});
+TypeSecondary.args = {
     label:'Secondary',
     type: 'secondary',
 };
 
-export const ghost = Template.bind({});
-ghost.args = {
+export const TypeGhost = Template.bind({});
+TypeGhost.args = {
     label: 'Ghost',
     type: 'ghost',
 };
 
-export const sm =  Template.bind({});
-sm.args = {
+export const TypeSm =  Template.bind({});
+TypeSm.args = {
     label: 'sm',
     size: "sm"
 }
 
-export const md =  Template.bind({});
-md.args = {
+export const TypeMd =  Template.bind({});
+TypeMd.args = {
     label: 'md',
     size: "md",
 }
 
-export const lg =  Template.bind({});
-lg.args = {
+export const TypeLg =  Template.bind({});
+TypeLg.args = {
     label: 'lg',
     size: "lg",
 }
 
-export const add = Template.bind({});
-add.args = {
+export const TypeAdd = Template.bind({});
+TypeAdd.args = {
     iconType: "add",
 }
 
-export const position = Template.bind({});
-position.args = {
+export const TypePosition = Template.bind({});
+TypePosition.args = {
     iconType: "position-bot",
 }
 
-export const close = Template.bind({});
-close.args = {
+export const TypeClose = Template.bind({});
+TypeClose.args = {
     iconType: "close",
     label: "Close",
 }
 
-export const loading = Template.bind({});
-loading.args = {
+export const TypeLoading = Template.bind({});
+TypeLoading.args = {
     loading: true,
 }
