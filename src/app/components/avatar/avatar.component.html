@@ -7,7 +7,7 @@
         <div
             [class]="type + '-avatar-size-' + size"
         >
-            <img [src]="image || defaultImage" />
+            <img [src]="image || defaultImage" (error)="onErrorImage()" />
         </div>
     </div>
 </div>
@@ -17,5 +17,5 @@
     *ngIf = "border == 'false'"
     data-testid="avatarElement-without-border"
 >
-    <img [src]="image || defaultImage" />
+    <img [src]="image || defaultImage" (error)="onErrorImage()" />
 </div>

@@ -7,7 +7,6 @@ type TypeBorder = "true" | "false";
 export interface AppAvatarProps {
   size: SizeType;
   image?: string;
-  onErrorImage?: string;
   border?: string;
 }
 
@@ -19,10 +18,14 @@ export interface AppAvatarProps {
 export class AvatarComponent implements OnInit {
   @Input() size?: SizeType = 'md'; 
   @Input() image?: string;
-  @Input() onErrorImage?: string;
   @Input() border: TypeBorder = "true";
 
+  onErrorImage() {
+    this.image = "../../assets/user.svg";
+  } 
+
   public defaultImage = "../../assets/user.svg";
+
   public type!: AvatarBorderOptions;
 
   ngOnInit(): void {

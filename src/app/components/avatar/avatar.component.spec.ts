@@ -43,6 +43,14 @@ describe('AvatarComponent', () => {
       'assets/user.svg'
     );
   });
+
+  it('should render a error image when there is a broken image', async () => {
+    await sut();
+    expect(screen.getByRole('img')).toHaveAttribute(
+      '(error)',
+      '../../assets/user.svg'
+    );  
+  });
 });
 
 describe('AvatarComponent without border', () => {
