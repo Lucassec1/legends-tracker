@@ -37,7 +37,7 @@ export class ButtonComponent implements OnInit {
   @Input() expand?: boolean = false;
   @Input() colorType?: Color = 'primary-color';
   @Output() buttonOnClick = new EventEmitter();
-  
+
   public iconSize!: ButtonIconSizeOptions;
 
   handleClick() {
