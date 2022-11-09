@@ -7,7 +7,7 @@
             'search-filter-md': size === 'md' && !open && searchFilter,
             'search-filter-lg': size === 'lg' && !open && searchFilter
         }"
-        class="select-container"
+        [class]="!searchFilter ? ('select-container-' + size) : 'select-container'"
         (click)="setOpen()"
     >
         <span>{{ selectedLabel() }}</span>
@@ -31,7 +31,9 @@
             (mouseleave)="mouseLeave(option)"
             [id]="'option' + index"
             >
-            <div [class]="searchFilter ? 'search-filter-container' : 'container'">
+            <div 
+                [class]="searchFilter ? 'search-filter-container' : ('container-' + size)"
+            >
                 <span>{{ option.label }}</span>
                 <app-icon
                     *ngIf="option.iconType"

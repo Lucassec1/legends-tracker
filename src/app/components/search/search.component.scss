@@ -101,18 +101,3 @@
         @include search-icon(0.75rem, 'search-active');
     }
 }
-
-.filter {
-    @include border-radius(0px, 5px);
-    border: none;
-    outline: none;
-    background-color: $neutral-3;
-    color: $neutral-6;
-    padding: 2px 5px;
-    font-size: 1rem;
-
-    &:focus {
-        border-bottom-right-radius: 0px;
-        border-bottom: 1px solid $neutral-1;
-    }
-}

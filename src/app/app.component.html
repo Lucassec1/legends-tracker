@@ -91,9 +91,133 @@
                 },
             ]"
         ></app-dropdown>
+
+        <app-dropdown
+            size="lg"
+            [autoClose]="false"
+            [open]="true"
+            [options]="[
+                {
+                    'default': false,
+                    'label': 'Option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'search'
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option with icon',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': 'close'
+                },
+                {
+                    'default': true,
+                    'label': 'Default option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'interrogation'
+                },
+                {
+                    'default': false,
+                    'label': 'Common option',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': ''
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': ''
+                },
+            ]"
+        ></app-dropdown>
+        <app-dropdown
+            size="lg"
+            [options]="[
+                {
+                    'default': false,
+                    'label': 'Option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'search'
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option with icon',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': 'close'
+                },
+                {
+                    'default': true,
+                    'label': 'Default option with icon',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': 'interrogation'
+                },
+                {
+                    'default': false,
+                    'label': 'Common option',
+                    'selected': false,
+                    'disabled': false,
+                    'hovered': false,
+                    'iconType': ''
+                },
+                {
+                    'default': false,
+                    'label': 'Disabled option',
+                    'selected': false,
+                    'disabled': true,
+                    'hovered': false,
+                    'iconType': ''
+                },
+            ]"
+        ></app-dropdown>
     </div>
-    <div style="border: 1px solid red; width: 30vw;">
+
+    <br />
+
+    <div style="width: 30vw;">
+        <h4>Search with dropdown component &#x1F633;</h4>
         <app-search size="lg" filter="true" 
+        [filterOptions]="[
+            {
+                'default': true,
+                'label': 'Geral',
+                'selected': false,
+                'disabled': false,
+                'hovered': false
+            },
+            {
+                'default': false,
+                'label': 'Summoners',
+                'selected': false,
+                'disabled': false,
+                'hovered': false,
+                'iconType': 'close'
+            },
+            {
+                'default': false,
+                'label': 'Usuários',
+                'selected': false,
+                'disabled': false,
+                'hovered': false,
+                'iconType': 'close'
+            },
+        ]"></app-search>
+        <br />
+        <app-search size="md" filter="true" 
         [filterOptions]="[
             {
                 'default': true,
