@@ -8,6 +8,7 @@ export interface AppAvatarProps {
   size: SizeType;
   image?: string;
   border?: string;
+  onErrorImage?: string;
 }
 
 @Component({
@@ -19,12 +20,7 @@ export class AvatarComponent implements OnInit {
   @Input() size?: SizeType = 'md'; 
   @Input() image?: string;
   @Input() border: TypeBorder = "true";
-
-  onErrorImage() {
-    this.image = "../../assets/user.svg";
-  } 
-
-  public defaultImage = "../../assets/user.svg";
+  @Input() onErrorImage?: string;
 
   public type!: AvatarBorderOptions;
 
