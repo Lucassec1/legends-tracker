@@ -52,13 +52,63 @@
             "methods": []
         },
         {
+            "name": "AppBadgeProps",
+            "id": "interface-AppBadgeProps-35607a1adb8c46e73174d4f12d24212905d3cd519c9599ed9750ca1b4a44be0662ec2f8776622e4f2836b7c56c32cb0d74505e8154ab7c2352e43bac89ef58be",
+            "file": "src/app/components/badge/badge.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Component, OnInit, Input, OnChanges } from '@angular/core';\r\nimport { BadgeDirectionType } from '../core/types/badge';\r\n\r\ntype Size = 'sm' | 'md';\r\ntype Type = 'notification' | 'level';\r\n\r\nexport interface AppBadgeProps {\r\n  value: number;\r\n  type?: Type;\r\n  size?: Size;\r\n  direction?: BadgeDirectionType;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-badge',\r\n  templateUrl: './badge.component.html',\r\n  styleUrls: ['./badge.component.scss'],\r\n})\r\nexport class BadgeComponent implements OnChanges, OnInit {\r\n  @Input() value!: number;\r\n  @Input() type?: Type = 'notification' ;\r\n  @Input() size?: Size = 'md';\r\n  @Input() direction?: BadgeDirectionType = 'bottom-right';\r\n\r\n  valueInBadge?: string;\r\n\r\n  ngOnInit(): void {\r\n    this.valueInBadge = this.formatValue();\r\n  }\r\n\r\n  ngOnChanges(): void {\r\n    this.valueInBadge = this.formatValue();\r\n  }\r\n\r\n  formatValue(): string {\r\n    const newValue = this.exists(this.value) ? this.limitValue(this.value) : '';\r\n    return this.type === 'notification' ? newValue : this.value.toString();\r\n  }\r\n\r\n  private exists(value: number): boolean {\r\n    return value !== null && !isNaN(value);\r\n  }\r\n\r\n  private limitValue(value: number): string {\r\n    const maxValue = 99;\r\n    if (value > maxValue) {\r\n      return `${maxValue}+`;\r\n    }\r\n    return value.toString();\r\n  }\r\n}",
+            "properties": [
+                {
+                    "name": "direction",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BadgeDirectionType",
+                    "optional": true,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "size",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Size",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Type",
+                    "optional": true,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "AppButtonProps",
-            "id": "interface-AppButtonProps-5682aa1e6c3230d1510ae39341d9df9c32603a887ffabbe65f4ec962e57942346337d82edae1fdb9f2ca51c0578a20b541ee922d58a3b4a3b84084f70c14f2c9",
+            "id": "interface-AppButtonProps-9b2c4ce5a263c61a06a6df5c4e2f239d0f0fb35151252b02b5b5172277c900788076d87d7c2f4226bde38993af3eaae38ff5e78f9dbd1cd6f122fb556bd57469",
             "file": "src/app/components/button/button.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';\r\nimport { IconType } from '../icon/icon.component';\r\nimport { SafeAny } from '../utils/safe-any';\r\n\r\nimport { ButtonIconSizeOptions } from '../core/types/button'\r\n\r\ntype Type = 'primary' | 'secondary' | 'ghost';\r\ntype Size = 'sm' | 'md' | 'lg';\r\ntype Color = 'primary-color' | 'secondary-color';\r\n\r\nexport interface AppButtonProps {\r\n  label?: string;\r\n  type?: Type;\r\n  size?: Size;\r\n  disabled?: boolean;\r\n  loading?: boolean;\r\n  iconType?: IconType;\r\n  rightSideIcon?: boolean;\r\n  expand?: boolean;\r\n  colorType?: Color;\r\n  buttonOnClick?: EventEmitter<SafeAny>;\r\n}\r\n@Component({\r\n  selector: 'app-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss']\r\n})\r\n\r\nexport class ButtonComponent implements OnInit {\r\n  @Input() label?: string;\r\n  @Input() type?: Type = 'primary';\r\n  @Input() size: Size = 'sm';\r\n  @Input() disabled? = false;\r\n  @Input() loading? = false;\r\n  @Input() iconType?: string = '';\r\n  @Input() rightSideIcon?: boolean = false;\r\n  @Input() expand?: boolean = false;\r\n  @Input() colorType?: Color = 'primary-color';\r\n  @Output() buttonOnClick = new EventEmitter();\r\n  \r\n  public iconSize!: ButtonIconSizeOptions;\r\n\r\n  handleClick() {\r\n    if (!this.loading && !this.disabled) {\r\n      this.loading = !this.loading;\r\n      this.buttonOnClick.emit();\r\n    }\r\n  }\r\n\r\n  expandButton() {\r\n    return this.expand ? '100%' : '';\r\n  }\r\n\r\n  ghostColor() {\r\n    return this.type === 'ghost' ? ' text-' + this.colorType : '';\r\n  }\r\n\r\n  ngOnInit() {\r\n    this.iconSize = ButtonIconSizeOptions[this.size];\r\n  }\r\n}",
+            "sourceCode": "import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';\r\nimport { IconType } from '../icon/icon.component';\r\nimport { SafeAny } from '../utils/safe-any';\r\n\r\nimport { ButtonIconSizeOptions } from '../core/types/button'\r\n\r\ntype Type = 'primary' | 'secondary' | 'ghost';\r\ntype Size = 'sm' | 'md' | 'lg';\r\ntype Color = 'primary-color' | 'secondary-color';\r\n\r\nexport interface AppButtonProps {\r\n  label?: string;\r\n  type?: Type;\r\n  size?: Size;\r\n  disabled?: boolean;\r\n  loading?: boolean;\r\n  iconType?: IconType;\r\n  rightSideIcon?: boolean;\r\n  expand?: boolean;\r\n  colorType?: Color;\r\n  buttonOnClick?: EventEmitter<SafeAny>;\r\n}\r\n@Component({\r\n  selector: 'app-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss']\r\n})\r\n\r\nexport class ButtonComponent implements OnInit {\r\n  @Input() label?: string;\r\n  @Input() type?: Type = 'primary';\r\n  @Input() size: Size = 'sm';\r\n  @Input() disabled? = false;\r\n  @Input() loading? = false;\r\n  @Input() iconType?: string = '';\r\n  @Input() rightSideIcon?: boolean = false;\r\n  @Input() expand?: boolean = false;\r\n  @Input() colorType?: Color = 'primary-color';\r\n  @Output() buttonOnClick = new EventEmitter();\r\n\r\n  public iconSize!: ButtonIconSizeOptions;\r\n\r\n  handleClick() {\r\n    if (!this.loading && !this.disabled) {\r\n      this.loading = !this.loading;\r\n      this.buttonOnClick.emit();\r\n    }\r\n  }\r\n\r\n  expandButton() {\r\n    return this.expand ? '100%' : '';\r\n  }\r\n\r\n  ghostColor() {\r\n    return this.type === 'ghost' ? ' text-' + this.colorType : '';\r\n  }\r\n\r\n  ngOnInit() {\r\n    this.iconSize = ButtonIconSizeOptions[this.size];\r\n  }\r\n}",
             "properties": [
                 {
                     "name": "buttonOnClick",
@@ -157,12 +207,12 @@
         },
         {
             "name": "AppInputProps",
-            "id": "interface-AppInputProps-2cc95d4f081fe0c28d6cd029a05feb33a808c74db9be60fc85b388c95fd1fabe61bff916b7c469e7707b73231bf0451799095ef9f9495e05528e65bede1f6ec8",
+            "id": "interface-AppInputProps-edeba2d67c3179156ed3feceba4de408c1e1334a99ce4a34e7f05d1e787afaa92a21b1438ebeb1303b5abf93c9247264e918fd275359304c32eee7d8624d6f74",
             "file": "src/app/components/input/input.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\n\r\ntype Type = 'user' | 'text' | 'password' | 'email' ;\r\ntype Size = 'sm' | 'md' ;\r\n\r\nexport interface AppInputProps {\r\n  placeholder?: string;\r\n  type?: Type;\r\n  size?: Size; \r\n  visible?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  templateUrl: './input.component.html',\r\n  styleUrls: ['./input.component.scss']\r\n})\r\n\r\nexport class InputComponent implements OnInit {\r\n  @Input() placeholder?: string = '';\r\n  @Input() type?: Type = 'text';\r\n  @Input() size?: Size = 'md';\r\n  @Input() visible? = false;\r\n\r\n  passwordInput() {\r\n    this.visible = !this.visible;\r\n  }\r\n  \r\n  constructor() {\r\n  }\r\n  \r\n  ngOnInit(): void {\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\n\r\ntype Type = 'user' | 'text' | 'password' | 'email' ;\r\ntype Size = 'sm' | 'md' ;\r\n\r\nexport interface AppInputProps {\r\n  placeholder?: string;\r\n  type?: Type;\r\n  size?: Size; \r\n  visible?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  templateUrl: './input.component.html',\r\n  styleUrls: ['./input.component.scss']\r\n})\r\n\r\nexport class InputComponent  {\r\n  @Input() placeholder?: string = '';\r\n  @Input() type?: Type = 'text';\r\n  @Input() size?: Size = 'md';\r\n  @Input() visible? = false;\r\n\r\n  passwordInput() {\r\n    this.visible = !this.visible;\r\n  }\r\n}",
             "properties": [
                 {
                     "name": "placeholder",
@@ -452,12 +502,12 @@
         },
         {
             "name": "IconProps",
-            "id": "interface-IconProps-400c1281d4fa471d97760d400d20bc866acd4e16b082bef594ad30b347be2c75bc103aa171de486d849b8d444fe89431369b6a5ff38a46d4d096a2808b16c523",
+            "id": "interface-IconProps-0c05f29e95c27c2174d92516f98ec5f3e0138ff9e7ac05812a0f461ac7db2b1b410bc81f5bc45171f42b66ea8070a7be2740f440e3d6349094c9b2031f82c8ef",
             "file": "src/app/components/icon/icon.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, ElementRef } from '@angular/core';\r\nimport { iconsPaths } from './svgs/icons';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\n\r\nexport type SvgModule = typeof import('./svgs/icons');\r\nexport type IconType = keyof typeof iconsPaths;\r\n\r\nexport interface IconProps {\r\n  type: IconType ,\r\n  size?: number,\r\n  color?: string, \r\n}\r\n\r\n@Component({\r\n  selector: 'app-icon',\r\n  templateUrl: './icon.component.html',\r\n  styleUrls: ['./icon.component.scss']\r\n})\r\n\r\nexport class AppIconComponent {\r\n  @Input() type!: IconType;\r\n  @Input() size = 17;\r\n  @Input() color = '#fcfaff'\r\n\r\n  constructor(private sanitizer: DomSanitizer, private el: ElementRef) {}\r\n\r\n  getPath() {\r\n    return this.sanitizer.bypassSecurityTrustHtml(iconsPaths[this.type]);\r\n  }\r\n\r\n  changeColor() {\r\n    return this.type === \"add\" ? this.color : 'transparent'\r\n  }\r\n}",
+            "sourceCode": "import { Component, Input, ElementRef } from '@angular/core';\r\nimport { iconsPaths } from './svgs/icons';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\n\r\nexport type SvgModule = typeof import('./svgs/icons');\r\nexport type IconType = keyof typeof iconsPaths;\r\n\r\nexport interface IconProps {\r\n  type?: IconType,\r\n  size?: number,\r\n  color?: string, \r\n}\r\n\r\n@Component({\r\n  selector: 'app-icon',\r\n  templateUrl: './icon.component.html',\r\n  styleUrls: ['./icon.component.scss']\r\n})\r\n\r\nexport class AppIconComponent {\r\n  @Input() type!: IconType;\r\n  @Input() size = 17;\r\n  @Input() color = '#fcfaff'\r\n\r\n  constructor(private sanitizer: DomSanitizer, private el: ElementRef) {}\r\n\r\n  getPath() {\r\n    return this.sanitizer.bypassSecurityTrustHtml(iconsPaths[this.type]);\r\n  }\r\n\r\n  changeColor() {\r\n    return this.type === \"add\" ? this.color : 'transparent'\r\n  }\r\n}",
             "properties": [
                 {
                     "name": "color",
@@ -482,7 +532,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "IconType",
-                    "optional": false,
+                    "optional": true,
                     "description": "",
                     "line": 9
                 }
@@ -689,16 +739,16 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "@import '../app/styles/index.scss';\r\n\r\ndiv {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 10px;\r\n    gap: 10px;\r\n}",
+                    "data": "@import '../app/styles/index.scss';\r\n\r\ndiv {\r\n    display: flex;\r\n    flex-direction: column;\r\n    margin-top: 10px;\r\n    gap: 10px;\r\n}\r\n\r\n.avatar {\r\n    position: relative;\r\n    width: 85px;\r\n    height: 85px;\r\n    border: 2px solid red;\r\n    border-radius: 50%;\r\n}",
                     "styleUrl": "./app.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"container\">\r\n    <app-tag label=\"mid\"></app-tag>\r\n</div>"
+            "templateData": "<div class=\"container\">\r\n    <app-tag label=\"mid\"></app-tag>\r\n</div>\r\n\r\n<app-button label=\"Firmino\" size=\"sm\"></app-button>\r\n  <app-button size=\"sm\" label=\"Ver mais\" iconType=\"interrogation\"></app-button>\r\n\r\n  <app-button type='secondary' size=\"md\" label=\"Secondary\" [loading]=\"true\"></app-button>\r\n\r\n  <app-button type='ghost' size=\"sm\" label=\"Ghost\" ></app-button>\r\n\r\n  <app-button type='ghost' size=\"md\" label=\"Ghost\" colorType=\"secondary-color\"></app-button>\r\n\r\n  <div class=\"avatar\">\r\n      <app-badge type=\"notification\" size=\"md\" direction=\"bottom-right\"></app-badge>\r\n  </div>\r\n\r\n  <div style=\"display: flex; gap: 10px;\">\r\n      <app-tag label=\"suporte\"></app-tag>\r\n      <app-tag label=\"adc\"></app-tag>\r\n  </div>\r\n\r\n  <div class=\"avatar\">\r\n      <app-badge type=\"notification\" [value]=\"10\" size=\"md\" direction=\"bottom-right\"></app-badge>\r\n  </div>\r\n\r\n  <div style=\"display: flex; gap: 10px;\">\r\n      <app-tag label=\"suporte\"></app-tag> \r\n      <app-tag label=\"adc\"></app-tag>\r\n  </div>\r\n\r\n  <div>\r\n      <app-input size=\"sm\" placeholder=\"Digite algo aqui\"></app-input>\r\n      <app-input placeholder=\"Digite algo aqui\" type=\"email\"></app-input>\r\n      <app-input size=\"md\" placeholder=\"Digite algo aqui\" type=\"password\"></app-input>\r\n  </div>\r\n\r\n  <div>\r\n      <h3>Card Component - Match History Variant</h3>\r\n      <app-card type=\"match-history\" victory=\"true\" champion=\"yuumi\" firstSummonerSpell=\"heal\" secondSummonerSpell=\"ignite\" [kill]=\"1\" [death]=\"3\" [assistance]=\"28\"></app-card>\r\n      <app-card type=\"match-history\" victory=\"false\" champion=\"irelia\" firstSummonerSpell=\"flash\" secondSummonerSpell=\"ignite\" [kill]=\"1\" [death]=\"36\" [assistance]=\"19\"></app-card>\r\n      <app-card type=\"match-history\" victory=\"true\" champion=\"caitlyn\" firstSummonerSpell=\"barrier\" secondSummonerSpell=\"flash\" [kill]=\"6\" [death]=\"2\" [assistance]=\"3\"></app-card>\r\n      <app-card type=\"match-history\" champion=\"anivia\" firstSummonerSpell=\"barrier\" secondSummonerSpell=\"flash\" [kill]=\"6\" [death]=\"2\" [assistance]=\"3\"></app-card>\r\n  </div>\r\n\r\n   <app-tag label=\"mid\"></app-tag>\r\n</div>"
         },
         {
             "name": "AppIconComponent",
-            "id": "component-AppIconComponent-400c1281d4fa471d97760d400d20bc866acd4e16b082bef594ad30b347be2c75bc103aa171de486d849b8d444fe89431369b6a5ff38a46d4d096a2808b16c523",
+            "id": "component-AppIconComponent-0c05f29e95c27c2174d92516f98ec5f3e0138ff9e7ac05812a0f461ac7db2b1b410bc81f5bc45171f42b66ea8070a7be2740f440e3d6349094c9b2031f82c8ef",
             "file": "src/app/components/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -773,7 +823,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, ElementRef } from '@angular/core';\r\nimport { iconsPaths } from './svgs/icons';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\n\r\nexport type SvgModule = typeof import('./svgs/icons');\r\nexport type IconType = keyof typeof iconsPaths;\r\n\r\nexport interface IconProps {\r\n  type: IconType ,\r\n  size?: number,\r\n  color?: string, \r\n}\r\n\r\n@Component({\r\n  selector: 'app-icon',\r\n  templateUrl: './icon.component.html',\r\n  styleUrls: ['./icon.component.scss']\r\n})\r\n\r\nexport class AppIconComponent {\r\n  @Input() type!: IconType;\r\n  @Input() size = 17;\r\n  @Input() color = '#fcfaff'\r\n\r\n  constructor(private sanitizer: DomSanitizer, private el: ElementRef) {}\r\n\r\n  getPath() {\r\n    return this.sanitizer.bypassSecurityTrustHtml(iconsPaths[this.type]);\r\n  }\r\n\r\n  changeColor() {\r\n    return this.type === \"add\" ? this.color : 'transparent'\r\n  }\r\n}",
+            "sourceCode": "import { Component, Input, ElementRef } from '@angular/core';\r\nimport { iconsPaths } from './svgs/icons';\r\nimport { DomSanitizer } from '@angular/platform-browser';\r\n\r\nexport type SvgModule = typeof import('./svgs/icons');\r\nexport type IconType = keyof typeof iconsPaths;\r\n\r\nexport interface IconProps {\r\n  type?: IconType,\r\n  size?: number,\r\n  color?: string, \r\n}\r\n\r\n@Component({\r\n  selector: 'app-icon',\r\n  templateUrl: './icon.component.html',\r\n  styleUrls: ['./icon.component.scss']\r\n})\r\n\r\nexport class AppIconComponent {\r\n  @Input() type!: IconType;\r\n  @Input() size = 17;\r\n  @Input() color = '#fcfaff'\r\n\r\n  constructor(private sanitizer: DomSanitizer, private el: ElementRef) {}\r\n\r\n  getPath() {\r\n    return this.sanitizer.bypassSecurityTrustHtml(iconsPaths[this.type]);\r\n  }\r\n\r\n  changeColor() {\r\n    return this.type === \"add\" ? this.color : 'transparent'\r\n  }\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -823,7 +873,7 @@
                     }
                 ]
             },
-            "templateData": "<svg\r\n  style.stroke=\"{{ color }}\"\r\n  style.height.px=\"{{ size }}\"\r\n  style.width.px=\"{{ size }}\"\r\n  viewBox=\"0 0 24 24\"\r\n  [style.fill]=\"changeColor()\"\r\n  xmlns=\"http://www.w3.org/2000/svg\"\r\n  [id]=\"'app-icon-' + type\"\r\n  [innerHTML]=\"getPath()\"\r\n></svg>\r\n"
+            "templateData": "<svg\r\n  style.height.px=\"{{ size }}\"\r\n  style.width.px=\"{{ size }}\"\r\n  style.stroke=\"{{ color }}\"\r\n  viewBox=\"0 0 24 24\"\r\n  [style.fill]=\"changeColor()\"\r\n  xmlns=\"http://www.w3.org/2000/svg\"\r\n  [id]=\"'app-icon-' + type\"\r\n  data-testid=\"iconElement\"\r\n  [innerHTML]=\"getPath()\"\r\n></svg>\r\n\r\n  <!-- attr.height=\"{{ size }}px\"\r\n  attr.width=\"{{ size }}px\" -->"
         },
         {
             "name": "AvatarComponent",
@@ -941,8 +991,191 @@
             "templateData": "<div \r\n    [class]=\"'border-size-' + size\" \r\n    *ngIf=\"border == 'true'\" \r\n    data-testid=\"avatarElement\"\r\n>\r\n    <div [class]=\"'background-size-' + size\">\r\n        <div\r\n            [class]=\"type + '-avatar-size-' + size\"\r\n        >\r\n            <img [src]=\"image || defaultImage\" />\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n<div\r\n    [class]=\"type + '-avatar-size-' + size\"\r\n    *ngIf = \"border == 'false'\"\r\n    data-testid=\"avatarElement-without-border\"\r\n>\r\n    <img [src]=\"image || defaultImage\" />\r\n</div>"
         },
         {
+            "name": "BadgeComponent",
+            "id": "component-BadgeComponent-35607a1adb8c46e73174d4f12d24212905d3cd519c9599ed9750ca1b4a44be0662ec2f8776622e4f2836b7c56c32cb0d74505e8154ab7c2352e43bac89ef58be",
+            "file": "src/app/components/badge/badge.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-badge",
+            "styleUrls": [
+                "./badge.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./badge.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "direction",
+                    "defaultValue": "'bottom-right'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "BadgeDirectionType",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "Size",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'notification'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "Type",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "valueInBadge",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "exists",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "formatValue",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "limitValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit, Input, OnChanges } from '@angular/core';\r\nimport { BadgeDirectionType } from '../core/types/badge';\r\n\r\ntype Size = 'sm' | 'md';\r\ntype Type = 'notification' | 'level';\r\n\r\nexport interface AppBadgeProps {\r\n  value: number;\r\n  type?: Type;\r\n  size?: Size;\r\n  direction?: BadgeDirectionType;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-badge',\r\n  templateUrl: './badge.component.html',\r\n  styleUrls: ['./badge.component.scss'],\r\n})\r\nexport class BadgeComponent implements OnChanges, OnInit {\r\n  @Input() value!: number;\r\n  @Input() type?: Type = 'notification' ;\r\n  @Input() size?: Size = 'md';\r\n  @Input() direction?: BadgeDirectionType = 'bottom-right';\r\n\r\n  valueInBadge?: string;\r\n\r\n  ngOnInit(): void {\r\n    this.valueInBadge = this.formatValue();\r\n  }\r\n\r\n  ngOnChanges(): void {\r\n    this.valueInBadge = this.formatValue();\r\n  }\r\n\r\n  formatValue(): string {\r\n    const newValue = this.exists(this.value) ? this.limitValue(this.value) : '';\r\n    return this.type === 'notification' ? newValue : this.value.toString();\r\n  }\r\n\r\n  private exists(value: number): boolean {\r\n    return value !== null && !isNaN(value);\r\n  }\r\n\r\n  private limitValue(value: number): string {\r\n    const maxValue = 99;\r\n    if (value > maxValue) {\r\n      return `${maxValue}+`;\r\n    }\r\n    return value.toString();\r\n  }\r\n}",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"../../styles/index.scss\";\r\n\r\n@mixin badge-size($badgeSize, $fontSize) {\r\n    width: $badgeSize;\r\n    height: $badgeSize;\r\n    font-size: $fontSize;\r\n}\r\n\r\n@mixin badge-colors($color, $backgroundColor) {\r\n    color: $color;\r\n    background-color: $backgroundColor;\r\n}\r\n\r\nspan {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    font-size: 10px;\r\n    padding: 1px;\r\n    border-radius: 50%;\r\n    position: absolute;\r\n}\r\n\r\n.notification-app-badge-sm {\r\n    @include badge-size(18px, 8px);\r\n    @include badge-colors($neutral-color, $primary-color);\r\n}\r\n\r\n.notification-app-badge-md {\r\n    @include badge-size(24px, 10px);\r\n    @include badge-colors($neutral-color, $primary-color);\r\n}\r\n\r\n.level-app-badge-sm {\r\n    @include badge-size(26px, 10px);\r\n    @include badge-colors($neutral-color, $neutral-3);\r\n    border: 1px solid $neutral-1;\r\n}\r\n\r\n.level-app-badge-md {\r\n    @include badge-size(28px, 10px);\r\n    @include badge-colors($neutral-color, $neutral-3);\r\n    border: 1px solid $neutral-1;\r\n}\r\n\r\n.app-badge-bottom-right {\r\n    left: 70%;\r\n    bottom: 0%;\r\n}\r\n\r\n.app-badge-bottom-left {\r\n    right: 70%;\r\n    bottom: 0%;\r\n}\r\n\r\n.app-badge-top-right {\r\n    left: 70%;\r\n    top: 0%;\r\n}\r\n\r\n.app-badge-top-left {\r\n    right: 70%;\r\n    top: 0%;\r\n}",
+                    "styleUrl": "./badge.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnChanges",
+                "OnInit"
+            ],
+            "templateData": "<span\r\n    data-testid=\"badgeElement\"\r\n    [class]=\"type + '-app-badge-' + size + ' app-badge-' + direction\"\r\n>{{ valueInBadge }}</span>\r\n"
+        },
+        {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-5682aa1e6c3230d1510ae39341d9df9c32603a887ffabbe65f4ec962e57942346337d82edae1fdb9f2ca51c0578a20b541ee922d58a3b4a3b84084f70c14f2c9",
+            "id": "component-ButtonComponent-9b2c4ce5a263c61a06a6df5c4e2f239d0f0fb35151252b02b5b5172277c900788076d87d7c2f4226bde38993af3eaae38ff5e78f9dbd1cd6f122fb556bd57469",
             "file": "src/app/components/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1113,7 +1346,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';\r\nimport { IconType } from '../icon/icon.component';\r\nimport { SafeAny } from '../utils/safe-any';\r\n\r\nimport { ButtonIconSizeOptions } from '../core/types/button'\r\n\r\ntype Type = 'primary' | 'secondary' | 'ghost';\r\ntype Size = 'sm' | 'md' | 'lg';\r\ntype Color = 'primary-color' | 'secondary-color';\r\n\r\nexport interface AppButtonProps {\r\n  label?: string;\r\n  type?: Type;\r\n  size?: Size;\r\n  disabled?: boolean;\r\n  loading?: boolean;\r\n  iconType?: IconType;\r\n  rightSideIcon?: boolean;\r\n  expand?: boolean;\r\n  colorType?: Color;\r\n  buttonOnClick?: EventEmitter<SafeAny>;\r\n}\r\n@Component({\r\n  selector: 'app-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss']\r\n})\r\n\r\nexport class ButtonComponent implements OnInit {\r\n  @Input() label?: string;\r\n  @Input() type?: Type = 'primary';\r\n  @Input() size: Size = 'sm';\r\n  @Input() disabled? = false;\r\n  @Input() loading? = false;\r\n  @Input() iconType?: string = '';\r\n  @Input() rightSideIcon?: boolean = false;\r\n  @Input() expand?: boolean = false;\r\n  @Input() colorType?: Color = 'primary-color';\r\n  @Output() buttonOnClick = new EventEmitter();\r\n  \r\n  public iconSize!: ButtonIconSizeOptions;\r\n\r\n  handleClick() {\r\n    if (!this.loading && !this.disabled) {\r\n      this.loading = !this.loading;\r\n      this.buttonOnClick.emit();\r\n    }\r\n  }\r\n\r\n  expandButton() {\r\n    return this.expand ? '100%' : '';\r\n  }\r\n\r\n  ghostColor() {\r\n    return this.type === 'ghost' ? ' text-' + this.colorType : '';\r\n  }\r\n\r\n  ngOnInit() {\r\n    this.iconSize = ButtonIconSizeOptions[this.size];\r\n  }\r\n}",
+            "sourceCode": "import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';\r\nimport { IconType } from '../icon/icon.component';\r\nimport { SafeAny } from '../utils/safe-any';\r\n\r\nimport { ButtonIconSizeOptions } from '../core/types/button'\r\n\r\ntype Type = 'primary' | 'secondary' | 'ghost';\r\ntype Size = 'sm' | 'md' | 'lg';\r\ntype Color = 'primary-color' | 'secondary-color';\r\n\r\nexport interface AppButtonProps {\r\n  label?: string;\r\n  type?: Type;\r\n  size?: Size;\r\n  disabled?: boolean;\r\n  loading?: boolean;\r\n  iconType?: IconType;\r\n  rightSideIcon?: boolean;\r\n  expand?: boolean;\r\n  colorType?: Color;\r\n  buttonOnClick?: EventEmitter<SafeAny>;\r\n}\r\n@Component({\r\n  selector: 'app-button',\r\n  templateUrl: './button.component.html',\r\n  styleUrls: ['./button.component.scss']\r\n})\r\n\r\nexport class ButtonComponent implements OnInit {\r\n  @Input() label?: string;\r\n  @Input() type?: Type = 'primary';\r\n  @Input() size: Size = 'sm';\r\n  @Input() disabled? = false;\r\n  @Input() loading? = false;\r\n  @Input() iconType?: string = '';\r\n  @Input() rightSideIcon?: boolean = false;\r\n  @Input() expand?: boolean = false;\r\n  @Input() colorType?: Color = 'primary-color';\r\n  @Output() buttonOnClick = new EventEmitter();\r\n\r\n  public iconSize!: ButtonIconSizeOptions;\r\n\r\n  handleClick() {\r\n    if (!this.loading && !this.disabled) {\r\n      this.loading = !this.loading;\r\n      this.buttonOnClick.emit();\r\n    }\r\n  }\r\n\r\n  expandButton() {\r\n    return this.expand ? '100%' : '';\r\n  }\r\n\r\n  ghostColor() {\r\n    return this.type === 'ghost' ? ' text-' + this.colorType : '';\r\n  }\r\n\r\n  ngOnInit() {\r\n    this.iconSize = ButtonIconSizeOptions[this.size];\r\n  }\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1413,7 +1646,7 @@
         },
         {
             "name": "InputComponent",
-            "id": "component-InputComponent-2cc95d4f081fe0c28d6cd029a05feb33a808c74db9be60fc85b388c95fd1fabe61bff916b7c469e7707b73231bf0451799095ef9f9495e05528e65bede1f6ec8",
+            "id": "component-InputComponent-edeba2d67c3179156ed3feceba4de408c1e1334a99ce4a34e7f05d1e787afaa92a21b1438ebeb1303b5abf93c9247264e918fd275359304c32eee7d8624d6f74",
             "file": "src/app/components/input/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1471,16 +1704,6 @@
             "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 32,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
                     "name": "passwordInput",
                     "args": [],
                     "optional": false,
@@ -1498,7 +1721,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\n\r\ntype Type = 'user' | 'text' | 'password' | 'email' ;\r\ntype Size = 'sm' | 'md' ;\r\n\r\nexport interface AppInputProps {\r\n  placeholder?: string;\r\n  type?: Type;\r\n  size?: Size; \r\n  visible?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  templateUrl: './input.component.html',\r\n  styleUrls: ['./input.component.scss']\r\n})\r\n\r\nexport class InputComponent implements OnInit {\r\n  @Input() placeholder?: string = '';\r\n  @Input() type?: Type = 'text';\r\n  @Input() size?: Size = 'md';\r\n  @Input() visible? = false;\r\n\r\n  passwordInput() {\r\n    this.visible = !this.visible;\r\n  }\r\n  \r\n  constructor() {\r\n  }\r\n  \r\n  ngOnInit(): void {\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\r\n\r\ntype Type = 'user' | 'text' | 'password' | 'email' ;\r\ntype Size = 'sm' | 'md' ;\r\n\r\nexport interface AppInputProps {\r\n  placeholder?: string;\r\n  type?: Type;\r\n  size?: Size; \r\n  visible?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-input',\r\n  templateUrl: './input.component.html',\r\n  styleUrls: ['./input.component.scss']\r\n})\r\n\r\nexport class InputComponent  {\r\n  @Input() placeholder?: string = '';\r\n  @Input() type?: Type = 'text';\r\n  @Input() size?: Size = 'md';\r\n  @Input() visible? = false;\r\n\r\n  passwordInput() {\r\n    this.visible = !this.visible;\r\n  }\r\n}",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1507,17 +1730,6 @@
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 27
-            },
-            "implements": [
-                "OnInit"
-            ],
             "templateData": "<div \r\n    [class]=\"'app-input-' + type + '-' + size\"\r\n    data-testid=\"divElement\"\r\n>\r\n    <input\r\n        [placeholder]=\"placeholder\"\r\n        [type] = \"visible ? 'text' : type\"\r\n        data-testid=\"inputElement\"\r\n    >\r\n        \r\n    <button\r\n        *ngIf=\"type === 'password'\"\r\n        (click)=\"passwordInput()\"\r\n        [class]=\"visible ? 'password-visible' : 'password-invisible'\"\r\n        data-testid=\"buttonElement\"\r\n    >\r\n    </button>\r\n</div>"
         },
         {
@@ -2091,13 +2303,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-444d668ff93a85c7b165e53dc40b97edc77cb2c4df37c1360dc7a6e99005164b4262c7ecfd6c088d547b9c17c8b9522eaa5ae4c53fb9b792c9125ea589fd8663",
+            "id": "module-AppModule-77d579198f5127abfd90c5169d861adc487b42ea13793395ac0e3f7a49e307c880ada78211eff2f2e3fc01700f0cf05d0eed90c61f0257de3aff86aec4f6f525",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { DividerComponent } from './components/divider/divider.component';\r\nimport { ComponentsModule } from './components/components.module';\r\nimport { ProgressBarComponent } from './components/progress-bar/progress-bar.component';\r\nimport { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\nimport { AvatarComponent } from './components/avatar/avatar.component';\r\nimport { ButtonComponent } from './components/button/button.component';\r\nimport { CardComponent } from './components/card/card.component';\r\nimport { AppIconComponent } from './components/icon/icon.component';\r\nimport { InputComponent } from './components/input/input.component';\r\nimport { SearchComponent } from './components/search/search.component';\r\nimport { TabComponent } from './components/tab/tab.component';\r\nimport { TabGroupComponent } from './components/tab-group/tab-group.component';\r\nimport { TagComponent } from './components/tag/tag.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    AvatarComponent,\r\n    SearchComponent,\r\n    ButtonComponent,\r\n    AppIconComponent,\r\n    TagComponent,\r\n    TabGroupComponent,\r\n    TabComponent,\r\n    InputComponent,\r\n    CardComponent,\r\n    ProgressBarComponent,\r\n    DividerComponent,\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\n\r\nimport { BadgeComponent } from './components/badge/badge.component';\r\nimport { AvatarComponent } from './components/avatar/avatar.component';\r\nimport { ButtonComponent } from './components/button/button.component';\r\nimport { CardComponent } from './components/card/card.component';\r\nimport { DividerComponent } from './components/divider/divider.component';\r\nimport { AppIconComponent } from './components/icon/icon.component';\r\nimport { ProgressBarComponent } from './components/progress-bar/progress-bar.component';\r\nimport { InputComponent } from './components/input/input.component';\r\nimport { SearchComponent } from './components/search/search.component';\r\nimport { TabComponent } from './components/tab/tab.component';\r\nimport { TabGroupComponent } from './components/tab-group/tab-group.component';\r\nimport { TagComponent } from './components/tag/tag.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent,\r\n    AvatarComponent,\r\n    SearchComponent,\r\n    ButtonComponent,\r\n    AppIconComponent,\r\n    TagComponent,\r\n    InputComponent,\r\n    CardComponent,\r\n    BadgeComponent,\r\n    TabGroupComponent,\r\n    TabComponent,\r\n    ProgressBarComponent,\r\n    DividerComponent,\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n  ],\r\n  providers: [],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -2114,6 +2326,9 @@
                         },
                         {
                             "name": "AvatarComponent"
+                        },
+                        {
+                            "name": "BadgeComponent"
                         },
                         {
                             "name": "ButtonComponent"
@@ -2208,13 +2423,13 @@
         },
         {
             "name": "ComponentsModule",
-            "id": "module-ComponentsModule-829742f55b38e644fc23f22160f18c22cef40a911f246b7d695927f6211ba9b794399b8dbd30eb877c3db11245e1877c00ac7ae00180abf4479fcf1a30add7db",
+            "id": "module-ComponentsModule-df9ed0e0f5f419ab060ac5ce9115381b3db5bf76e2ecac8a9bb755c546e57e0aeb67ff817532e07e86ce0ecb4a6d7a6ba14afb28180e9ee048534772104b5f2d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/components/components.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@NgModule({\r\n  declarations: [\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n  ],\r\n  exports: [\r\n  ],\r\n})\r\n\r\nexport class ComponentsModule { }",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@NgModule({\r\n  declarations: [],\r\n  imports: [\r\n    CommonModule,\r\n  ],\r\n  exports: [],\r\n})\r\n\r\nexport class ComponentsModule { }",
             "children": [
                 {
                     "type": "providers",
@@ -2246,6 +2461,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "add",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "championSplashImgURL",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2276,6 +2501,16 @@
                 "defaultValue": "'https://ddragon.leagueoflegends.com/cdn/12.20.1/data/pt_BR/champion.json'"
             },
             {
+                "name": "close",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2296,7 +2531,7 @@
                 "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
-                "name": "Ghost",
+                "name": "ghost",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/components/button/button.stories.ts",
@@ -2313,10 +2548,10 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Record<string, string>",
-                "defaultValue": "{\r\n    add,\r\n    'arrow-down': arrowDown,\r\n    close,\r\n    search,\r\n    interrogation,\r\n    'position-bot': positionBot,\r\n    'position-jungle': positionJungle,\r\n    'position-mid': positionMid,\r\n    'position-support': positionSupport,\r\n    'position-top': positionTop,\r\n}"
+                "defaultValue": "{\r\n    add,\r\n    'arrow-down': arrowDown,\r\n    close,\r\n    search,\r\n    interrogation,\r\n    'position-bot': positionBot,\r\n    'position-jungle': positionJungle,\r\n    'position-mid': positionMid,\r\n    'position-support': positionSupport,\r\n    'position-top': positionTop,\r\n    'arrow-left': arrowLeft,\r\n    bookmark,\r\n    edit,\r\n    'notification-all': notificationAll,\r\n    'notification-none': notificationNone,\r\n    settings,\r\n    star\r\n}"
             },
             {
-                "name": "Primary",
+                "name": "lg",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/components/button/button.stories.ts",
@@ -2326,7 +2561,67 @@
                 "defaultValue": "Template.bind({})"
             },
             {
-                "name": "Secondary",
+                "name": "loading",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "md",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Photo",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/avatar/avatar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "position",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/components/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "sm",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/components/button/button.stories.ts",
@@ -2349,15 +2644,36 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/components/avatar/avatar.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<AvatarComponent>",
+                "defaultValue": "(args: AvatarComponent) => ({\r\n    component: AvatarComponent,\r\n    props: args,\r\n    moduleMetadata: {\r\n        declarations: [AvatarComponent, AppIconComponent],\r\n        imports: [CommonModule],\r\n    },\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/components/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n})"
+                "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n    moduleMetadata: {\r\n        declarations: [ButtonComponent, AppIconComponent],\r\n        imports: [CommonModule],\r\n    },\r\n})"
             }
         ],
         "functions": [],
         "typealiases": [
+            {
+                "name": "BadgeDirectionType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"bottom-right\" | \"bottom-left\" | \"top-right\" | \"top-left\"",
+                "file": "src/app/components/core/types/badge.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
             {
                 "name": "BorderDirection",
                 "ctype": "miscellaneous",
@@ -2461,8 +2777,8 @@
                 "name": "Size",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"sm\" | \"md\" | \"lg\"",
-                "file": "src/app/components/button/button.component.ts",
+                "rawtype": "\"sm\" | \"md\"",
+                "file": "src/app/components/badge/badge.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2474,6 +2790,17 @@
                 "subtype": "typealias",
                 "rawtype": "\"sm\" | \"md\"",
                 "file": "src/app/components/input/input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "Size",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"sm\" | \"md\" | \"lg\"",
+                "file": "src/app/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2527,8 +2854,8 @@
                 "name": "Type",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "\"primary\" | \"secondary\" | \"ghost\"",
-                "file": "src/app/components/button/button.component.ts",
+                "rawtype": "\"notification\" | \"level\"",
+                "file": "src/app/components/badge/badge.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2540,6 +2867,17 @@
                 "subtype": "typealias",
                 "rawtype": "\"user\" | \"text\" | \"password\" | \"email\"",
                 "file": "src/app/components/input/input.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 186
+            },
+            {
+                "name": "Type",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"primary\" | \"secondary\" | \"ghost\"",
+                "file": "src/app/components/button/button.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -2809,6 +3147,118 @@
             }
         ],
         "groupedVariables": {
+            "src/app/components/button/button.stories.ts": [
+                {
+                    "name": "add",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "close",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "ghost",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "lg",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "loading",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "md",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "position",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "sm",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n    moduleMetadata: {\r\n        declarations: [ButtonComponent, AppIconComponent],\r\n        imports: [CommonModule],\r\n    },\r\n})"
+                }
+            ],
             "src/services/api.ts": [
                 {
                     "name": "championSplashImgURL",
@@ -2875,48 +3325,6 @@
                     "defaultValue": "{\r\n  production: true\r\n}"
                 }
             ],
-            "src/app/components/button/button.stories.ts": [
-                {
-                    "name": "Ghost",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Secondary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/components/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<ButtonComponent>",
-                    "defaultValue": "(args: ButtonComponent) => ({\r\n    component: ButtonComponent,\r\n    props: args,\r\n})"
-                }
-            ],
             "src/app/components/icon/svgs/icons.ts": [
                 {
                     "name": "iconsPaths",
@@ -2926,7 +3334,29 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Record<string, string>",
-                    "defaultValue": "{\r\n    add,\r\n    'arrow-down': arrowDown,\r\n    close,\r\n    search,\r\n    interrogation,\r\n    'position-bot': positionBot,\r\n    'position-jungle': positionJungle,\r\n    'position-mid': positionMid,\r\n    'position-support': positionSupport,\r\n    'position-top': positionTop,\r\n}"
+                    "defaultValue": "{\r\n    add,\r\n    'arrow-down': arrowDown,\r\n    close,\r\n    search,\r\n    interrogation,\r\n    'position-bot': positionBot,\r\n    'position-jungle': positionJungle,\r\n    'position-mid': positionMid,\r\n    'position-support': positionSupport,\r\n    'position-top': positionTop,\r\n    'arrow-left': arrowLeft,\r\n    bookmark,\r\n    edit,\r\n    'notification-all': notificationAll,\r\n    'notification-none': notificationNone,\r\n    settings,\r\n    star\r\n}"
+                }
+            ],
+            "src/app/components/avatar/avatar.stories.ts": [
+                {
+                    "name": "Photo",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/avatar/avatar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/components/avatar/avatar.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<AvatarComponent>",
+                    "defaultValue": "(args: AvatarComponent) => ({\r\n    component: AvatarComponent,\r\n    props: args,\r\n    moduleMetadata: {\r\n        declarations: [AvatarComponent, AppIconComponent],\r\n        imports: [CommonModule],\r\n    },\r\n})"
                 }
             ]
         },
@@ -3160,6 +3590,19 @@
             ]
         },
         "groupedTypeAliases": {
+            "src/app/components/core/types/badge.ts": [
+                {
+                    "name": "BadgeDirectionType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"bottom-right\" | \"bottom-left\" | \"top-right\" | \"top-left\"",
+                    "file": "src/app/components/core/types/badge.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                }
+            ],
             "src/app/components/tab/tab.component.ts": [
                 {
                     "name": "BorderDirection",
@@ -3317,6 +3760,30 @@
                     "kind": 130
                 }
             ],
+            "src/app/components/badge/badge.component.ts": [
+                {
+                    "name": "Size",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"sm\" | \"md\"",
+                    "file": "src/app/components/badge/badge.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                },
+                {
+                    "name": "Type",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"notification\" | \"level\"",
+                    "file": "src/app/components/badge/badge.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 186
+                }
+            ],
             "src/app/components/input/input.component.ts": [
                 {
                     "name": "Size",
@@ -3463,6 +3930,44 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/avatar/avatar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Photo",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/avatar/avatar.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/badge/badge.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BadgeComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/badge/badge.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AppBadgeProps",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -3485,7 +3990,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Ghost",
+                "name": "add",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3495,7 +4000,7 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Primary",
+                "name": "close",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3505,7 +4010,77 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "Secondary",
+                "name": "ghost",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "lg",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loading",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "md",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "position",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "sm",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -3590,7 +4165,7 @@
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {

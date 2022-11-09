@@ -39,8 +39,7 @@ npm-debug.log
 # System files
 .DS_Store
 Thumbs.db
-package-lock.json
 
-# storybook documentation
-documentation.json
+#storybook documentation
+documentation.json  
 build-storybook.log
