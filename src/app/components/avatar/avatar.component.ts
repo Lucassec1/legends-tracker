@@ -17,10 +17,10 @@ export interface AppAvatarProps {
   styleUrls: ['./avatar.component.scss']
 })
 export class AvatarComponent implements OnInit {
-  @Input() size?: SizeType = 'md'; 
+  @Input() size?: SizeType = 'md';
   @Input() image?: string;
   @Input() border: TypeBorder = "true";
-  @Input() onErrorImage?: string;
+  @Input() onErrorImage?: string = '../../../assets/user.svg';
 
   public type!: AvatarBorderOptions;
 
