@@ -22,5 +22,5 @@ TypeHorizontal.args = {
 
 export const TypeVertical = Template.bind({});
 TypeVertical.args = {
-    direction: "vertical"
+    direction: "vertical",
 };
