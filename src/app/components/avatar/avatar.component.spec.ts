@@ -3,7 +3,6 @@ import { AvatarBorderOptions } from '../core/types/avatar';
 import { SizeType } from '../core/types/size';
 import { AvatarComponent, AppAvatarProps } from './avatar.component';
 
-
 const sut = async(customProps: Partial<AvatarComponent> = {}): Promise<HTMLElement> => {
   await render(AvatarComponent, {
     componentProperties: customProps,
@@ -51,8 +50,7 @@ describe('AvatarComponent', () => {
 
 describe('AvatarComponent without border', () => {
   it.each(sizes)('should render a correct type and size without border', async (size) => {
-    expect(
-    await sut({
+    expect(await sut({
       size,
       border: "false",
       type: AvatarBorderOptions.false
