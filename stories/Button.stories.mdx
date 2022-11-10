@@ -1,9 +1,9 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ButtonComponent } from '../src/app/components/button/button.component.html';
-import { moduleMetadata } from '@storybook/angular';
-import { CommonModule } from  '@angular/common';
+import { Canvas, Meta, Story } from "@storybook/addon-docs";
+import { ButtonComponent } from "../src/app/components/button/button.component.ts";
+import { moduleMetadata } from "@storybook/angular";
+import { CommonModule } from "@angular/common";
 
-<Meta title="Lib/Buttons/button" component = { ButtonComponent } />
+<Meta title="Lib/Buttons/button" />
 
 # Button
 
@@ -22,6 +22,7 @@ O projeto conta com um botão principal que é o `primary`, mas no contexto gera
     ]}>
 
     {{ template: `<app-button label="Primary"></app-button>` }}
+
   </Story>
 
 </Canvas>
