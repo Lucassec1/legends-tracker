@@ -1,4 +1,4 @@
-<div [class]="searchFilter ? 'search-filter-dropdown-container' : 'dropdown-container'">
+<div [class]="searchFilter ? 'search-filter-dropdown-container' : 'dropdown-container'" data-testid="app-dropdown" id="teste">
     <div 
         [ngClass]="{
             'open-select': open && !searchFilter,
@@ -9,6 +9,7 @@
         }"
         [class]="!searchFilter ? ('select-container-' + size) : 'select-container'"
         (click)="setOpen()"
+        data-testid="select-container"
     >
         <span>{{ selectedLabel() }}</span>
         <app-icon type="arrow-down"></app-icon>
@@ -17,6 +18,7 @@
     <div 
         [class]="searchFilter ? 'search-filter-options-container' : 'options-container'" 
         *ngIf="open"
+        data-testid="options-container"
     >
         <div
             [ngClass]="{
@@ -30,6 +32,7 @@
             (mouseenter)="mouseEnter(option)"
             (mouseleave)="mouseLeave(option)"
             [id]="'option' + index"
+            [attr.data-testid]="option.default ? 'default-dropdown-item' : 'dropdown-item'"
             >
             <div 
                 [class]="searchFilter ? 'search-filter-container' : ('container-' + size)"
