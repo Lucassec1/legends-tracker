@@ -1,13 +1,13 @@
-<div 
-    [class]="'border-size-' + size" 
-    *ngIf="border === 'true'" 
+<div
+    [class]="'border-size-' + size"
+    *ngIf="border === 'true'"
     data-testid="avatarElement"
 >
     <div [class]="'background-size-' + size">
         <div
             [class]="type + '-avatar-size-' + size"
         >
-            <img [src]="image" default="onErrorImage" />
+            <img [src]="image" [default]="onErrorImage" />
         </div>
     </div>
 </div>
@@ -17,5 +17,5 @@
     *ngIf = "border === 'false'"
     data-testid="avatarElement-without-border"
 >
-    <img [src]="image" default="onErrorImage" />
+    <img [src]="image" [default]="onErrorImage" />
 </div>

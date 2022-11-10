@@ -1,12 +1,12 @@
 <div>
-    <app-avatar 
+    <app-avatar
         border="true"
-        size="sm" 
+        size="sm"
         image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-        onErrorImage=""
+        [onErrorImage]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcZsL6PVn0SNiabAKz7js0QknS2ilJam19QQ&usqp=CAU'"
     ></app-avatar>
-    
-    <app-avatar 
+
+    <app-avatar
         border="false"
         size="sm"
     ></app-avatar>
@@ -15,7 +15,7 @@
 <div>
 
     <app-button type='primary' size="md" label="Primary"></app-button>
-    
+
     <app-button type='secondary' size="md" label="Secondary" [loading]="true"></app-button>
 
     <h3>Progress-Bar Component</h3>
@@ -50,7 +50,7 @@
     'label': 'Campeões',
     'selected': false
     },
-    ]">    
+    ]">
 </app-tab-group>
 
 
