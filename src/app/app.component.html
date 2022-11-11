@@ -11,10 +11,6 @@
 
     <app-button type='ghost' size="md" label="Ghost" colorType="secondary-color"></app-button>
 
-    <div class="avatar">
-        <app-badge type="notification" size="md" direction="bottom-right"></app-badge>
-    </div>
-
     <div style="display: flex; gap: 10px;">
         <app-tag label="suporte"></app-tag>
         <app-tag label="adc"></app-tag>
@@ -28,6 +24,12 @@
         <app-tag label="suporte"></app-tag> 
         <app-tag label="adc"></app-tag>
     </div>
+    
+    <h3>Card Component - Match History Variant</h3>
+    <app-card type="match-history" victory="true" champion="yuumi" firstSummonerSpell="heal" secondSummonerSpell="ignite" [kill]="1" [death]="3" [assistance]="28"></app-card>
+    <app-card type="match-history" victory="false" champion="irelia" firstSummonerSpell="flash" secondSummonerSpell="ignite" [kill]="1" [death]="36" [assistance]="19"></app-card>
+    <app-card type="match-history" victory="true" champion="caitlyn" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
+    <app-card type="match-history" champion="anivia" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
 
     <div>
         <app-input size="sm" placeholder="Digite algo aqui"></app-input>
