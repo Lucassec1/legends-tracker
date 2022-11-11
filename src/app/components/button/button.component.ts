@@ -2,7 +2,7 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { IconType } from '../icon/icon.component';
 import { SafeAny } from '../utils/safe-any';
 
-import { ButtonIconSizeOptions } from '../types/button'
+import { ButtonIconSizeOptions } from '../core/types/button'
 
 type Type = 'primary' | 'secondary' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
@@ -37,7 +37,7 @@ export class ButtonComponent implements OnInit {
   @Input() expand?: boolean = false;
   @Input() colorType?: Color = 'primary-color';
   @Output() buttonOnClick = new EventEmitter();
-  
+
   public iconSize!: ButtonIconSizeOptions;
 
   handleClick() {
@@ -54,10 +54,6 @@ export class ButtonComponent implements OnInit {
   ghostColor() {
     return this.type === 'ghost' ? ' text-' + this.colorType : '';
   }
-
-  // ghostAnimation() {
-  //   return this.type === 'ghost' ? 
-  // }
 
   ngOnInit() {
     this.iconSize = ButtonIconSizeOptions[this.size];

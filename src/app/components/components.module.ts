@@ -1,21 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchComponent } from './search/search.component';
-import { ButtonComponent } from './button/button.component';
-import { AppIconComponent } from './icon/icon.component';
-import { TagComponent } from './tag/tag.component';
+
 @NgModule({
-  declarations: [
-    ButtonComponent,
-    SearchComponent,
-    TagComponent,
-  ],
+  declarations: [],
   imports: [
     CommonModule,
   ],
-  exports: [
-    ButtonComponent,
-  ],
+  exports: [],
 })
 
 export class ComponentsModule { }
