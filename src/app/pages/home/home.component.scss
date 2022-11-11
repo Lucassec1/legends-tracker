@@ -1,0 +1,14 @@
+div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.avatar {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    border: 2px solid red;
+    border-radius: 50%;
+}
