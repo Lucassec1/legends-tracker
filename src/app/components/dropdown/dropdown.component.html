@@ -11,7 +11,7 @@
         (click)="setOpen()"
         data-testid="select-container"
     >
-        <span>{{ selectedLabel() }}</span>
+        <span data-testid="dropdown-label">{{ selectedLabel() }}</span>
         <app-icon type="arrow-down"></app-icon>
     </div>
     
@@ -19,6 +19,7 @@
         [class]="searchFilter ? 'search-filter-options-container' : 'options-container'" 
         *ngIf="open"
         data-testid="options-container"
+        id="options-container"
     >
         <div
             [ngClass]="{
@@ -29,9 +30,7 @@
             }"
             *ngFor="let option of options; let index = index"
             (click)="select(option)"
-            (mouseenter)="mouseEnter(option)"
-            (mouseleave)="mouseLeave(option)"
-            [id]="'option' + index"
+            [id]="'option-' + index"
             [attr.data-testid]="option.default ? 'default-dropdown-item' : 'dropdown-item'"
             >
             <div 

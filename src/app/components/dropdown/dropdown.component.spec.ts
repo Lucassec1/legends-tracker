@@ -13,13 +13,13 @@ const createOptions = (): void => {
       label: `Option ${index}`,
       selected: false,
       disabled: false,
-      hovered: false,
     })
   }
 }
 createOptions();
 
 const selectEvent = jest.fn();
+
 const defaultDropdown: DropdownParams = {
   options: options,
   selected: {
@@ -43,10 +43,6 @@ const sut = async (
 }
 
 describe('DropdownComponent', () => {
-  // beforeEach(async () => {
-  //   await sut();
-  // });
-  
   it('should render component', async () => {
     await sut();
     expect(screen.getByTestId('app-dropdown')).toBeTruthy();
@@ -58,49 +54,75 @@ describe('DropdownComponent', () => {
     expect(screen.getByTestId('options-container')).toBeTruthy();
   })
 
-  it('should set selected when the option is default', async () => {
-    const testOptions = [
+  it('should not close when the auto close is false', async () => {
+    await sut({
+      ...defaultDropdown,
+      autoclose: false
+    });
+    openDropdown();
+    const optionToSelect = document.getElementById('option-0')!;
+    fireEvent.click(optionToSelect);
+    expect(document.getElementsByClassName('open-select')).toBeTruthy();
+  })
+  
+  describe('With Default Option', () => {
+    const optionsWithDefault = [
       {
-        default: false,
         label: 'Option 1',
-        selected: false,
-        disabled: false,
-        hovered: false,
       },
       {
         default: true,
         label: 'Option 2',
-        selected: false,
+      }
+    ];
+  
+    it('should set selected when the option is default', async () => {
+      await sut({
+        ...defaultDropdown,
+        options: optionsWithDefault
+      });
+      openDropdown();
+      expect(screen.getByTestId('default-dropdown-item')).toHaveClass('dropdown-item-selected');
+    })
+  
+    it('should render the default option label', async () => {
+      const defaultOption = optionsWithDefault.filter((item: DropdownItem) => item.default);
+      await sut({
+        ...defaultDropdown,
+        options: optionsWithDefault
+      });
+      expect(screen.getByTestId('dropdown-label')).toHaveTextContent(defaultOption[0].label);
+      expect(screen.getAllByText(defaultOption[0].label)).toHaveLength(1)
+    })
+  })
+  
+  describe('With Disabled Option', () => {
+    const optionsWithDisabled = [
+      {
+        label: 'Disabled Option',
+        disabled: true,
+      },
+      {
+        label: 'Enabled Option',
         disabled: false,
-        hovered: false,
       }
     ]
-    await sut({
+    const defaultDisabled = {
       ...defaultDropdown,
-      options: testOptions
-    });
-    openDropdown();
-    expect(screen.getByTestId('default-dropdown-item')).toHaveClass('dropdown-item-selected');
+        options: optionsWithDisabled
+    }
+  
+    beforeEach(() => {
+      selectEvent.mockClear();
+    })
+  
+    it('should not select a disabled option', async () => {
+      await sut(defaultDisabled);
+      openDropdown();
+      const elementToSelect = document.getElementById('option-0')!;
+      fireEvent.click(elementToSelect);
+      expect(elementToSelect.classList).not.toContain('dropdown-item-selected');
+      expect(selectEvent).not.toHaveBeenCalled();
+    })
   })
-
-  // it('should accept only one selected option', async () => {
-  //   const optionsWithSelected  = options;
-  //   options.push({
-  //     default: false,
-  //     label: 'Selected Option',
-  //     selected: true,
-  //     disabled: false,
-  //     hovered: false,
-  //   })
-  //   await sut({
-  //     ...defaultDropdown,
-  //     options: optionsWithSelected
-  //   })
-  //   selectEvent.mockClear();
-  // })
-
-  // it.each(options)('should render option $label', async ({ label }) => {
-  //   await sut();
-  //   expect(screen.getAllByText(label)).toHaveLength(1);
-  // })  
-});
+})

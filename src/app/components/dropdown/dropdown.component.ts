@@ -3,11 +3,11 @@ import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
 import { Size } from '../core/types/search';
 
 export interface DropdownItem {
-  default: boolean;
+  default?: boolean;
   label: string;
   selected?: boolean;
-  disabled: boolean;
-  hovered?: boolean;
+  disabled?: boolean;
+  //hovered?: boolean;
   iconType?: IconType;
 }
 
@@ -33,13 +33,13 @@ export class DropdownComponent implements OnInit {
   @Input() options: DropdownItem[] = [];
   @Output() selected = new EventEmitter<DropdownItem[]>();
 
-  mouseEnter(option: DropdownItem) {
-    option.selected && !option.disabled && (option.hovered = true);
-  }
+  // mouseEnter(option: DropdownItem) {
+  //   option.selected && !option.disabled && (option.hovered = true);
+  // }
 
-  mouseLeave(option: DropdownItem) {
-    option.selected && !option.disabled && (option.hovered = false);
-  }
+  // mouseLeave(option: DropdownItem) {
+  //   option.selected && !option.disabled && (option.hovered = false);
+  // }
 
   clearOptions(): void {
     this.options.forEach((item: DropdownItem) => {
@@ -83,7 +83,7 @@ export class DropdownComponent implements OnInit {
   }
 
   private isDisabled(option: DropdownItem): boolean {
-    return option.disabled;
+    return option.disabled ? true : false;
   }
 
   ngOnInit(): void {
