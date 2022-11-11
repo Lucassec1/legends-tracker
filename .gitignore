@@ -8,8 +8,6 @@
 
 # Node
 /node_modules
-npm-debug.log
-yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -36,7 +34,12 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
+npm-debug.log
 
 # System files
 .DS_Store
 Thumbs.db
+
+#storybook documentation
+documentation.json
+build-storybook.log

@@ -55,10 +55,6 @@ export class ButtonComponent implements OnInit {
     return this.type === 'ghost' ? ' text-' + this.colorType : '';
   }
 
-  // ghostAnimation() {
-  //   return this.type === 'ghost' ?
-  // }
-
   ngOnInit() {
     this.iconSize = ButtonIconSizeOptions[this.size];
   }
