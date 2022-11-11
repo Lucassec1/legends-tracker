@@ -2,11 +2,12 @@
     class="tag-container"
     data-testid="app-tag"
 >
-    <img 
+    <app-icon 
         *ngIf="icon"
-        class="tag-icon"
+        [type]="iconType"
+        color="transparent"
+        [class]="iconType + '-icon'"
         data-testid="tag-icon"
-        [src]="iconUrl"
-    />
+    ></app-icon>
     {{ label }}
 </div>

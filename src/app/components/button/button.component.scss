@@ -8,13 +8,13 @@
 @mixin add-animation($type, $loadingType , $color ) {
     .#{$type}-#{$loadingType} {
         position: relative;
-        left: -1000px;
+        left: -9999px;
         width:6px;
         height:6px;
         border-radius: 5px;
         background-color: $color;
         color: $color;
-        box-shadow: 1000px 0 0 0 $color;
+        box-shadow: 10000px 0 0 0 $color;
         animation: #{$type}-#{$loadingType} 1s infinite linear;
         animation-delay: .1s;
         
@@ -48,43 +48,43 @@
     
     @keyframes #{$type}-#{$loadingType} {
         0% {
-            box-shadow: 1000px -15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10000px -15px 0 0 rgba(152, 128, 255, 0);
         }
         25%,
         50%,
         75% {
-            box-shadow: 1000px 0 0 0 $color;
+            box-shadow: 10000px 0 0 0 $color;
         }
         100% {
-            box-shadow: 1000px 15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10000px 15px 0 0 rgba(152, 128, 255, 0);
         }
     }
         
     @keyframes #{$type}-#{$loadingType}Before {
         0% {
-            box-shadow: 984px -15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 9984px -15px 0 0 rgba(152, 128, 255, 0);
         }
         25%,
         50%,
         75% {
-            box-shadow: 984px 0 0 0 $color;
+            box-shadow: 9984px 0 0 0 $color;
         }
         100% {
-            box-shadow: 984px 15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 9984px 15px 0 0 rgba(152, 128, 255, 0);
         }
     }
         
     @keyframes #{$type}-#{$loadingType}After {
         0% {
-            box-shadow: 1010px -15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10010px -15px 0 0 rgba(152, 128, 255, 0);
         }
         25%,
         50%,
         75% {
-            box-shadow: 1010px 0 0 0 $color;
+            box-shadow: 10010px 0 0 0 $color;
         }
         100% {
-            box-shadow: 1010px 15px 0 0 rgba(152, 128, 255, 0);
+            box-shadow: 10010px 15px 0 0 rgba(152, 128, 255, 0);
         }
     }
 }
@@ -94,8 +94,25 @@
     $paddingTopBottom,
     $paddingLeftRight,
     $fontSize,
+    $lineHeight
 ) {
-    min-width: $buttonSize * 2;
+    min-width: $buttonSize;
+    height: $buttonSize;
+    padding: $paddingTopBottom $paddingLeftRight;
+
+    span {
+        font-size: $fontSize;
+        line-height: $lineHeight;
+    }
+}
+
+@mixin teste(
+    $buttonSize,
+    $paddingTopBottom,
+    $paddingLeftRight,
+    $fontSize,
+) {
+    min-width: $buttonSize;
     height: $buttonSize;
     padding: $paddingTopBottom $paddingLeftRight;
 
@@ -151,15 +168,24 @@ button {
 }
 
 .app-button-sm {
-    @include button-parameters(30px, 12px, 10px, 14px);
+    @include button-parameters(30px, 4px, 12px, 16px, 16px);
+    &.loading {
+        padding: 0 24px;
+    }
 }
 
 .app-button-md {
-    @include button-parameters(34px, 16px, 14px, 16px);
+    @include button-parameters(34px, 4px, 14px, 16px, 16px);
+    &.loading {
+        padding: 0 26px;
+    }
 }
 
 .app-button-lg {
-    @include button-parameters(38px, 20px, 18px, 18px);
+    @include button-parameters(38px, 10px, 18px, 18px, 18px);
+    &.loading {
+        padding: 0 28px;
+    }
 }
 
 .app-button-primary {
@@ -249,7 +275,7 @@ button {
 
 .loading {
     cursor: not-allowed;
-    padding: 0 12px;
+    // padding: 0 24px;
 }
   
 .right-side-icon {

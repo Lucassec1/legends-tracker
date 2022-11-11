@@ -129,10 +129,6 @@
     color: $primary-color;
 }
 
-hr {
-    border: 0;
-    background: inherit;
-    border-left: 1px solid $neutral-3;
-    min-height: 55px;
+.divider-container {
     height: 80%;
 }

@@ -1,10 +1,14 @@
 <svg
-  style.stroke="{{ color }}"
   style.height.px="{{ size }}"
   style.width.px="{{ size }}"
+  style.stroke="{{ color }}"
   viewBox="0 0 24 24"
   [style.fill]="changeColor()"
   xmlns="http://www.w3.org/2000/svg"
   [id]="'app-icon-' + type"
+  data-testid="iconElement"
   [innerHTML]="getPath()"
 ></svg>
+
+  <!-- attr.height="{{ size }}px"
+  attr.width="{{ size }}px" -->

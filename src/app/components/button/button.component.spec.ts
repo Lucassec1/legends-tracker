@@ -111,7 +111,7 @@ describe('Icon on ButtonComponent', () => {
 });
 
 describe('disabled ButtonComponent', () => {
-  it('should render a disabled button when disabled"true" is passed', async () => {
+  it('should render a disabled button when disabled "true" is passed', async () => {
     expect(await sut({
       label: defaultLabel,
       disabled: true

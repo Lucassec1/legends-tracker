@@ -1,18 +1,7 @@
-<div>
-    <app-avatar
-        border="true"
-        size="sm"
-        image="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-        [onErrorImage]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcZsL6PVn0SNiabAKz7js0QknS2ilJam19QQ&usqp=CAU'"
-    ></app-avatar>
+<div class="container">
+    <app-tag label="mid"></app-tag>
 
-    <app-avatar
-        border="false"
-        size="sm"
-    ></app-avatar>
-</div>
-
-<div>
+    <app-button label="Firmino" size="sm"></app-button>
 
     <app-button type='primary' size="md" label="Primary"></app-button>
 
@@ -26,38 +15,86 @@
         <h5>Only Progress-Bar</h5>
         <app-progress-bar [win]="2" [lose]="8"></app-progress-bar>
     </div>
+    
+    <app-button size="sm" label="Ver mais" iconType="interrogation"></app-button>
 
-</div>
+    <app-button type='secondary' size="md" label="Secondary" [loading]="true"></app-button>
 
-<br />
+    <app-button type='ghost' size="sm" label="Ghost" ></app-button>
 
-<div>
-    <app-input size="sm" placeholder="Digite algo aqui"></app-input>
-    <app-input placeholder="Digite algo aqui" type="email"></app-input>
-    <app-input size="md" placeholder="Digite algo aqui" type="password"></app-input>
-</div>
+    <app-button type='ghost' size="md" label="Ghost" colorType="secondary-color"></app-button>
 
+    <app-tab-group size="md" direction="vertical" [tabs]="[{
+        'label': 'Overview',
+        'selected': false
+        },
+        {
+        'label': 'Histórico',
+        'selected': false
+        },
+        {
+        'label': 'Campeões',
+        'selected': false
+        },
+        ]">
+    </app-tab-group>
 
-<app-tab-group size="md" direction="vertical" [tabs]="[{
-    'label': 'Overview',
-    'selected': false
-    },
-    {
-    'label': 'Histórico',
-    'selected': false
-    },
-    {
-    'label': 'Campeões',
-    'selected': false
-    },
-    ]">
-</app-tab-group>
+    <div style="display: flex; gap: 10px;">
+        <app-tag label="suporte"></app-tag>
+        <app-tag label="adc"></app-tag>
+    </div>
 
+    <div class="avatar">
+        <app-badge type="notification" [value]="10" size="md" direction="bottom-right"></app-badge>
+    </div>
 
-<div>
+    <div style="display: flex; gap: 10px;">
+        <app-tag label="suporte"></app-tag> 
+        <app-tag label="adc"></app-tag>
+    </div>
+    
     <h3>Card Component - Match History Variant</h3>
     <app-card type="match-history" victory="true" champion="yuumi" firstSummonerSpell="heal" secondSummonerSpell="ignite" [kill]="1" [death]="3" [assistance]="28"></app-card>
     <app-card type="match-history" victory="false" champion="irelia" firstSummonerSpell="flash" secondSummonerSpell="ignite" [kill]="1" [death]="36" [assistance]="19"></app-card>
     <app-card type="match-history" victory="true" champion="caitlyn" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
     <app-card type="match-history" champion="anivia" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
+
+
+    <div>
+        <app-input size="sm" placeholder="Digite algo aqui"></app-input>
+        <app-input placeholder="Digite algo aqui" type="email"></app-input>
+        <app-input size="md" placeholder="Digite algo aqui" type="password"></app-input>
+    </div>
+
+    <div>
+        <h3>Card Component - Match History Variant</h3>
+        <app-card type="match-history" victory="true" champion="yuumi" firstSummonerSpell="heal" secondSummonerSpell="ignite" [kill]="1" [death]="3" [assistance]="28"></app-card>
+        <app-card type="match-history" victory="false" champion="irelia" firstSummonerSpell="flash" secondSummonerSpell="ignite" [kill]="1" [death]="36" [assistance]="19"></app-card>
+        <app-card type="match-history" victory="true" champion="caitlyn" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
+        <app-card type="match-history" champion="anivia" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
+    </div>
+
+    <app-tag label="mid"></app-tag>
+
+    <app-tab-group 
+        [tabs]="[{
+            'label': 'teste 1',
+            'selected':false
+        },
+        {
+            'label': 'teste 2',
+            'selected':false
+        },
+        {
+            'label': 'teste 3',
+            'selected':false
+        },
+        {
+            'label': 'teste 4',
+            'selected':false
+        }
+        ]"
+    >
+
+    </app-tab-group>
 </div>
