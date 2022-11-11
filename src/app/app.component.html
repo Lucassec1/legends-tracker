@@ -3,6 +3,19 @@
 
     <app-button label="Firmino" size="sm"></app-button>
 
+    <app-button type='primary' size="md" label="Primary"></app-button>
+
+    <app-button type='secondary' size="md" label="Secondary" [loading]="true"></app-button>
+
+    <h3>Progress-Bar Component</h3>
+    <div style="width: 25%;">
+        <h5>Progress-Bar With Details</h5>
+        <app-progress-bar type="info-progress-bar" [win]="7" [lose]="3"></app-progress-bar>
+        <br />
+        <h5>Only Progress-Bar</h5>
+        <app-progress-bar [win]="2" [lose]="8"></app-progress-bar>
+    </div>
+    
     <app-button size="sm" label="Ver mais" iconType="interrogation"></app-button>
 
     <app-button type='secondary' size="md" label="Secondary" [loading]="true"></app-button>
@@ -10,6 +23,21 @@
     <app-button type='ghost' size="sm" label="Ghost" ></app-button>
 
     <app-button type='ghost' size="md" label="Ghost" colorType="secondary-color"></app-button>
+
+    <app-tab-group size="md" direction="vertical" [tabs]="[{
+        'label': 'Overview',
+        'selected': false
+        },
+        {
+        'label': 'Histórico',
+        'selected': false
+        },
+        {
+        'label': 'Campeões',
+        'selected': false
+        },
+        ]">
+    </app-tab-group>
 
     <div style="display: flex; gap: 10px;">
         <app-tag label="suporte"></app-tag>
@@ -30,6 +58,7 @@
     <app-card type="match-history" victory="false" champion="irelia" firstSummonerSpell="flash" secondSummonerSpell="ignite" [kill]="1" [death]="36" [assistance]="19"></app-card>
     <app-card type="match-history" victory="true" champion="caitlyn" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
     <app-card type="match-history" champion="anivia" firstSummonerSpell="barrier" secondSummonerSpell="flash" [kill]="6" [death]="2" [assistance]="3"></app-card>
+
 
     <div>
         <app-input size="sm" placeholder="Digite algo aqui"></app-input>
