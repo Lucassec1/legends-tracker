@@ -3,7 +3,8 @@
     <div style="display: flex; gap: 1%;">
         <app-dropdown
             [autoClose]="false"
-            [open]="true"
+            [open]="false"
+            placeholder="Escolha uma opção..."
             [options]="[
                 {
                     'default': false,
@@ -209,5 +210,50 @@
                 'iconType': 'close'
             },
         ]"></app-search>
+    </div>
+
+    <div style="display: flex; gap: 5px;">
+        <app-input size="sm" type="text" placeholder="Digite algo..."></app-input>
+        <app-dropdown
+                [autoClose]="false"
+                [open]="false"
+                size="md"
+                placeholder="Escolha uma opção..."
+                [options]="[
+                    {
+                        'default': false,
+                        'label': 'Option with icon',
+                        'selected': false,
+                        'disabled': false,
+                        'iconType': 'search'
+                    },
+                    {
+                        'default': false,
+                        'label': 'Disabled option with icon',
+                        'selected': false,
+                        'disabled': true,
+                        'iconType': 'close'
+                    },
+                    {
+                        'default': false,
+                        'label': 'Default option with icon',
+                        'selected': false,
+                        'disabled': false,
+                        'iconType': 'interrogation'
+                    },
+                    {
+                        'default': false,
+                        'label': 'Common option',
+                        'selected': false,
+                        'disabled': false
+                    },
+                    {
+                        'default': false,
+                        'label': 'Disabled option',
+                        'selected': false,
+                        'disabled': true
+                    },
+                ]"
+            ></app-dropdown>
     </div>
 </div>

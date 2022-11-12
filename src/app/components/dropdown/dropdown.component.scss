@@ -83,13 +83,17 @@
     @include border-radius(5px);
 }
 
+.placeholder {
+    color: $neutral-4;
+}
+
 .select-container-md {
-    @include select-container-params(10px, 10px);
+    @include select-container-params(9px, 10px);
     @include border-radius(5px);
 }
 
 .select-container-lg {
-    @include select-container-params(14px, 10px);
+    @include select-container-params(13px, 10px);
     @include border-radius(5px);
 }
 
@@ -142,7 +146,6 @@
 .search-filter-container {
     @include container-params(8px, 4px, $neutral-3);
 }
-
 
 .dropdown-item {
     @include cursor-pointer();

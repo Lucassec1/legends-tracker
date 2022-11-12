@@ -11,7 +11,12 @@
         (click)="setOpen()"
         data-testid="select-container"
     >
-        <span data-testid="dropdown-label">{{ selectedLabel() }}</span>
+        <span 
+            [class.placeholder]="selectedOption()"
+            data-testid="dropdown-label"
+        >
+            {{ selectedLabel() }}
+        </span>
         <app-icon type="arrow-down"></app-icon>
     </div>
     

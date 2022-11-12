@@ -7,7 +7,6 @@ export interface DropdownItem {
   label: string;
   selected?: boolean;
   disabled?: boolean;
-  //hovered?: boolean;
   iconType?: IconType;
 }
 
@@ -26,6 +25,7 @@ export interface DropdownParams {
   styleUrls: ['./dropdown.component.scss']
 })
 export class DropdownComponent implements OnInit {
+  @Input() placeholder?: string;
   @Input() open?: boolean = false;
   @Input() autoClose?: boolean = true;
   @Input() searchFilter?: boolean = false;
@@ -73,9 +73,7 @@ export class DropdownComponent implements OnInit {
     if (defaultOption.length > 0 && selectedOption.length === 0) {
       return defaultOption[0].label;
     } else if (defaultOption.length === 0 && selectedOption.length === 0) {
-      this.options[0].selected = true;
-      this.options[0].default = true;
-      return this.options[0].label;
+      return this.placeholder;
     } else {
       return selectedOption[0].label;
     }
@@ -85,6 +83,11 @@ export class DropdownComponent implements OnInit {
   private isDisabled(option: DropdownItem): boolean {
     return option.disabled ? true : false;
   }
+
+  public selectedOption(): boolean { 
+    const selected = this.options.filter((item: DropdownItem) => item.selected);
+    return selected.length === 0;
+  };
 
   ngOnInit(): void {
     this.options.forEach((item: DropdownItem) => {
