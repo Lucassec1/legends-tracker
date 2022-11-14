@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 type Type = 'user' | 'text' | 'password' | 'email' ;
 type Size = 'sm' | 'md' ;
@@ -16,7 +16,7 @@ export interface AppInputProps {
   styleUrls: ['./input.component.scss']
 })
 
-export class InputComponent implements OnInit {
+export class InputComponent  {
   @Input() placeholder?: string = '';
   @Input() type?: Type = 'text';
   @Input() size?: Size = 'md';
@@ -24,11 +24,5 @@ export class InputComponent implements OnInit {
 
   passwordInput() {
     this.visible = !this.visible;
-  }
-  
-  constructor() {
-  }
-  
-  ngOnInit(): void {
   }
 }

@@ -3,10 +3,10 @@ import { AvatarBorderOptions } from '../core/types/avatar';
 import { SizeType } from '../core/types/size';
 import { AvatarComponent, AppAvatarProps } from './avatar.component';
 
-
 const sut = async(customProps: Partial<AvatarComponent> = {}): Promise<HTMLElement> => {
   await render(AvatarComponent, {
-    componentProperties: customProps, 
+    componentProperties: customProps,
+    declarations: [AvatarComponent]
   });
   return screen.queryByTestId('avatarElement') ? screen.getByTestId('avatarElement') : screen.getByTestId('avatarElement-without-border');
 };
@@ -29,7 +29,10 @@ describe('AvatarComponent', () => {
   });
 
   it('should render avatar with image when url is passed', async () => {
-    await sut({ type: AvatarBorderOptions.true, image: 'assets/user.svg' });
+    await sut({ 
+      type: AvatarBorderOptions.true, 
+      image: 'assets/user.svg' 
+    });
     expect(screen.getByRole('img')).toHaveAttribute(
       'src',
       'assets/user.svg'
@@ -37,7 +40,7 @@ describe('AvatarComponent', () => {
   });
 
   it('should render a default image when without image', async () => {
-    await sut({ type: AvatarBorderOptions.false });
+    await sut({ type: AvatarBorderOptions.true });
     expect(screen.getByRole('img')).not.toHaveAttribute(
       'src',
       'assets/user.svg'
@@ -47,11 +50,10 @@ describe('AvatarComponent', () => {
 
 describe('AvatarComponent without border', () => {
   it.each(sizes)('should render a correct type and size without border', async (size) => {
-    expect(
-    await sut({
+    expect(await sut({
       size,
       border: "false",
       type: AvatarBorderOptions.false
-    })).toHaveClass(`${AvatarBorderOptions.false}-avatar-size-${size}`)
+    })).toHaveClass(`${AvatarBorderOptions.false}-avatar-size-${size}`);
   });
 });
