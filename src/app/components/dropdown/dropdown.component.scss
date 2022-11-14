@@ -1,0 +1,182 @@
+@import '../../styles/index.scss';
+
+@mixin border-radius($bordersLeft, $bordersRight: 5px) {
+    border-radius: $bordersLeft;
+    border-bottom-left-radius: $bordersRight;
+    border-bottom-right-radius: $bordersRight;
+}
+
+@mixin search-filter-border-radius($bordersLeft, $bordersRight: 5px) {
+    border-radius: $bordersLeft;
+    border-top-right-radius: $bordersRight;
+    border-bottom-right-radius: $bordersRight;
+}
+
+@mixin search-filter-params($height) {
+    min-height: $height;
+    background-color: $neutral-3;
+}
+
+@mixin dropdown-container-params($type: '') {
+    width: max-content;
+    @if ($type == 'search-filter') {
+        height: 100%;
+    }
+}
+
+@mixin select-container-params($paddingY, $paddingX) {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $neutral-2;
+    width: 100%;
+    padding: $paddingY $paddingX;
+    cursor: pointer;
+}
+
+@mixin open-search-filter-params() {
+    border-bottom: 1px solid $neutral-1;
+    border-bottom-right-radius: 0px;
+    background-color: $neutral-3;
+}
+
+@mixin options-container-params($color: $neutral-2) {
+    padding: 4px 6px;
+    background-color: $color;
+    width: 100%;
+
+    & > div:nth-last-child(1) > div {
+        border-bottom: 0;
+    }
+}
+
+@mixin container-params($paddingY, $paddingX, $hoverColor: $neutral-2) {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    align-items: center;
+    padding: $paddingY $paddingX;
+    border-bottom: 1px solid transparentize($neutral-4, 0.8);
+
+    &:hover {
+        background-color: darken($hoverColor, 1.5%);
+    }
+}
+
+@mixin cursor-pointer() {
+    & .container-md, & .container-lg , & .search-filter-container {
+        cursor: pointer;
+    }
+}
+
+.dropdown-container {
+    @include dropdown-container-params();
+}
+
+.search-filter-dropdown-container {
+    @include dropdown-container-params('search-filter');
+}
+
+.select-container {
+    @include select-container-params(4px, 10px);
+    @include border-radius(5px);
+}
+
+.placeholder {
+    color: $neutral-4;
+}
+
+.select-container-md {
+    @include select-container-params(9px, 10px);
+    @include border-radius(5px);
+}
+
+.select-container-lg {
+    @include select-container-params(13px, 10px);
+    @include border-radius(5px);
+}
+
+.open-select {
+    @include border-radius(5px, 0px);
+    border-bottom: 1px solid $neutral-1;
+}
+
+.search-filter-md {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(36px);
+}
+
+.search-filter-lg {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(42px);
+}
+
+.open-search-filter-md {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(36.75px);
+    @include open-search-filter-params();
+}
+
+.open-search-filter-lg {
+    @include search-filter-border-radius(0px, 5px);
+    @include search-filter-params(43px);
+    @include open-search-filter-params();
+}
+
+.options-container {
+    @include options-container-params();
+    @include border-radius(0px, 5px);
+}
+
+.search-filter-options-container {
+    @include options-container-params($neutral-3);
+    @include border-radius(0px, 5px);
+}
+
+.container-md {
+    @include container-params(8px, 4px);
+}
+
+
+.container-lg {
+    @include container-params(10px, 4px);
+}
+
+.search-filter-container {
+    @include container-params(8px, 4px, $neutral-3);
+}
+
+.dropdown-item {
+    @include cursor-pointer();
+}
+
+.dropdown-item-selected {
+    @include cursor-pointer();
+    & .container-md, & .container-lg, & .search-filter-container {
+        color: $primary-color;
+        background-color: transparentize($primary-color, 0.9);
+        font-size: 600;
+
+        &:hover {
+            background-color: transparentize($primary-color, 0.9);
+        }
+    }
+
+    app-icon {
+        &::ng-deep svg {
+            stroke: $primary-color !important;
+        }
+    }
+}
+
+.dropdown-disabled {
+    cursor: not-allowed;
+    color: $neutral-4;
+
+    app-icon {
+        &::ng-deep svg {
+            stroke: $neutral-4 !important;
+        }
+    }
+}

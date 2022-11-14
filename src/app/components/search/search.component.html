@@ -3,10 +3,12 @@
     type="search"
     [class]="type + '-search-' + size"
     [placeholder]="placeholder" />
-    <select *ngIf="filter === 'true'" class="filter">
-        <option value="0" class="selected">Summoners</option>
-        <option value="1">Summoners</option>
-        <option value="2">Summoners</option>
-        <option value="3">Summoners</option>
-    </select>
+    <app-dropdown 
+        *ngIf="filter === 'true'"
+        [size]="size"
+        [searchFilter]="true"
+        [options]="filterOptions"
+    >
+
+    </app-dropdown>
 </div>

@@ -1,0 +1,52 @@
+<div [class]="searchFilter ? 'search-filter-dropdown-container' : 'dropdown-container'" data-testid="app-dropdown" id="teste">
+    <div 
+        [ngClass]="{
+            'open-select': open && !searchFilter,
+            'open-search-filter-md': size === 'md' && open && searchFilter,
+            'open-search-filter-lg': size === 'lg' && open && searchFilter,
+            'search-filter-md': size === 'md' && !open && searchFilter,
+            'search-filter-lg': size === 'lg' && !open && searchFilter
+        }"
+        [class]="!searchFilter ? ('select-container-' + size) : 'select-container'"
+        (click)="setOpen()"
+        data-testid="select-container"
+    >
+        <span 
+            [class.placeholder]="selectedOption()"
+            data-testid="dropdown-label"
+        >
+            {{ selectedLabel() }}
+        </span>
+        <app-icon type="arrow-down"></app-icon>
+    </div>
+    
+    <div 
+        [class]="searchFilter ? 'search-filter-options-container' : 'options-container'" 
+        *ngIf="open"
+        data-testid="options-container"
+        id="options-container"
+    >
+        <div
+            [ngClass]="{
+                'dropdown-disabled': option.disabled,
+                'dropdown-disabled-selected': option.disabled && option.selected,
+                'dropdown-item-selected': option.selected && !option.disabled,
+                'dropdown-item': !option.selected && !option.disabled
+            }"
+            *ngFor="let option of options; let index = index"
+            (click)="select(option)"
+            [id]="'option-' + index"
+            [attr.data-testid]="option.default ? 'default-dropdown-item' : 'dropdown-item'"
+            >
+            <div 
+                [class]="searchFilter ? 'search-filter-container' : ('container-' + size)"
+            >
+                <span>{{ option.label }}</span>
+                <app-icon
+                    *ngIf="option.iconType"
+                    [type]="option.iconType"
+                ></app-icon>
+            </div>
+        </div>
+    </div>
+</div>
