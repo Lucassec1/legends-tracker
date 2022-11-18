@@ -1,56 +1,43 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DropdownComponent } from './dropdown/dropdown.component';
 import { AvatarComponent } from './avatar/avatar.component';
-import { ButtonComponent } from './button/button.component';
-import { CardComponent } from './card/card.component';
-import { DividerComponent } from './divider/divider.component';
-import { AppIconComponent } from './icon/icon.component';
-import { InputComponent } from './input/input.component';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { SearchComponent } from './search/search.component';
-import { TabGroupComponent } from './tab-group/tab-group.component';
-import { TabComponent } from './tab/tab.component';
-import { TagComponent } from './tag/tag.component';
-import { DefaultImageDirective } from './default-image.directive';
 import { BadgeComponent } from './badge/badge.component';
+import { ButtonModule } from './button/button.component.module';
+import { CardModule } from './card/card.component.module';
+import { DividerModule } from './divider/divider.component.module';
+import { DropdownModule } from './dropdown/dropdown.component.module';
+import { IconModule } from './icon/icon.component.module';
+import { InputModule } from './input/input.component.module';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { SearchModule } from './search/search.component.module';
+import { TabModule } from './tab/tab.component.module';
+import { TabGroupModule } from './tab-group/tab-group.component.module';
+import { TagModule } from './tag/tag.component.module';
 
 @NgModule({
   declarations: [
     AvatarComponent,
-    SearchComponent,
     BadgeComponent,
-    ButtonComponent,
-    AppIconComponent,
-    TagComponent,
-    TabGroupComponent,
-    TabComponent,
-    InputComponent,
-    CardComponent,
-    ProgressBarComponent,
-    DividerComponent,
-    DefaultImageDirective,
-    DropdownComponent
+    ProgressBarComponent
   ],
   imports: [
     CommonModule,
+    ButtonModule,
+    CardModule,
+    DividerModule,
+    DropdownModule,
+    IconModule,
+    InputModule,
+    SearchModule,
+    TabModule,
+    TabGroupModule,
+    TagModule
   ],
   exports: [
     AvatarComponent,
-    SearchComponent,
     BadgeComponent,
-    ButtonComponent,
-    AppIconComponent,
-    TagComponent,
-    TabGroupComponent,
-    TabComponent,
-    InputComponent,
-    CardComponent,
-    ProgressBarComponent,
-    DividerComponent,
-    DefaultImageDirective,
-    DropdownComponent
+    ProgressBarComponent
   ],
 })
 
-export class ComponentsModule { }
+export class ComponentsModule {}
