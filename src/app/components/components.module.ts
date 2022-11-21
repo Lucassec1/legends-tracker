@@ -4,6 +4,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { BadgeComponent } from './badge/badge.component';
 import { ButtonModule } from './button/button.component.module';
 import { CardModule } from './card/card.component.module';
+import { DefaultImageDirective } from './default-image.directive';
 import { DividerModule } from './divider/divider.component.module';
 import { DropdownModule } from './dropdown/dropdown.component.module';
 import { IconModule } from './icon/icon.component.module';
@@ -18,9 +19,14 @@ import { TagModule } from './tag/tag.component.module';
   declarations: [
     AvatarComponent,
     BadgeComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    DefaultImageDirective
   ],
-  imports: [
+  imports: [CommonModule],
+  exports: [
+    AvatarComponent,
+    BadgeComponent,
+    ProgressBarComponent,
     CommonModule,
     ButtonModule,
     CardModule,
@@ -31,12 +37,8 @@ import { TagModule } from './tag/tag.component.module';
     SearchModule,
     TabModule,
     TabGroupModule,
-    TagModule
-  ],
-  exports: [
-    AvatarComponent,
-    BadgeComponent,
-    ProgressBarComponent
+    TagModule,
+    DefaultImageDirective
   ],
 })
 

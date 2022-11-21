@@ -9,4 +9,4 @@ import { ComponentsModule } from "src/app/components/components.module";
     imports: [CommonModule, HomeRoutingModule, ComponentsModule]
 })
 
-export class HomeModule { }
+export class HomeModule {}
