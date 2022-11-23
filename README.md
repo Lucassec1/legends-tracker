@@ -2,6 +2,8 @@
 
 This project allows you to search the statistics of a League of Legends player, it also makes it possible to find a duo to play a match.
 
+The project is on pause while we learn clean architecture.
+
 ## Details 
 - Using Angular with SCSS.
 - Using [Riot API](https://developer.riotgames.com/apis).
